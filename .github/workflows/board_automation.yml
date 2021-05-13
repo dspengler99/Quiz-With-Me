@@ -21,7 +21,7 @@ jobs:
         # Check if progress column and Card with issue
         if: github.event.project_card.column_id == steps.progress_column.outputs.id && github.event.project_card.content_url != null
         id: generate_token
-        uses: tibdex/github-app-token@v1.0.2
+        uses: tibdex/github-app-token@v1.3
         with:
           app_id: ${{ secrets.APP_ID }}
           private_key: ${{ secrets.APP_PEM }}
