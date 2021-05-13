@@ -1,7 +1,6 @@
 ---
 name: Implementierung
-about: Issue für die Implementierung einer neuen FunktionDescribe this issue template's
-  purpose here.
+about: Issue für die Implementierung einer neuen Funktion
 title: "[Implementierung]"
 labels: ''
 assignees: ''
