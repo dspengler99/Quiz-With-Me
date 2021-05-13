@@ -1,0 +1,117 @@
+name: Board Automation
+
+on:
+  project_card:
+    types: [moved]
+    
+env:
+  BASE_BRANCH: main
+    
+jobs:
+  create-branch:
+     runs-on: ubuntu-latest
+     env: 
+       issueUrl: ${{ github.event.project_card.content_url }}
+     steps:
+      - name: Get Progress Column ID
+        id: progress_column
+        run: echo '::set-output name=id::${{secrets.PROGRESS_COLUMN}}'
+     # Get Github App Token
+      - name: Generate token
+        # Check if progress column and Card with issue
+        if: github.event.project_card.column_id == steps.progress_column.outputs.id && github.event.project_card.content_url != null
+        id: generate_token
+        uses: tibdex/github-app-token@v1.0.2
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.APP_PEM }}
+
+      - name: "create Branch"
+        # Check if Progress colum and Card with issue
+        if: github.event.project_card.column_id == steps.progress_colum.outputs.id && github.event.project_card.content_url != null
+        uses: actions/github-script@0.9.0
+        with:
+          github-token: ${{ steps.generate_token.outputs.token }}
+          script: |
+            // Get sha from Master
+            const mSha = await github.git.getRef({owner: context.repo.owner, repo: context.repo.repo, ref: `heads/${process.env.BASE_BRANCH}`})
+            
+            // Get Issue number form card
+            const issueURL = process.env.issueUrl
+            const slashNum = issueURL.lastIndexOf("/")
+            const issueNum = issueURL.substr(slashNum + 1)
+            
+            // Get Issue infos
+            const issue = (await github.issues.get({owner: context.repo.owner, repo: context.repo.repo, issue_number: issueNum})).data
+            // build branch name
+            const branchName = `i${issue.number}-${issue.title.toLocaleLowerCase().replace(RegExp("\\[.*\\] "), "").split(" ").join("-")}`
+            const branchUrl = `https://github.com/${context.repo.owner}/${context.repo.repo}/tree/${branchName}`
+            
+            // Create branch
+            github.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: `refs/heads/${branchName}`,
+              sha: mSha.data.object.sha
+            }).then(res => {
+              // On Success Write Comment
+              github.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNum,
+                body: `Branch [${branchName}](${branchUrl}) created!`,
+              });
+            })
+  create-pull-request:
+    runs-on: ubuntu-latest
+    env:
+       issueUrl: ${{ github.event.project_card.content_url }}
+    steps:
+      - name: Get Review Column id
+        id: preview_column
+        run: echo '::set-output name=id::${{secrets.REVIEW_COLUMN}}'
+      # Get Github App Token
+      - name: Generate token
+        # Check if Review colum and Card with issue
+        if: github.event.project_card.column_id == steps.preview_column.outputs.id && github.event.project_card.content_url != null
+        id: generate_token
+        uses: tibdex/github-app-token@v1.0.2
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.APP_PEM }}
+        
+      - name: "create Pull request"
+        # Check if Review colum and Card with issue
+        if: github.event.project_card.column_id == steps.preview_column.outputs.id && github.event.project_card.content_url != null
+        uses: actions/github-script@0.9.0
+        with:
+          github-token: ${{ steps.generate_token.outputs.token }}
+          script: |
+            // Get Issue number form card
+            const issueURL = process.env.issueUrl
+            const slashNum = issueURL.lastIndexOf("/")
+            const issueNum = issueURL.substr(slashNum + 1)
+            
+            // Get Issue infos
+            const issue = (await github.issues.get({owner: context.repo.owner, repo: context.repo.repo, issue_number: issueNum})).data
+            // build branch name
+            const branchName = `i${issue.number}-${issue.title.toLocaleLowerCase().replace(RegExp("\\[.*\\] "), "").split(" ").join("-")}`
+            
+            // Create PullRequest
+            github.pulls.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `${issue.title}`,
+              body: `resolves #${issueNum}`,
+              head: branchName,
+              base: process.env.BASE_BRANCH
+            }).then(res => {
+              // Add issue labels and Milstone to pull request
+              github.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: res.data.number,
+                labels: issue.labels,
+                ...(issue.milestone && {milestone: issue.milestone.number})
+              })            
+            })
