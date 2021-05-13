@@ -6,14 +6,19 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct Quiz_With_MeApp: App {
     let persistenceController = PersistenceController.shared
+    
+    init() {
+        FirebaseApp.configure()
+    }
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LoginView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
