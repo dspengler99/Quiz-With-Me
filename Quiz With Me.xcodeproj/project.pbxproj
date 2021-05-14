@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C3443343264F12A1001FB1B9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C3443342264F12A1001FB1B9 /* GoogleService-Info.plist */; };
 		C34C5411264D2E4100392EFA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C34C5410264D2E4100392EFA /* FirebaseAuth */; };
 		C34C5413264D2E4100392EFA /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = C34C5412264D2E4100392EFA /* FirebaseFirestore */; };
 		C34C5415264D2E4100392EFA /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = C34C5414264D2E4100392EFA /* FirebaseFirestoreSwift-Beta */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C3443342264F12A1001FB1B9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C34C5416264D327600392EFA /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C34C5418264D33A000392EFA /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		C34C541A264D43D200392EFA /* QuizUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizUser.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 			children = (
 				C3D76E9D264AE87B001FCD34 /* Quiz_With_MeApp.swift */,
 				C34C5418264D33A000392EFA /* AuthenticationManager.swift */,
+				C3443342264F12A1001FB1B9 /* GoogleService-Info.plist */,
 				C34C5416264D327600392EFA /* LoginView.swift */,
 				C34C541A264D43D200392EFA /* QuizUser.swift */,
 				C3D76EA1264AE87C001FCD34 /* Assets.xcassets */,
@@ -154,6 +157,7 @@
 			files = (
 				C3D76EA5264AE87C001FCD34 /* Preview Assets.xcassets in Resources */,
 				C3D76EA2264AE87C001FCD34 /* Assets.xcassets in Resources */,
+				C3443343264F12A1001FB1B9 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
