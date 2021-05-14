@@ -1,4 +1,4 @@
-name: Projects Quiz With Me Board Automation
+name: Quiz With Me Board Automation
 
 on:
   project_card:
