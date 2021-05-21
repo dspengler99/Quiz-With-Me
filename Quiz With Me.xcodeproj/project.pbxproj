@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C307CAC12657DE3000223917 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C307CAC02657DE3000223917 /* ColorExtension.swift */; };
 		C3443343264F12A1001FB1B9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C3443342264F12A1001FB1B9 /* GoogleService-Info.plist */; };
 		C34C5411264D2E4100392EFA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C34C5410264D2E4100392EFA /* FirebaseAuth */; };
 		C34C5413264D2E4100392EFA /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = C34C5412264D2E4100392EFA /* FirebaseFirestore */; };
@@ -14,18 +15,28 @@
 		C34C5417264D327600392EFA /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34C5416264D327600392EFA /* LoginView.swift */; };
 		C34C5419264D33A000392EFA /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34C5418264D33A000392EFA /* AuthenticationManager.swift */; };
 		C34C541B264D43D200392EFA /* QuizUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34C541A264D43D200392EFA /* QuizUser.swift */; };
+		C38CF0C3265559D50055A20A /* LogoImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38CF0C2265559D50055A20A /* LogoImage.swift */; };
+		C38CF0C7265560070055A20A /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38CF0C6265560070055A20A /* RegisterView.swift */; };
+		C38CF0CA265567E90055A20A /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38CF0C9265567E90055A20A /* ViewState.swift */; };
+		C38CF0CC26556A8A0055A20A /* LoginRegisterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38CF0CB26556A8A0055A20A /* LoginRegisterScreen.swift */; };
 		C3D76E9E264AE87B001FCD34 /* Quiz_With_MeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D76E9D264AE87B001FCD34 /* Quiz_With_MeApp.swift */; };
 		C3D76EA2264AE87C001FCD34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3D76EA1264AE87C001FCD34 /* Assets.xcassets */; };
 		C3D76EA5264AE87C001FCD34 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3D76EA4264AE87C001FCD34 /* Preview Assets.xcassets */; };
 		C3D76EA7264AE87C001FCD34 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D76EA6264AE87C001FCD34 /* Persistence.swift */; };
 		C3D76EAA264AE87C001FCD34 /* Quiz_With_Me.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C3D76EA8264AE87C001FCD34 /* Quiz_With_Me.xcdatamodeld */; };
+		C3EF215C2656E79C00384221 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EF215B2656E79C00384221 /* PrimaryButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C307CAC02657DE3000223917 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		C3443342264F12A1001FB1B9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C34C5416264D327600392EFA /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C34C5418264D33A000392EFA /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		C34C541A264D43D200392EFA /* QuizUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizUser.swift; sourceTree = "<group>"; };
+		C38CF0C2265559D50055A20A /* LogoImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoImage.swift; sourceTree = "<group>"; };
+		C38CF0C6265560070055A20A /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		C38CF0C9265567E90055A20A /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
+		C38CF0CB26556A8A0055A20A /* LoginRegisterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRegisterScreen.swift; sourceTree = "<group>"; };
 		C3D76E9A264AE87B001FCD34 /* Quiz With Me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Quiz With Me.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3D76E9D264AE87B001FCD34 /* Quiz_With_MeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz_With_MeApp.swift; sourceTree = "<group>"; };
 		C3D76EA1264AE87C001FCD34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -33,6 +44,7 @@
 		C3D76EA6264AE87C001FCD34 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		C3D76EA9264AE87C001FCD34 /* Quiz_With_Me.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Quiz_With_Me.xcdatamodel; sourceTree = "<group>"; };
 		C3D76EAB264AE87C001FCD34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3EF215B2656E79C00384221 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +61,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C38CF0BD265553860055A20A /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				C38CF0BE265553A80055A20A /* LoginRegister */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		C38CF0BE265553A80055A20A /* LoginRegister */ = {
+			isa = PBXGroup;
+			children = (
+				C38CF0BF265553E70055A20A /* Views */,
+				C38CF0CB26556A8A0055A20A /* LoginRegisterScreen.swift */,
+			);
+			path = LoginRegister;
+			sourceTree = "<group>";
+		};
+		C38CF0BF265553E70055A20A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C34C5416264D327600392EFA /* LoginView.swift */,
+				C38CF0C2265559D50055A20A /* LogoImage.swift */,
+				C38CF0C6265560070055A20A /* RegisterView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C38CF0C8265567D70055A20A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C38CF0C9265567E90055A20A /* ViewState.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		C3D76E91264AE87B001FCD34 = {
 			isa = PBXGroup;
 			children = (
@@ -68,10 +115,12 @@
 		C3D76E9C264AE87B001FCD34 /* Quiz With Me */ = {
 			isa = PBXGroup;
 			children = (
+				C3EF215A2656E75F00384221 /* Styles */,
+				C38CF0C8265567D70055A20A /* Helpers */,
+				C38CF0BD265553860055A20A /* Screens */,
 				C3D76E9D264AE87B001FCD34 /* Quiz_With_MeApp.swift */,
 				C34C5418264D33A000392EFA /* AuthenticationManager.swift */,
 				C3443342264F12A1001FB1B9 /* GoogleService-Info.plist */,
-				C34C5416264D327600392EFA /* LoginView.swift */,
 				C34C541A264D43D200392EFA /* QuizUser.swift */,
 				C3D76EA1264AE87C001FCD34 /* Assets.xcassets */,
 				C3D76EA6264AE87C001FCD34 /* Persistence.swift */,
@@ -88,6 +137,15 @@
 				C3D76EA4264AE87C001FCD34 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C3EF215A2656E75F00384221 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				C3EF215B2656E79C00384221 /* PrimaryButton.swift */,
+				C307CAC02657DE3000223917 /* ColorExtension.swift */,
+			);
+			path = Styles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,9 +189,10 @@
 			};
 			buildConfigurationList = C3D76E95264AE87B001FCD34 /* Build configuration list for PBXProject "Quiz With Me" */;
 			compatibilityVersion = "Xcode 9.3";
-			developmentRegion = en;
+			developmentRegion = de;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				de,
 				en,
 				Base,
 			);
@@ -169,10 +228,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3D76EA7264AE87C001FCD34 /* Persistence.swift in Sources */,
+				C3EF215C2656E79C00384221 /* PrimaryButton.swift in Sources */,
 				C3D76EAA264AE87C001FCD34 /* Quiz_With_Me.xcdatamodeld in Sources */,
+				C307CAC12657DE3000223917 /* ColorExtension.swift in Sources */,
+				C38CF0C3265559D50055A20A /* LogoImage.swift in Sources */,
 				C34C541B264D43D200392EFA /* QuizUser.swift in Sources */,
 				C34C5417264D327600392EFA /* LoginView.swift in Sources */,
+				C38CF0C7265560070055A20A /* RegisterView.swift in Sources */,
+				C38CF0CA265567E90055A20A /* ViewState.swift in Sources */,
 				C34C5419264D33A000392EFA /* AuthenticationManager.swift in Sources */,
+				C38CF0CC26556A8A0055A20A /* LoginRegisterScreen.swift in Sources */,
 				C3D76E9E264AE87B001FCD34 /* Quiz_With_MeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
