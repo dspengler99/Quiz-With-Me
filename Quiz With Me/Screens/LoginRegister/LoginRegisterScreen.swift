@@ -10,11 +10,19 @@ import SwiftUI
 struct LoginRegisterScreen: View {
     @State private var viewState: ViewState = ViewState.LOGIN
     var body: some View {
-        switch viewState {
-        case .LOGIN:
-            LoginView(viewState: $viewState)
-        case .REGISTER:
-            RegisterView(viewState: $viewState)
+        ZStack {
+            Color(CGColor(red: 135/255, green: 206/255, blue: 235/255, alpha: 1.0))
+                .ignoresSafeArea()
+                .zIndex(-1)
+            
+            switch viewState {
+            case .LOGIN:
+                LoginView(viewState: $viewState)
+                    .transition(.move(edge: .leading))
+            case .REGISTER:
+                RegisterView(viewState: $viewState)
+                    .transition(.move(edge: .trailing))
+            }
         }
     }
 }

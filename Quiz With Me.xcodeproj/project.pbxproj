@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C307CAC12657DE3000223917 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C307CAC02657DE3000223917 /* ColorExtension.swift */; };
 		C3443343264F12A1001FB1B9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C3443342264F12A1001FB1B9 /* GoogleService-Info.plist */; };
 		C34C5411264D2E4100392EFA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C34C5410264D2E4100392EFA /* FirebaseAuth */; };
 		C34C5413264D2E4100392EFA /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = C34C5412264D2E4100392EFA /* FirebaseFirestore */; };
@@ -23,9 +24,11 @@
 		C3D76EA5264AE87C001FCD34 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3D76EA4264AE87C001FCD34 /* Preview Assets.xcassets */; };
 		C3D76EA7264AE87C001FCD34 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D76EA6264AE87C001FCD34 /* Persistence.swift */; };
 		C3D76EAA264AE87C001FCD34 /* Quiz_With_Me.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C3D76EA8264AE87C001FCD34 /* Quiz_With_Me.xcdatamodeld */; };
+		C3EF215C2656E79C00384221 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EF215B2656E79C00384221 /* PrimaryButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C307CAC02657DE3000223917 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		C3443342264F12A1001FB1B9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C34C5416264D327600392EFA /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C34C5418264D33A000392EFA /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
@@ -41,6 +44,7 @@
 		C3D76EA6264AE87C001FCD34 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		C3D76EA9264AE87C001FCD34 /* Quiz_With_Me.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Quiz_With_Me.xcdatamodel; sourceTree = "<group>"; };
 		C3D76EAB264AE87C001FCD34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3EF215B2656E79C00384221 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +115,7 @@
 		C3D76E9C264AE87B001FCD34 /* Quiz With Me */ = {
 			isa = PBXGroup;
 			children = (
+				C3EF215A2656E75F00384221 /* Styles */,
 				C38CF0C8265567D70055A20A /* Helpers */,
 				C38CF0BD265553860055A20A /* Screens */,
 				C3D76E9D264AE87B001FCD34 /* Quiz_With_MeApp.swift */,
@@ -132,6 +137,15 @@
 				C3D76EA4264AE87C001FCD34 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C3EF215A2656E75F00384221 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				C3EF215B2656E79C00384221 /* PrimaryButton.swift */,
+				C307CAC02657DE3000223917 /* ColorExtension.swift */,
+			);
+			path = Styles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,9 +189,10 @@
 			};
 			buildConfigurationList = C3D76E95264AE87B001FCD34 /* Build configuration list for PBXProject "Quiz With Me" */;
 			compatibilityVersion = "Xcode 9.3";
-			developmentRegion = en;
+			developmentRegion = de;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				de,
 				en,
 				Base,
 			);
@@ -213,7 +228,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3D76EA7264AE87C001FCD34 /* Persistence.swift in Sources */,
+				C3EF215C2656E79C00384221 /* PrimaryButton.swift in Sources */,
 				C3D76EAA264AE87C001FCD34 /* Quiz_With_Me.xcdatamodeld in Sources */,
+				C307CAC12657DE3000223917 /* ColorExtension.swift in Sources */,
 				C38CF0C3265559D50055A20A /* LogoImage.swift in Sources */,
 				C34C541B264D43D200392EFA /* QuizUser.swift in Sources */,
 				C34C5417264D327600392EFA /* LoginView.swift in Sources */,
