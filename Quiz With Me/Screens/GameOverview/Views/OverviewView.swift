@@ -14,6 +14,7 @@ struct OverviewView: View {
             VStack {
                 Text("Spielübersicht")
                     .underline()
+                    .font(.title)
                     .foregroundColor(Color.primaryButtonDefaultBackground)
                     .padding(.bottom, 40)
                 Group {
