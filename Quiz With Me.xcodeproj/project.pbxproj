@@ -10,6 +10,7 @@
 		35C31CBB26594249005E17D3 /* GameOverviewScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C31CBA26594249005E17D3 /* GameOverviewScreen.swift */; };
 		35C31CBD2659433B005E17D3 /* OverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C31CBC2659433B005E17D3 /* OverviewView.swift */; };
 		35C31CBF2659464E005E17D3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 35C31CBE2659464D005E17D3 /* GoogleService-Info.plist */; };
+		35C31CC126597A45005E17D3 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C31CC026597A45005E17D3 /* Game.swift */; };
 		C307CAC12657DE3000223917 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C307CAC02657DE3000223917 /* ColorExtension.swift */; };
 		C34C5411264D2E4100392EFA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C34C5410264D2E4100392EFA /* FirebaseAuth */; };
 		C34C5413264D2E4100392EFA /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = C34C5412264D2E4100392EFA /* FirebaseFirestore */; };
@@ -33,6 +34,7 @@
 		35C31CBA26594249005E17D3 /* GameOverviewScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverviewScreen.swift; sourceTree = "<group>"; };
 		35C31CBC2659433B005E17D3 /* OverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewView.swift; sourceTree = "<group>"; };
 		35C31CBE2659464D005E17D3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		35C31CC026597A45005E17D3 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		C307CAC02657DE3000223917 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		C34C5416264D327600392EFA /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C34C5418264D33A000392EFA /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				C3D76E9D264AE87B001FCD34 /* Quiz_With_MeApp.swift */,
 				C34C5418264D33A000392EFA /* AuthenticationManager.swift */,
 				C34C541A264D43D200392EFA /* QuizUser.swift */,
+				35C31CC026597A45005E17D3 /* Game.swift */,
 				C3D76EA1264AE87C001FCD34 /* Assets.xcassets */,
 				C3D76EA6264AE87C001FCD34 /* Persistence.swift */,
 				35C31CBE2659464D005E17D3 /* GoogleService-Info.plist */,
@@ -250,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3D76EA7264AE87C001FCD34 /* Persistence.swift in Sources */,
+				35C31CC126597A45005E17D3 /* Game.swift in Sources */,
 				C3EF215C2656E79C00384221 /* PrimaryButton.swift in Sources */,
 				35C31CBB26594249005E17D3 /* GameOverviewScreen.swift in Sources */,
 				C3D76EAA264AE87C001FCD34 /* Quiz_With_Me.xcdatamodeld in Sources */,

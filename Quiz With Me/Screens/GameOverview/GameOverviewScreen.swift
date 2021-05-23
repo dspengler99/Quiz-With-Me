@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct GameOverviewScreen: View {
+    var game: Game
+    
     var body: some View {
         ZStack {
             VStack {
@@ -24,8 +26,6 @@ struct GameOverviewScreen: View {
                 Spacer()
             }
             .edgesIgnoringSafeArea(.top)
-            
-            
             VStack {
                 OverviewView()
                     .frame(width: 350, height: 550, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
@@ -45,6 +45,6 @@ struct GameOverviewScreen: View {
 
 struct GameOverviewScreen_Previews: PreviewProvider {
     static var previews: some View {
-        GameOverviewScreen()
+        GameOverviewScreen(game: Game(gameID: "1", userID_p1: "21", userID_p2: "22", username_p1: "Tester", username_p2: "Tester2", progress_p1: "2", progress_p2: "3", score_p1: "1", score_p2: "3"))
     }
 }
