@@ -11,7 +11,7 @@ struct LogoImageWhite: View {
     var body: some View {
         Image(decorative: "QuizWithMeQhite")
             .resizable()
-            .frame(width: 200, height: 200, alignment: .top)
+            .frame(width: 70, height: 70, alignment: .center)
     }
 }
 
