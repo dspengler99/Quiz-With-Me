@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		35D1E643265FE8C900B70F82 /* QuizListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D1E642265FE8C900B70F82 /* QuizListView.swift */; };
+		35D1E645265FE92200B70F82 /* QuizItemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D1E644265FE92200B70F82 /* QuizItemCard.swift */; };
+		35D1E649265FE9AB00B70F82 /* QuizGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D1E648265FE9AB00B70F82 /* QuizGame.swift */; };
+		35D1E64B265FFBFF00B70F82 /* LogoImageWhite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D1E64A265FFBFF00B70F82 /* LogoImageWhite.swift */; };
+		35D1E64D2660011300B70F82 /* QuizMainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D1E64C2660011300B70F82 /* QuizMainScreen.swift */; };
 		C307CAC12657DE3000223917 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C307CAC02657DE3000223917 /* ColorExtension.swift */; };
 		C3443343264F12A1001FB1B9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C3443342264F12A1001FB1B9 /* GoogleService-Info.plist */; };
 		C34C5411264D2E4100392EFA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C34C5410264D2E4100392EFA /* FirebaseAuth */; };
@@ -28,6 +33,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		35D1E642265FE8C900B70F82 /* QuizListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizListView.swift; sourceTree = "<group>"; };
+		35D1E644265FE92200B70F82 /* QuizItemCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizItemCard.swift; sourceTree = "<group>"; };
+		35D1E648265FE9AB00B70F82 /* QuizGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizGame.swift; sourceTree = "<group>"; };
+		35D1E64A265FFBFF00B70F82 /* LogoImageWhite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoImageWhite.swift; sourceTree = "<group>"; };
+		35D1E64C2660011300B70F82 /* QuizMainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizMainScreen.swift; sourceTree = "<group>"; };
 		C307CAC02657DE3000223917 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		C3443342264F12A1001FB1B9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C34C5416264D327600392EFA /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -61,9 +71,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		35D1E640265FE83C00B70F82 /* QuizMain */ = {
+			isa = PBXGroup;
+			children = (
+				35D1E641265FE87C00B70F82 /* Views */,
+				35D1E64C2660011300B70F82 /* QuizMainScreen.swift */,
+			);
+			path = QuizMain;
+			sourceTree = "<group>";
+		};
+		35D1E641265FE87C00B70F82 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				35D1E642265FE8C900B70F82 /* QuizListView.swift */,
+				35D1E644265FE92200B70F82 /* QuizItemCard.swift */,
+				35D1E64A265FFBFF00B70F82 /* LogoImageWhite.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		C38CF0BD265553860055A20A /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				35D1E640265FE83C00B70F82 /* QuizMain */,
 				C38CF0BE265553A80055A20A /* LoginRegister */,
 			);
 			path = Screens;
@@ -122,6 +152,7 @@
 				C34C5418264D33A000392EFA /* AuthenticationManager.swift */,
 				C3443342264F12A1001FB1B9 /* GoogleService-Info.plist */,
 				C34C541A264D43D200392EFA /* QuizUser.swift */,
+				35D1E648265FE9AB00B70F82 /* QuizGame.swift */,
 				C3D76EA1264AE87C001FCD34 /* Assets.xcassets */,
 				C3D76EA6264AE87C001FCD34 /* Persistence.swift */,
 				C3D76EAB264AE87C001FCD34 /* Info.plist */,
@@ -227,9 +258,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35D1E64D2660011300B70F82 /* QuizMainScreen.swift in Sources */,
+				35D1E645265FE92200B70F82 /* QuizItemCard.swift in Sources */,
 				C3D76EA7264AE87C001FCD34 /* Persistence.swift in Sources */,
 				C3EF215C2656E79C00384221 /* PrimaryButton.swift in Sources */,
 				C3D76EAA264AE87C001FCD34 /* Quiz_With_Me.xcdatamodeld in Sources */,
+				35D1E64B265FFBFF00B70F82 /* LogoImageWhite.swift in Sources */,
 				C307CAC12657DE3000223917 /* ColorExtension.swift in Sources */,
 				C38CF0C3265559D50055A20A /* LogoImage.swift in Sources */,
 				C34C541B264D43D200392EFA /* QuizUser.swift in Sources */,
@@ -238,6 +272,8 @@
 				C38CF0CA265567E90055A20A /* ViewState.swift in Sources */,
 				C34C5419264D33A000392EFA /* AuthenticationManager.swift in Sources */,
 				C38CF0CC26556A8A0055A20A /* LoginRegisterScreen.swift in Sources */,
+				35D1E649265FE9AB00B70F82 /* QuizGame.swift in Sources */,
+				35D1E643265FE8C900B70F82 /* QuizListView.swift in Sources */,
 				C3D76E9E264AE87B001FCD34 /* Quiz_With_MeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

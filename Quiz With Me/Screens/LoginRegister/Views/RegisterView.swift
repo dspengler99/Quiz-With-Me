@@ -68,6 +68,7 @@ struct RegisterView: View {
                         }
                     }
                     .buttonStyle(PrimaryButton(width: 300, height: 50, fontSize: 20))
+                    .padding()
                     .disabled((username == "" && email == "" && password == "" && repeatedPassword == "") || password != repeatedPassword || password.count < 8)
                     .alert(isPresented: $showAlert) {
                         Alert(title: Text("Fehler"), message: Text("Ein Fehler ist aufgetreten."), dismissButton: .default(Text("OK")))
@@ -83,6 +84,7 @@ struct RegisterView: View {
                     }
                 }
                 .buttonStyle(PrimaryButton(width: 200, height: 50, fontSize: 20))
+                .padding()
             }
         }
     }
