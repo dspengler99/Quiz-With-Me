@@ -8,13 +8,19 @@
 import SwiftUI
 
 struct FriendRequestsView: View {
+    @Binding var friendRequests: [QuizUser]
+    
     var body: some View {
-        Text("Hier werden Freundschaftsanfragen angezeigt.")
+        List {
+            ForEach(0..<friendRequests.count) { index in
+                FriendRequestRow(friends: $friendRequests, index: index)
+            }
+        }
     }
 }
 
 struct FriendRequestsView_Previews: PreviewProvider {
     static var previews: some View {
-        FriendRequestsView()
+        FriendRequestsView(friendRequests: .constant([QuizUser(userID: "abcd", username: "PreviewUser")]))
     }
 }

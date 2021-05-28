@@ -9,6 +9,8 @@ import SwiftUI
 
 struct FriendsList: View {
     @State private var selectedTab = 0
+    @State private var friends = [QuizUser(userID: "1", username: "User1"), QuizUser(userID: "2", username: "User2")]
+    @State private var friendRequests = [QuizUser(userID: "3", username: "User3")]
 
     init() {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color.primaryButtonDefaultBackground)
@@ -34,9 +36,9 @@ struct FriendsList: View {
                 .pickerStyle(SegmentedPickerStyle())
                 
                 if selectedTab == 0 {
-                    FriendsView()
+                    FriendsView(friends: $friends)
                 } else {
-                    FriendRequestsView()
+                    FriendRequestsView(friendRequests: $friendRequests)
                 }
                 Spacer()
             }

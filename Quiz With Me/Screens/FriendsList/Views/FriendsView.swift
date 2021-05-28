@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FriendsView: View {
-    @State private var friends: [QuizUser] = [QuizUser(userID: "1", username: "user1"), QuizUser(userID: "2", username: "User2")]
+    @Binding var friends: [QuizUser]
 
     var body: some View {
         List {
@@ -21,6 +21,6 @@ struct FriendsView: View {
 
 struct FriendsView_Previews: PreviewProvider {
     static var previews: some View {
-        FriendsView()
+        FriendsView(friends: .constant([QuizUser(userID: "abcd", username: "PreviewUser")]))
     }
 }

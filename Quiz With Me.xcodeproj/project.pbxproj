@@ -11,6 +11,7 @@
 		C30283FF265FF590007F0BB2 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30283FE265FF590007F0BB2 /* FriendsView.swift */; };
 		C3028403265FF665007F0BB2 /* FriendRequestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3028402265FF665007F0BB2 /* FriendRequestsView.swift */; };
 		C307CAC12657DE3000223917 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C307CAC02657DE3000223917 /* ColorExtension.swift */; };
+		C33471ED2661556F004E707B /* FriendRequestRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33471EC2661556F004E707B /* FriendRequestRow.swift */; };
 		C3443343264F12A1001FB1B9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C3443342264F12A1001FB1B9 /* GoogleService-Info.plist */; };
 		C34C5411264D2E4100392EFA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C34C5410264D2E4100392EFA /* FirebaseAuth */; };
 		C34C5413264D2E4100392EFA /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = C34C5412264D2E4100392EFA /* FirebaseFirestore */; };
@@ -36,6 +37,7 @@
 		C30283FE265FF590007F0BB2 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
 		C3028402265FF665007F0BB2 /* FriendRequestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestsView.swift; sourceTree = "<group>"; };
 		C307CAC02657DE3000223917 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		C33471EC2661556F004E707B /* FriendRequestRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestRow.swift; sourceTree = "<group>"; };
 		C3443342264F12A1001FB1B9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C34C5416264D327600392EFA /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C34C5418264D33A000392EFA /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				C30283FE265FF590007F0BB2 /* FriendsView.swift */,
 				C3028402265FF665007F0BB2 /* FriendRequestsView.swift */,
 				C39D00EF26611E86004E0F7D /* FriendRow.swift */,
+				C33471EC2661556F004E707B /* FriendRequestRow.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				C34C541B264D43D200392EFA /* QuizUser.swift in Sources */,
 				C34C5417264D327600392EFA /* LoginView.swift in Sources */,
 				C38CF0C7265560070055A20A /* RegisterView.swift in Sources */,
+				C33471ED2661556F004E707B /* FriendRequestRow.swift in Sources */,
 				C38CF0CA265567E90055A20A /* ViewState.swift in Sources */,
 				C39D00F026611E86004E0F7D /* FriendRow.swift in Sources */,
 				C3028403265FF665007F0BB2 /* FriendRequestsView.swift in Sources */,
