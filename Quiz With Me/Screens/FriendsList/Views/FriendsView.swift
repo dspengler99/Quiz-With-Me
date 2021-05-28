@@ -8,8 +8,14 @@
 import SwiftUI
 
 struct FriendsView: View {
+    @State private var friends: [QuizUser] = [QuizUser(userID: "1", username: "user1"), QuizUser(userID: "2", username: "User2")]
+
     var body: some View {
-        Text("Hier werden die Freunde gelistet")
+        List {
+            ForEach(0..<friends.count) { index in
+                FriendRow(friends: $friends, index: index)
+            }
+        }
     }
 }
 
