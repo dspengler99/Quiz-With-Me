@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FriendsList: View {
+struct FriendsListScreen: View {
     @State private var selectedTab = 0
     @State private var friends = [QuizUser(userID: "1", username: "User1"), QuizUser(userID: "2", username: "User2")]
     @State private var friendRequests = [QuizUser(userID: "3", username: "User3")]
@@ -46,8 +46,8 @@ struct FriendsList: View {
     }
 }
 
-struct FriendsList_Previews: PreviewProvider {
+struct FriendsListScreen_Previews: PreviewProvider {
     static var previews: some View {
-        FriendsList()
+        FriendsListScreen()
     }
 }

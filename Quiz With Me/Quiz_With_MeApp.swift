@@ -18,7 +18,7 @@ struct Quiz_With_MeApp: App {
 
     var body: some Scene {
         WindowGroup {
-            FriendsList()
+            LoginRegisterScreen()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
