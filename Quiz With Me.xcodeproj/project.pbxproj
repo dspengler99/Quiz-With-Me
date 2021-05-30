@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		35D1E643265FE8C900B70F82 /* QuizListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D1E642265FE8C900B70F82 /* QuizListView.swift */; };
+		35D1E645265FE92200B70F82 /* QuizItemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D1E644265FE92200B70F82 /* QuizItemCard.swift */; };
+		35D1E649265FE9AB00B70F82 /* QuizGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D1E648265FE9AB00B70F82 /* QuizGame.swift */; };
+		35D1E64B265FFBFF00B70F82 /* LogoImageWhite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D1E64A265FFBFF00B70F82 /* LogoImageWhite.swift */; };
+		35D1E64D2660011300B70F82 /* QuizMainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D1E64C2660011300B70F82 /* QuizMainScreen.swift */; };
+		35D1E64F2660304600B70F82 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D1E64E2660304600B70F82 /* MenuButton.swift */; };
+		35D1E65126603C2A00B70F82 /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D1E65026603C2A00B70F82 /* SideMenu.swift */; };
 		C30283FB265FF100007F0BB2 /* FriendsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30283FA265FF100007F0BB2 /* FriendsList.swift */; };
 		C30283FF265FF590007F0BB2 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30283FE265FF590007F0BB2 /* FriendsView.swift */; };
 		C3028403265FF665007F0BB2 /* FriendRequestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3028402265FF665007F0BB2 /* FriendRequestsView.swift */; };
@@ -33,6 +40,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		35D1E642265FE8C900B70F82 /* QuizListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizListView.swift; sourceTree = "<group>"; };
+		35D1E644265FE92200B70F82 /* QuizItemCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizItemCard.swift; sourceTree = "<group>"; };
+		35D1E648265FE9AB00B70F82 /* QuizGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizGame.swift; sourceTree = "<group>"; };
+		35D1E64A265FFBFF00B70F82 /* LogoImageWhite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoImageWhite.swift; sourceTree = "<group>"; };
+		35D1E64C2660011300B70F82 /* QuizMainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizMainScreen.swift; sourceTree = "<group>"; };
+		35D1E64E2660304600B70F82 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
+		35D1E65026603C2A00B70F82 /* SideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
 		C30283FA265FF100007F0BB2 /* FriendsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsList.swift; sourceTree = "<group>"; };
 		C30283FE265FF590007F0BB2 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
 		C3028402265FF665007F0BB2 /* FriendRequestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestsView.swift; sourceTree = "<group>"; };
@@ -71,6 +85,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		35D1E640265FE83C00B70F82 /* QuizMain */ = {
+			isa = PBXGroup;
+			children = (
+				35D1E641265FE87C00B70F82 /* Views */,
+				35D1E64C2660011300B70F82 /* QuizMainScreen.swift */,
+			);
+			path = QuizMain;
+			sourceTree = "<group>";
+		};
+		35D1E641265FE87C00B70F82 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				35D1E642265FE8C900B70F82 /* QuizListView.swift */,
+				35D1E644265FE92200B70F82 /* QuizItemCard.swift */,
+				35D1E64A265FFBFF00B70F82 /* LogoImageWhite.swift */,
+				35D1E64E2660304600B70F82 /* MenuButton.swift */,
+				35D1E65026603C2A00B70F82 /* SideMenu.swift */,
 		C30283FC265FF523007F0BB2 /* FriendsList */ = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +125,7 @@
 		C38CF0BD265553860055A20A /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				35D1E640265FE83C00B70F82 /* QuizMain */,
 				C30283FC265FF523007F0BB2 /* FriendsList */,
 				C38CF0BE265553A80055A20A /* LoginRegister */,
 			);
@@ -153,6 +185,7 @@
 				C34C5418264D33A000392EFA /* AuthenticationManager.swift */,
 				C3443342264F12A1001FB1B9 /* GoogleService-Info.plist */,
 				C34C541A264D43D200392EFA /* QuizUser.swift */,
+				35D1E648265FE9AB00B70F82 /* QuizGame.swift */,
 				C3D76EA1264AE87C001FCD34 /* Assets.xcassets */,
 				C3D76EA6264AE87C001FCD34 /* Persistence.swift */,
 				C3D76EAB264AE87C001FCD34 /* Info.plist */,
@@ -258,10 +291,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35D1E64D2660011300B70F82 /* QuizMainScreen.swift in Sources */,
+				35D1E645265FE92200B70F82 /* QuizItemCard.swift in Sources */,
 				C30283FF265FF590007F0BB2 /* FriendsView.swift in Sources */,
 				C3D76EA7264AE87C001FCD34 /* Persistence.swift in Sources */,
 				C3EF215C2656E79C00384221 /* PrimaryButton.swift in Sources */,
 				C3D76EAA264AE87C001FCD34 /* Quiz_With_Me.xcdatamodeld in Sources */,
+				35D1E64B265FFBFF00B70F82 /* LogoImageWhite.swift in Sources */,
 				C307CAC12657DE3000223917 /* ColorExtension.swift in Sources */,
 				C38CF0C3265559D50055A20A /* LogoImage.swift in Sources */,
 				C34C541B264D43D200392EFA /* QuizUser.swift in Sources */,
@@ -269,10 +305,14 @@
 				C38CF0C7265560070055A20A /* RegisterView.swift in Sources */,
 				C33471ED2661556F004E707B /* FriendRequestRow.swift in Sources */,
 				C38CF0CA265567E90055A20A /* ViewState.swift in Sources */,
+				35D1E65126603C2A00B70F82 /* SideMenu.swift in Sources */,
 				C39D00F026611E86004E0F7D /* FriendRow.swift in Sources */,
 				C3028403265FF665007F0BB2 /* FriendRequestsView.swift in Sources */,
 				C34C5419264D33A000392EFA /* AuthenticationManager.swift in Sources */,
 				C38CF0CC26556A8A0055A20A /* LoginRegisterScreen.swift in Sources */,
+				35D1E64F2660304600B70F82 /* MenuButton.swift in Sources */,
+				35D1E649265FE9AB00B70F82 /* QuizGame.swift in Sources */,
+				35D1E643265FE8C900B70F82 /* QuizListView.swift in Sources */,
 				C3D76E9E264AE87B001FCD34 /* Quiz_With_MeApp.swift in Sources */,
 				C30283FB265FF100007F0BB2 /* FriendsList.swift in Sources */,
 			);
