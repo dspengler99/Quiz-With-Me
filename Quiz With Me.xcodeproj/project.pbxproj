@@ -30,7 +30,6 @@
 		C38CF0C7265560070055A20A /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38CF0C6265560070055A20A /* RegisterView.swift */; };
 		C38CF0CA265567E90055A20A /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38CF0C9265567E90055A20A /* ViewState.swift */; };
 		C38CF0CC26556A8A0055A20A /* LoginRegisterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38CF0CB26556A8A0055A20A /* LoginRegisterScreen.swift */; };
-		C39D00F026611E86004E0F7D /* FriendRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39D00EF26611E86004E0F7D /* FriendRow.swift */; };
 		C3D76E9E264AE87B001FCD34 /* Quiz_With_MeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D76E9D264AE87B001FCD34 /* Quiz_With_MeApp.swift */; };
 		C3D76EA2264AE87C001FCD34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3D76EA1264AE87C001FCD34 /* Assets.xcassets */; };
 		C3D76EA5264AE87C001FCD34 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3D76EA4264AE87C001FCD34 /* Preview Assets.xcassets */; };
@@ -60,7 +59,6 @@
 		C38CF0C6265560070055A20A /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		C38CF0C9265567E90055A20A /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
 		C38CF0CB26556A8A0055A20A /* LoginRegisterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRegisterScreen.swift; sourceTree = "<group>"; };
-		C39D00EF26611E86004E0F7D /* FriendRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRow.swift; sourceTree = "<group>"; };
 		C3D76E9A264AE87B001FCD34 /* Quiz With Me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Quiz With Me.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3D76E9D264AE87B001FCD34 /* Quiz_With_MeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz_With_MeApp.swift; sourceTree = "<group>"; };
 		C3D76EA1264AE87C001FCD34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };

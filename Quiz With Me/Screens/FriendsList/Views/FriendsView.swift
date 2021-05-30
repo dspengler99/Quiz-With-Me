@@ -8,14 +8,13 @@
 import SwiftUI
 
 struct FriendsView: View {
+<<<<<<< HEAD
     @Binding var friends: [QuizUser]
 
+=======
+>>>>>>> parent of 71530d0 (Added list of accepted friends. This list is not generated dynamically right now, because no db-functionality is available)
     var body: some View {
-        List {
-            ForEach(0..<friends.count) { index in
-                FriendRow(friends: $friends, index: index)
-            }
-        }
+        Text("Hier werden die Freunde gelistet")
     }
 }
 
