@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		351CB6B1266421DA00DA9B55 /* QuizGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351CB6B0266421DA00DA9B55 /* QuizGame.swift */; };
+		351CB6B42664228100DA9B55 /* QuizMainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351CB6B32664228100DA9B55 /* QuizMainScreen.swift */; };
+		351CB6B72664230600DA9B55 /* LogoImageWhite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351CB6B62664230600DA9B55 /* LogoImageWhite.swift */; };
+		351CB6B92664232D00DA9B55 /* QuizItemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351CB6B82664232D00DA9B55 /* QuizItemCard.swift */; };
+		351CB6BB2664236700DA9B55 /* QuizListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351CB6BA2664236700DA9B55 /* QuizListView.swift */; };
+		351CB6BD266423F700DA9B55 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351CB6BC266423F700DA9B55 /* MenuButton.swift */; };
+		351CB6BF2664241D00DA9B55 /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351CB6BE2664241D00DA9B55 /* SideMenu.swift */; };
 		C30283FB265FF100007F0BB2 /* FriendsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30283FA265FF100007F0BB2 /* FriendsList.swift */; };
 		C30283FF265FF590007F0BB2 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30283FE265FF590007F0BB2 /* FriendsView.swift */; };
 		C3028403265FF665007F0BB2 /* FriendRequestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3028402265FF665007F0BB2 /* FriendRequestsView.swift */; };
@@ -33,6 +40,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		351CB6B0266421DA00DA9B55 /* QuizGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizGame.swift; sourceTree = "<group>"; };
+		351CB6B32664228100DA9B55 /* QuizMainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizMainScreen.swift; sourceTree = "<group>"; };
+		351CB6B62664230600DA9B55 /* LogoImageWhite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoImageWhite.swift; sourceTree = "<group>"; };
+		351CB6B82664232D00DA9B55 /* QuizItemCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizItemCard.swift; sourceTree = "<group>"; };
+		351CB6BA2664236700DA9B55 /* QuizListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizListView.swift; sourceTree = "<group>"; };
+		351CB6BC266423F700DA9B55 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
+		351CB6BE2664241D00DA9B55 /* SideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
 		C30283FA265FF100007F0BB2 /* FriendsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsList.swift; sourceTree = "<group>"; };
 		C30283FE265FF590007F0BB2 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
 		C3028402265FF665007F0BB2 /* FriendRequestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestsView.swift; sourceTree = "<group>"; };
@@ -71,6 +85,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		351CB6B22664226800DA9B55 /* QuizMain */ = {
+			isa = PBXGroup;
+			children = (
+				351CB6B5266422CC00DA9B55 /* Views */,
+				351CB6B32664228100DA9B55 /* QuizMainScreen.swift */,
+			);
+			path = QuizMain;
+			sourceTree = "<group>";
+		};
+		351CB6B5266422CC00DA9B55 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				351CB6B62664230600DA9B55 /* LogoImageWhite.swift */,
+				351CB6B82664232D00DA9B55 /* QuizItemCard.swift */,
+				351CB6BA2664236700DA9B55 /* QuizListView.swift */,
+				351CB6BC266423F700DA9B55 /* MenuButton.swift */,
+				351CB6BE2664241D00DA9B55 /* SideMenu.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		C30283FC265FF523007F0BB2 /* FriendsList */ = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +129,7 @@
 		C38CF0BD265553860055A20A /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				351CB6B22664226800DA9B55 /* QuizMain */,
 				C30283FC265FF523007F0BB2 /* FriendsList */,
 				C38CF0BE265553A80055A20A /* LoginRegister */,
 			);
@@ -158,6 +194,7 @@
 				C3D76EAB264AE87C001FCD34 /* Info.plist */,
 				C3D76EA8264AE87C001FCD34 /* Quiz_With_Me.xcdatamodeld */,
 				C3D76EA3264AE87C001FCD34 /* Preview Content */,
+				351CB6B0266421DA00DA9B55 /* QuizGame.swift */,
 			);
 			path = "Quiz With Me";
 			sourceTree = "<group>";
@@ -258,7 +295,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				351CB6BD266423F700DA9B55 /* MenuButton.swift in Sources */,
+				351CB6B42664228100DA9B55 /* QuizMainScreen.swift in Sources */,
 				C30283FF265FF590007F0BB2 /* FriendsView.swift in Sources */,
+				351CB6BF2664241D00DA9B55 /* SideMenu.swift in Sources */,
 				C3D76EA7264AE87C001FCD34 /* Persistence.swift in Sources */,
 				C3EF215C2656E79C00384221 /* PrimaryButton.swift in Sources */,
 				C3D76EAA264AE87C001FCD34 /* Quiz_With_Me.xcdatamodeld in Sources */,
@@ -269,12 +309,16 @@
 				C38CF0C7265560070055A20A /* RegisterView.swift in Sources */,
 				C33471ED2661556F004E707B /* FriendRequestRow.swift in Sources */,
 				C38CF0CA265567E90055A20A /* ViewState.swift in Sources */,
+				351CB6B72664230600DA9B55 /* LogoImageWhite.swift in Sources */,
 				C39D00F026611E86004E0F7D /* FriendRow.swift in Sources */,
+				351CB6B1266421DA00DA9B55 /* QuizGame.swift in Sources */,
 				C3028403265FF665007F0BB2 /* FriendRequestsView.swift in Sources */,
 				C34C5419264D33A000392EFA /* AuthenticationManager.swift in Sources */,
+				351CB6B92664232D00DA9B55 /* QuizItemCard.swift in Sources */,
 				C38CF0CC26556A8A0055A20A /* LoginRegisterScreen.swift in Sources */,
 				C3D76E9E264AE87B001FCD34 /* Quiz_With_MeApp.swift in Sources */,
 				C30283FB265FF100007F0BB2 /* FriendsList.swift in Sources */,
+				351CB6BB2664236700DA9B55 /* QuizListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

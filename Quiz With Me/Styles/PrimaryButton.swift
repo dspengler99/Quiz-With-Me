@@ -30,6 +30,5 @@ struct PrimaryButton: ButtonStyle {
             .background(getButtonColor(pressed: configuration.isPressed, enabled: isEnabled))
             .foregroundColor(.white)
             .cornerRadius(10)
-            .padding()
     }
 }
