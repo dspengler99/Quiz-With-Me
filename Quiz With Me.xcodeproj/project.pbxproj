@@ -310,7 +310,6 @@
 				C3028403265FF665007F0BB2 /* FriendRequestsView.swift in Sources */,
 				C34C5419264D33A000392EFA /* AuthenticationManager.swift in Sources */,
 				C38CF0CC26556A8A0055A20A /* LoginRegisterScreen.swift in Sources */,
-				35D1E64F2660304600B70F82 /* MenuButton.swift in Sources */,
 				35D1E649265FE9AB00B70F82 /* QuizGame.swift in Sources */,
 				35D1E643265FE8C900B70F82 /* QuizListView.swift in Sources */,
 				C3D76E9E264AE87B001FCD34 /* Quiz_With_MeApp.swift in Sources */,

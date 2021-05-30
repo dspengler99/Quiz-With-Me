@@ -8,23 +8,14 @@
 import SwiftUI
 
 struct QuizMainScreen: View {
-    @State var menuToggeled = false
     var testGames: [QuizGame] = [
         QuizGame(gameID: "1", name_p1: "Tom", name_p2: "Kevin"),
         QuizGame(gameID: "2", name_p1: "Tom", name_p2: "Thomas"),
         QuizGame(gameID: "3", name_p1: "Tom", name_p2: "Justus")
     ]
-    
     var body: some View {
         VStack {
-            HStack {
-                Spacer()
-                LogoImageWhite()
-                    .padding(.leading, 50)
-                Spacer()
-                MenuButton(menuToggled: $menuToggeled)
-            }
-            .padding()
+            LogoImageWhite()
             QuizListView(quizGames: testGames)
             ZStack {
                 LinearGradient(gradient: Gradient(colors: [Color.white.opacity(0.01), Color.white]), startPoint: .top, endPoint: .bottom)
@@ -36,8 +27,8 @@ struct QuizMainScreen: View {
                 }
                 .buttonStyle(PrimaryButton(width: 300, height: 50, fontSize: 15))
             }
+            
         }
-        .overlay(SideMenu(menuToggled: $menuToggeled))
     }
 }
 
