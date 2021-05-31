@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct ProfileScreen: View {
-     var body: some View {
+    @Binding var viewState: ViewState
+    
+    var body: some View {
 
          VStack(alignment: .leading) {
              ZStack {
@@ -39,6 +41,6 @@ struct ProfileScreen: View {
 
  struct ProfileScreen_Previews: PreviewProvider {
      static var previews: some View {
-         ProfileScreen()
+        ProfileScreen(viewState: .constant(ViewState.PROFILE))
      }
  }

@@ -22,6 +22,8 @@ struct LoginRegisterScreen: View {
             case .REGISTER:
                 RegisterView(viewState: $viewState)
                     .transition(.move(edge: .trailing))
+            default:
+                EmptyView()
             }
         }
     }

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct GameOverviewScreen: View {
+    @Binding var viewState: ViewState
     var body: some View {
         ZStack {
             VStack {
@@ -45,6 +46,6 @@ struct GameOverviewScreen: View {
 
 struct GameOverviewScreen_Previews: PreviewProvider {
     static var previews: some View {
-        GameOverviewScreen()
+        GameOverviewScreen(viewState: .constant(ViewState.GAMEOVERVIEW))
     }
 }

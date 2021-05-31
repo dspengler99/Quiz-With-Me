@@ -14,6 +14,7 @@ struct QuizMainScreen: View {
         QuizGame(gameID: "2", name_p1: "Tom", name_p2: "Thomas"),
         QuizGame(gameID: "3", name_p1: "Tom", name_p2: "Justus")
     ]
+    @Binding var viewState: ViewState
     
     var body: some View {
         VStack {
@@ -43,6 +44,6 @@ struct QuizMainScreen: View {
 
 struct QuizMainScreen_Previews: PreviewProvider {
     static var previews: some View {
-        QuizMainScreen()
+        QuizMainScreen(viewState: .constant(ViewState.HOME))
     }
 }

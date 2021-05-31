@@ -13,6 +13,14 @@ struct Main: View {
         switch(viewState) {
         case .LOGIN, .REGISTER:
             LoginRegisterScreen(viewState: $viewState)
+        case .HOME:
+            QuizMainScreen(viewState: $viewState)
+        case .FRIENDSLIST:
+            FriendsListScreen(viewState: $viewState)
+        case .GAMEOVERVIEW:
+            GameOverviewScreen(viewState: $viewState)
+        case .PROFILE:
+            ProfileScreen(viewState: $viewState)
         }
     }
 }

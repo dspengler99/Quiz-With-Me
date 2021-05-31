@@ -6,5 +6,5 @@
 //
 
 enum ViewState {
-    case LOGIN, REGISTER
+    case LOGIN, REGISTER, HOME, PROFILE, FRIENDSLIST, GAMEOVERVIEW
 }

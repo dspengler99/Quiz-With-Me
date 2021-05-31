@@ -11,14 +11,8 @@ struct FriendsListScreen: View {
     @State private var selectedTab = 0
     @State private var friends = [QuizUser(userID: "1", username: "User1"), QuizUser(userID: "2", username: "User2")]
     @State private var friendRequests = [QuizUser(userID: "3", username: "User3")]
+    @Binding var viewState: ViewState
 
-    init() {
-        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color.primaryButtonDefaultBackground)
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(Color.primaryButtonDefaultBackground)], for: .normal)
-        UITableView.appearance().backgroundColor = UIColor(Color.clear)
-        UITableViewCell.appearance().backgroundColor = UIColor(Color.white)
-    }
     
     var body: some View {
         ZStack {
@@ -43,11 +37,19 @@ struct FriendsListScreen: View {
                 Spacer()
             }
         }
+        .onAppear() {
+            UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color.primaryButtonDefaultBackground)
+            UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+            UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(Color.primaryButtonDefaultBackground)], for: .normal)
+            UITableView.appearance().backgroundColor = UIColor(Color.clear)
+            UITableViewCell.appearance().backgroundColor = UIColor(Color.white)
+        }
     }
 }
 
 struct FriendsListScreen_Previews: PreviewProvider {
+    
     static var previews: some View {
-        FriendsListScreen()
+        FriendsListScreen(viewState: .constant(ViewState.FRIENDSLIST))
     }
 }

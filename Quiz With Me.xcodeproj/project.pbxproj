@@ -19,7 +19,7 @@
 		351CB6C72664F2AA00DA9B55 /* ProfileDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351CB6C62664F2AA00DA9B55 /* ProfileDetailView.swift */; };
 		351CB6CA2664F65800DA9B55 /* GameOverviewScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351CB6C92664F65800DA9B55 /* GameOverviewScreen.swift */; };
 		351CB6CD2664F69400DA9B55 /* OverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351CB6CC2664F69400DA9B55 /* OverviewView.swift */; };
-		C30283FB265FF100007F0BB2 /* FriendsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30283FA265FF100007F0BB2 /* FriendsList.swift */; };
+		C30283FB265FF100007F0BB2 /* FriendsListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30283FA265FF100007F0BB2 /* FriendsListScreen.swift */; };
 		C30283FF265FF590007F0BB2 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30283FE265FF590007F0BB2 /* FriendsView.swift */; };
 		C3028403265FF665007F0BB2 /* FriendRequestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3028402265FF665007F0BB2 /* FriendRequestsView.swift */; };
 		C307CAC12657DE3000223917 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C307CAC02657DE3000223917 /* ColorExtension.swift */; };
@@ -58,7 +58,7 @@
 		351CB6C62664F2AA00DA9B55 /* ProfileDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailView.swift; sourceTree = "<group>"; };
 		351CB6C92664F65800DA9B55 /* GameOverviewScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverviewScreen.swift; sourceTree = "<group>"; };
 		351CB6CC2664F69400DA9B55 /* OverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewView.swift; sourceTree = "<group>"; };
-		C30283FA265FF100007F0BB2 /* FriendsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsList.swift; sourceTree = "<group>"; };
+		C30283FA265FF100007F0BB2 /* FriendsListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListScreen.swift; sourceTree = "<group>"; };
 		C30283FE265FF590007F0BB2 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
 		C3028402265FF665007F0BB2 /* FriendRequestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestsView.swift; sourceTree = "<group>"; };
 		C307CAC02657DE3000223917 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
@@ -157,7 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				C30283FD265FF572007F0BB2 /* Views */,
-				C30283FA265FF100007F0BB2 /* FriendsList.swift */,
+				C30283FA265FF100007F0BB2 /* FriendsListScreen.swift */,
 			);
 			path = FriendsList;
 			sourceTree = "<group>";
@@ -373,7 +373,7 @@
 				C38CF0CC26556A8A0055A20A /* LoginRegisterScreen.swift in Sources */,
 				351CB6CA2664F65800DA9B55 /* GameOverviewScreen.swift in Sources */,
 				C3D76E9E264AE87B001FCD34 /* Quiz_With_MeApp.swift in Sources */,
-				C30283FB265FF100007F0BB2 /* FriendsList.swift in Sources */,
+				C30283FB265FF100007F0BB2 /* FriendsListScreen.swift in Sources */,
 				351CB6BB2664236700DA9B55 /* QuizListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
