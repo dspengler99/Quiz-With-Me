@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginRegisterScreen: View {
-    @State private var viewState: ViewState = ViewState.LOGIN
+    @Binding var viewState: ViewState
     var body: some View {
         ZStack {
             Color(CGColor(red: 135/255, green: 206/255, blue: 235/255, alpha: 1.0))
@@ -29,6 +29,6 @@ struct LoginRegisterScreen: View {
 
 struct LoginRegisterScreen_Previews: PreviewProvider {
     static var previews: some View {
-        LoginRegisterScreen()
+        LoginRegisterScreen(viewState: .constant(ViewState.LOGIN))
     }
 }
