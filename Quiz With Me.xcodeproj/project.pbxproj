@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		351CB6B1266421DA00DA9B55 /* QuizGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351CB6B0266421DA00DA9B55 /* QuizGame.swift */; };
+		351CB6B42664228100DA9B55 /* QuizMainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351CB6B32664228100DA9B55 /* QuizMainScreen.swift */; };
+		351CB6B72664230600DA9B55 /* LogoImageWhite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351CB6B62664230600DA9B55 /* LogoImageWhite.swift */; };
+		351CB6B92664232D00DA9B55 /* QuizItemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351CB6B82664232D00DA9B55 /* QuizItemCard.swift */; };
+		351CB6BB2664236700DA9B55 /* QuizListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351CB6BA2664236700DA9B55 /* QuizListView.swift */; };
+		351CB6BD266423F700DA9B55 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351CB6BC266423F700DA9B55 /* MenuButton.swift */; };
+		351CB6BF2664241D00DA9B55 /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351CB6BE2664241D00DA9B55 /* SideMenu.swift */; };
+		351CB6C22664F23F00DA9B55 /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351CB6C12664F23F00DA9B55 /* ProfileScreen.swift */; };
+		351CB6C52664F28400DA9B55 /* AvatarImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351CB6C42664F28400DA9B55 /* AvatarImage.swift */; };
+		351CB6C72664F2AA00DA9B55 /* ProfileDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351CB6C62664F2AA00DA9B55 /* ProfileDetailView.swift */; };
+		351CB6CA2664F65800DA9B55 /* GameOverviewScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351CB6C92664F65800DA9B55 /* GameOverviewScreen.swift */; };
+		351CB6CD2664F69400DA9B55 /* OverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351CB6CC2664F69400DA9B55 /* OverviewView.swift */; };
 		C30283FB265FF100007F0BB2 /* FriendsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30283FA265FF100007F0BB2 /* FriendsList.swift */; };
 		C30283FF265FF590007F0BB2 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30283FE265FF590007F0BB2 /* FriendsView.swift */; };
 		C3028403265FF665007F0BB2 /* FriendRequestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3028402265FF665007F0BB2 /* FriendRequestsView.swift */; };
@@ -34,6 +46,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		351CB6B0266421DA00DA9B55 /* QuizGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizGame.swift; sourceTree = "<group>"; };
+		351CB6B32664228100DA9B55 /* QuizMainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizMainScreen.swift; sourceTree = "<group>"; };
+		351CB6B62664230600DA9B55 /* LogoImageWhite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoImageWhite.swift; sourceTree = "<group>"; };
+		351CB6B82664232D00DA9B55 /* QuizItemCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizItemCard.swift; sourceTree = "<group>"; };
+		351CB6BA2664236700DA9B55 /* QuizListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizListView.swift; sourceTree = "<group>"; };
+		351CB6BC266423F700DA9B55 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
+		351CB6BE2664241D00DA9B55 /* SideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
+		351CB6C12664F23F00DA9B55 /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
+		351CB6C42664F28400DA9B55 /* AvatarImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImage.swift; sourceTree = "<group>"; };
+		351CB6C62664F2AA00DA9B55 /* ProfileDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailView.swift; sourceTree = "<group>"; };
+		351CB6C92664F65800DA9B55 /* GameOverviewScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverviewScreen.swift; sourceTree = "<group>"; };
+		351CB6CC2664F69400DA9B55 /* OverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewView.swift; sourceTree = "<group>"; };
 		C30283FA265FF100007F0BB2 /* FriendsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsList.swift; sourceTree = "<group>"; };
 		C30283FE265FF590007F0BB2 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
 		C3028402265FF665007F0BB2 /* FriendRequestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestsView.swift; sourceTree = "<group>"; };
@@ -73,6 +97,62 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		351CB6B22664226800DA9B55 /* QuizMain */ = {
+			isa = PBXGroup;
+			children = (
+				351CB6B5266422CC00DA9B55 /* Views */,
+				351CB6B32664228100DA9B55 /* QuizMainScreen.swift */,
+			);
+			path = QuizMain;
+			sourceTree = "<group>";
+		};
+		351CB6B5266422CC00DA9B55 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				351CB6B62664230600DA9B55 /* LogoImageWhite.swift */,
+				351CB6B82664232D00DA9B55 /* QuizItemCard.swift */,
+				351CB6BA2664236700DA9B55 /* QuizListView.swift */,
+				351CB6BC266423F700DA9B55 /* MenuButton.swift */,
+				351CB6BE2664241D00DA9B55 /* SideMenu.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		351CB6C02664F22100DA9B55 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				351CB6C32664F26C00DA9B55 /* Views */,
+				351CB6C12664F23F00DA9B55 /* ProfileScreen.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		351CB6C32664F26C00DA9B55 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				351CB6C42664F28400DA9B55 /* AvatarImage.swift */,
+				351CB6C62664F2AA00DA9B55 /* ProfileDetailView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		351CB6C82664F63200DA9B55 /* GameOverview */ = {
+			isa = PBXGroup;
+			children = (
+				351CB6CB2664F67100DA9B55 /* Views */,
+				351CB6C92664F65800DA9B55 /* GameOverviewScreen.swift */,
+			);
+			path = GameOverview;
+			sourceTree = "<group>";
+		};
+		351CB6CB2664F67100DA9B55 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				351CB6CC2664F69400DA9B55 /* OverviewView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		C30283FC265FF523007F0BB2 /* FriendsList */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +176,9 @@
 		C38CF0BD265553860055A20A /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				351CB6C82664F63200DA9B55 /* GameOverview */,
+				351CB6C02664F22100DA9B55 /* Profile */,
+				351CB6B22664226800DA9B55 /* QuizMain */,
 				C30283FC265FF523007F0BB2 /* FriendsList */,
 				C38CF0BE265553A80055A20A /* LoginRegister */,
 				C3967FAE2663A18B00B306BE /* Main.swift */,
@@ -156,6 +239,7 @@
 				C34C5418264D33A000392EFA /* AuthenticationManager.swift */,
 				C3443342264F12A1001FB1B9 /* GoogleService-Info.plist */,
 				C34C541A264D43D200392EFA /* QuizUser.swift */,
+				351CB6B0266421DA00DA9B55 /* QuizGame.swift */,
 				C3D76EA1264AE87C001FCD34 /* Assets.xcassets */,
 				C3D76EA6264AE87C001FCD34 /* Persistence.swift */,
 				C3D76EAB264AE87C001FCD34 /* Info.plist */,
@@ -262,23 +346,35 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3967FAF2663A18B00B306BE /* Main.swift in Sources */,
+				351CB6BD266423F700DA9B55 /* MenuButton.swift in Sources */,
+				351CB6B42664228100DA9B55 /* QuizMainScreen.swift in Sources */,
 				C30283FF265FF590007F0BB2 /* FriendsView.swift in Sources */,
+				351CB6BF2664241D00DA9B55 /* SideMenu.swift in Sources */,
+				351CB6C22664F23F00DA9B55 /* ProfileScreen.swift in Sources */,
+				351CB6C72664F2AA00DA9B55 /* ProfileDetailView.swift in Sources */,
 				C3D76EA7264AE87C001FCD34 /* Persistence.swift in Sources */,
 				C3EF215C2656E79C00384221 /* PrimaryButton.swift in Sources */,
 				C3D76EAA264AE87C001FCD34 /* Quiz_With_Me.xcdatamodeld in Sources */,
 				C307CAC12657DE3000223917 /* ColorExtension.swift in Sources */,
 				C38CF0C3265559D50055A20A /* LogoImage.swift in Sources */,
+				351CB6CD2664F69400DA9B55 /* OverviewView.swift in Sources */,
 				C34C541B264D43D200392EFA /* QuizUser.swift in Sources */,
 				C34C5417264D327600392EFA /* LoginView.swift in Sources */,
 				C38CF0C7265560070055A20A /* RegisterView.swift in Sources */,
 				C33471ED2661556F004E707B /* FriendRequestRow.swift in Sources */,
 				C38CF0CA265567E90055A20A /* ViewState.swift in Sources */,
+				351CB6B72664230600DA9B55 /* LogoImageWhite.swift in Sources */,
+				351CB6C52664F28400DA9B55 /* AvatarImage.swift in Sources */,
 				C39D00F026611E86004E0F7D /* FriendRow.swift in Sources */,
+				351CB6B1266421DA00DA9B55 /* QuizGame.swift in Sources */,
 				C3028403265FF665007F0BB2 /* FriendRequestsView.swift in Sources */,
 				C34C5419264D33A000392EFA /* AuthenticationManager.swift in Sources */,
+				351CB6B92664232D00DA9B55 /* QuizItemCard.swift in Sources */,
 				C38CF0CC26556A8A0055A20A /* LoginRegisterScreen.swift in Sources */,
+				351CB6CA2664F65800DA9B55 /* GameOverviewScreen.swift in Sources */,
 				C3D76E9E264AE87B001FCD34 /* Quiz_With_MeApp.swift in Sources */,
 				C30283FB265FF100007F0BB2 /* FriendsList.swift in Sources */,
+				351CB6BB2664236700DA9B55 /* QuizListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

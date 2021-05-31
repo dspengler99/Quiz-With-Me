@@ -52,6 +52,7 @@ struct LoginView: View {
                         }
                     }
                     .buttonStyle(PrimaryButton(width: 300, height: 50, fontSize: 15))
+                    .padding()
                     .alert(isPresented: $showAlert) {
                         Alert(title: Text("Fehler"), message: Text("Ein Fehler ist aufgetreten. Überprüfe deine Eingaben oder deine Internetverbindung."), dismissButton: .default(Text("OK")))
                     }
@@ -66,6 +67,7 @@ struct LoginView: View {
                     }
                 }
                 .buttonStyle(PrimaryButton(width: 200, height: 50, fontSize: 15))
+                .padding()
             }
         }
     }
