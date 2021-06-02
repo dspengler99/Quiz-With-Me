@@ -60,4 +60,8 @@ class AuthenticationManager {
             fatalError("Unable to add user to database: \(error.localizedDescription)")
         }
     }
+    
+    func foundCredentials() -> Bool {
+        return Auth.auth().currentUser?.uid != nil
+    }
 }
