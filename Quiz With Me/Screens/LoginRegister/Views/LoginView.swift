@@ -46,15 +46,19 @@ struct LoginView: View {
                     Button("Anmelden") {
                         AuthenticationManager.shared.loginWith(email: email, and: password) { result, error in
                             if let error = error {
-                                showAlert = true
                                 errorMessage = error.localizedDescription
+                                showAlert = true
+                            } else {
+                                withAnimation {
+                                    viewState = .HOME
+                                }
                             }
                         }
                     }
                     .buttonStyle(PrimaryButton(width: 300, height: 50, fontSize: 15))
                     .padding()
                     .alert(isPresented: $showAlert) {
-                        Alert(title: Text("Fehler"), message: Text("Ein Fehler ist aufgetreten. Überprüfe deine Eingaben oder deine Internetverbindung."), dismissButton: .default(Text("OK")))
+                        Alert(title: Text("Fehler"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
                     }
                 }
                 Spacer()
