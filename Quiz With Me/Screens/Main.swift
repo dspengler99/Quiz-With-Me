@@ -15,6 +15,7 @@ struct Main: View {
             LoginRegisterScreen(viewState: $viewState)
         case .HOME:
             QuizMainScreen(viewState: $viewState)
+                .transition(.move(edge: .trailing))
         case .FRIENDSLIST:
             FriendsListScreen(viewState: $viewState)
         case .GAMEOVERVIEW:

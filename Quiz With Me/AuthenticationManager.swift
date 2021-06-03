@@ -9,6 +9,11 @@ import Firebase
 import FirebaseFirestoreSwift
 import Combine
 
+// Needed to send an error message when the registration succeeds, but the login afterwards fails
+enum AuthenticationError: Error {
+    case loginFailed(String)
+}
+
 class AuthenticationManager {
     
     
@@ -23,7 +28,13 @@ class AuthenticationManager {
             }
             if let result = authResult {
                 self.addUserToFireStore(user: QuizUser(userID: result.user.uid, username: username))
-                completion(true, nil)
+                Auth.auth().signIn(withEmail: email, password: password) {auth, err in
+                    if let _ = err {
+                        completion(false, AuthenticationError.loginFailed("Registrierung erfolgreich, aber der Login ist fehlgeschlagen. Versuche dich auf der Login-Seite anzumelden."))
+                    } else {
+                        completion(true, nil)
+                    }
+                }
             }
         }
     }
@@ -48,5 +59,9 @@ class AuthenticationManager {
         } catch {
             fatalError("Unable to add user to database: \(error.localizedDescription)")
         }
+    }
+    
+    func foundCredentials() -> Bool {
+        return Auth.auth().currentUser?.uid != nil
     }
 }

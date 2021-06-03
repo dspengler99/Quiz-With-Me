@@ -18,7 +18,7 @@ struct Quiz_With_MeApp: App {
 
     var body: some Scene {
         WindowGroup {
-            Main(viewState: .LOGIN)
+            Main(viewState: AuthenticationManager.shared.foundCredentials() ? .HOME : .LOGIN)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

@@ -13,6 +13,7 @@ struct RegisterView: View {
     @State private var password: String = ""
     @State private var repeatedPassword: String = ""
     @State private var showAlert = false
+    @State private var errorMessage: String = ""
     
     // Needed for handling the shown view
     @Binding var viewState: ViewState
@@ -62,8 +63,13 @@ struct RegisterView: View {
                     }
                     Button("Konto erstellen") {
                         AuthenticationManager.shared.signupWith(username: username, email: email, and: password) { result, error in
-                            if let _ = error {
+                            if let error = error {
+                                errorMessage = error.localizedDescription
                                 showAlert = true
+                            } else {
+                                withAnimation {
+                                    viewState = .HOME
+                                }
                             }
                         }
                     }
@@ -71,7 +77,7 @@ struct RegisterView: View {
                     .padding()
                     .disabled((username == "" && email == "" && password == "" && repeatedPassword == "") || password != repeatedPassword || password.count < 8)
                     .alert(isPresented: $showAlert) {
-                        Alert(title: Text("Fehler"), message: Text("Ein Fehler ist aufgetreten."), dismissButton: .default(Text("OK")))
+                        Alert(title: Text("Fehler"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
                     }
                 }
                 Spacer()
