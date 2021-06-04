@@ -6,7 +6,8 @@
 //
 
 import SwiftUI
-
+import Firebase
+import FirebaseFirestoreSwift
 struct QuizMainScreen: View {
     @State var menuToggeled = false
     var testGames: [QuizGame] = [
