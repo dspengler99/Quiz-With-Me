@@ -14,12 +14,10 @@ struct QuizItemCard: View {
          ZStack {
              Color.blue
              VStack(alignment: .leading) {
-                 Text("Spiel mit \(quizGame.name_p2)")
+                 Text("Spiel mit \(quizGame.nameP2)")
                      .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                 Text("Runde: \(quizGame.progress_p1)")
+                 Text("Runde: \(quizGame.progressP1)")
                      .font(.title2)
-                 Text("Spielstart: \(quizGame.gameDate)")
-                     .font(.subheadline)
                  Button("Zur Spielübersicht") {
                  }
                  .buttonStyle(PrimaryButton(width: 300, height: 50, fontSize: 15))
@@ -34,7 +32,7 @@ struct QuizItemCard: View {
  }
 
  struct QuizItemView_Previews: PreviewProvider {
-     static var testGame = QuizGame(gameID: "1", name_p1: "Tom", name_p2: "Kevin")
+     static var testGame = QuizGame(nameP1: "Tom", nameP2: "Kevin")
      static var previews: some View {
          QuizItemCard(quizGame: testGame)
      }
