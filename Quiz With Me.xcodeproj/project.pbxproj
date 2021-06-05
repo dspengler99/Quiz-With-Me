@@ -23,6 +23,7 @@
 		351CB6D32669697E00DA9B55 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351CB6D22669697E00DA9B55 /* QuestionView.swift */; };
 		351CB6D526696BAA00DA9B55 /* QuestionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351CB6D426696BAA00DA9B55 /* QuestionButton.swift */; };
 		351CB6D7266972F200DA9B55 /* QuizQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351CB6D6266972F200DA9B55 /* QuizQuestion.swift */; };
+		35D9BF7A266B938600E5E70E /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D9BF79266B938600E5E70E /* BackgroundView.swift */; };
 		C30283FB265FF100007F0BB2 /* FriendsListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30283FA265FF100007F0BB2 /* FriendsListScreen.swift */; };
 		C30283FF265FF590007F0BB2 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30283FE265FF590007F0BB2 /* FriendsView.swift */; };
 		C3028403265FF665007F0BB2 /* FriendRequestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3028402265FF665007F0BB2 /* FriendRequestsView.swift */; };
@@ -66,6 +67,7 @@
 		351CB6D22669697E00DA9B55 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 		351CB6D426696BAA00DA9B55 /* QuestionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionButton.swift; sourceTree = "<group>"; };
 		351CB6D6266972F200DA9B55 /* QuizQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizQuestion.swift; sourceTree = "<group>"; };
+		35D9BF79266B938600E5E70E /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		C30283FA265FF100007F0BB2 /* FriendsListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListScreen.swift; sourceTree = "<group>"; };
 		C30283FE265FF590007F0BB2 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
 		C3028402265FF665007F0BB2 /* FriendRequestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestsView.swift; sourceTree = "<group>"; };
@@ -179,6 +181,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		35D9BF78266B934100E5E70E /* HelperView */ = {
+			isa = PBXGroup;
+			children = (
+				35D9BF79266B938600E5E70E /* BackgroundView.swift */,
+			);
+			path = HelperView;
+			sourceTree = "<group>";
+		};
 		C30283FC265FF523007F0BB2 /* FriendsList */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,6 +212,7 @@
 		C38CF0BD265553860055A20A /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				35D9BF78266B934100E5E70E /* HelperView */,
 				351CB6CE266964ED00DA9B55 /* Question */,
 				351CB6C82664F63200DA9B55 /* GameOverview */,
 				351CB6C02664F22100DA9B55 /* Profile */,
@@ -385,6 +396,7 @@
 				351CB6D526696BAA00DA9B55 /* QuestionButton.swift in Sources */,
 				351CB6C22664F23F00DA9B55 /* ProfileScreen.swift in Sources */,
 				351CB6C72664F2AA00DA9B55 /* ProfileDetailView.swift in Sources */,
+				35D9BF7A266B938600E5E70E /* BackgroundView.swift in Sources */,
 				C3D76EA7264AE87C001FCD34 /* Persistence.swift in Sources */,
 				C3EF215C2656E79C00384221 /* PrimaryButton.swift in Sources */,
 				C3D76EAA264AE87C001FCD34 /* Quiz_With_Me.xcdatamodeld in Sources */,

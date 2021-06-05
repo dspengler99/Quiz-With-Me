@@ -28,8 +28,6 @@ struct QuestionButton: ButtonStyle {
         configuration.label
             .frame(minWidth: width, minHeight: height)
             .font(.system(size: fontSize))
-            .background(Color.primaryButtonDefaultBackground)
             .foregroundColor(.white)
-            .cornerRadius(25)
     }
 }
