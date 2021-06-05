@@ -55,7 +55,7 @@ class AuthenticationManager {
     func addUserToFireStore(user: QuizUser) {
         let db = Firestore.firestore()
         do {
-            _ = try db.collection("user").addDocument(from: user)
+            _ = try db.collection("users").addDocument(from: user)
         } catch {
             fatalError("Unable to add user to database: \(error.localizedDescription)")
         }

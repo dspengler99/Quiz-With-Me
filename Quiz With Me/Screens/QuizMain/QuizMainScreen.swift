@@ -6,13 +6,14 @@
 //
 
 import SwiftUI
-
+import Firebase
+import FirebaseFirestoreSwift
 struct QuizMainScreen: View {
     @State var menuToggeled = false
     var testGames: [QuizGame] = [
-        QuizGame(gameID: "1", name_p1: "Tom", name_p2: "Kevin"),
-        QuizGame(gameID: "2", name_p1: "Tom", name_p2: "Thomas"),
-        QuizGame(gameID: "3", name_p1: "Tom", name_p2: "Justus")
+        QuizGame(nameP1: "Tom", nameP2: "Kevin"),
+        QuizGame(nameP1: "Tom", nameP2: "Thomas"),
+        QuizGame(nameP1: "Tom", nameP2: "Justus")
     ]
     @Binding var viewState: ViewState
     
