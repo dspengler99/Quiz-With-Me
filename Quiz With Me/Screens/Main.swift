@@ -22,6 +22,8 @@ struct Main: View {
             GameOverviewScreen(viewState: $viewState)
         case .PROFILE:
             ProfileScreen(viewState: $viewState)
+        case .GAME:
+            QuestionScreen(viewState: $viewState)
         }
     }
 }

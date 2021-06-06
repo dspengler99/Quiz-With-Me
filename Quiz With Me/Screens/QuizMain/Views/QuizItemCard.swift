@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct QuizItemCard: View {
+    @Binding var viewState: ViewState
      var quizGame: QuizGame
 
      var body: some View {
@@ -19,6 +20,9 @@ struct QuizItemCard: View {
                  Text("Runde: \(quizGame.progressP1)")
                      .font(.title2)
                  Button("Zur Spielübersicht") {
+                    withAnimation {
+                        viewState = .GAMEOVERVIEW
+                    }
                  }
                  .buttonStyle(PrimaryButton(width: 300, height: 50, fontSize: 15))
                  .padding()
@@ -34,6 +38,6 @@ struct QuizItemCard: View {
  struct QuizItemView_Previews: PreviewProvider {
      static var testGame = QuizGame(nameP1: "Tom", nameP2: "Kevin")
      static var previews: some View {
-         QuizItemCard(quizGame: testGame)
+         QuizItemCard(viewState: .constant(ViewState.HOME), quizGame: testGame)
      }
  }

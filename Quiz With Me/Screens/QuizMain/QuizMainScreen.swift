@@ -27,7 +27,7 @@ struct QuizMainScreen: View {
                 MenuButton(menuToggled: $menuToggeled)
             }
             .padding()
-            QuizListView(quizGames: testGames)
+            QuizListView(viewState: $viewState, quizGames: testGames)
             ZStack {
                 LinearGradient(gradient: Gradient(colors: [Color.white.opacity(0.01), Color.white]), startPoint: .top, endPoint: .bottom)
                     .frame(width: .infinity, height: 50, alignment: .center)

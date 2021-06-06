@@ -13,7 +13,7 @@ struct BackgroundView: View {
             VStack {
                 Rectangle()
                     .fill(Color.blue)
-                    .frame(width: .infinity, height: 220)
+                    .frame(width: .infinity, height: 260)
                     .cornerRadius(20)
                     .offset(x: 0, y: -20)
                     .ignoresSafeArea(edges: .top)

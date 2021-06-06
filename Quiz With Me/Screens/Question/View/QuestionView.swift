@@ -10,6 +10,7 @@ import SwiftUI
 struct QuestionView: View {
     @State var progress = 0
     @State var answerPicked = false
+    @Binding var viewState: ViewState
     
     var body: some View {
         let questions: [QuizQuestion] = [
@@ -21,6 +22,11 @@ struct QuestionView: View {
         ]
         
         VStack {
+            HStack {
+                BackButton(viewState: $viewState, changeView: .HOME)
+                Spacer()
+            }
+            .padding()
             Rectangle()
                 .fill(Color.white)
                 .frame(width: 350, height: 200)
@@ -41,8 +47,12 @@ struct QuestionView: View {
                 Button(questions[progress].answers[0]) {
                     answerPicked = true
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                        progress += 1
-                        answerPicked = false
+                        if(progress < questions.count - 1) {
+                            progress += 1
+                            answerPicked = false
+                        } else {
+                            viewState = .GAMEOVERVIEW
+                        }
                     }
                 }
                 .buttonStyle(QuestionButton(width: 150, height: 120, fontSize: 15))
@@ -55,8 +65,12 @@ struct QuestionView: View {
                 Button(questions[progress].answers[1]) {
                     answerPicked = true
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                        progress += 1
-                        answerPicked = false
+                        if(progress < questions.count - 1) {
+                            progress += 1
+                            answerPicked = false
+                        } else {
+                            viewState = .GAMEOVERVIEW
+                        }
                     }
                 }
                 .buttonStyle(QuestionButton(width: 150, height: 120, fontSize: 15))
@@ -71,8 +85,12 @@ struct QuestionView: View {
                 Button(questions[progress].answers[2]) {
                     answerPicked = true
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                        progress += 1
-                        answerPicked = false
+                        if(progress < questions.count - 1) {
+                            progress += 1
+                            answerPicked = false
+                        } else {
+                            viewState = .GAMEOVERVIEW
+                        }
                     }
                 }
                 .buttonStyle(QuestionButton(width: 150, height: 120, fontSize: 15))
@@ -85,8 +103,12 @@ struct QuestionView: View {
                 Button(questions[progress].answers[3]) {
                     answerPicked = true
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                        progress += 1
-                        answerPicked = false
+                        if(progress < questions.count - 1) {
+                            progress += 1
+                            answerPicked = false
+                        } else {
+                            viewState = .GAMEOVERVIEW
+                        }
                     }
                 }
                 .buttonStyle(QuestionButton(width: 150, height: 120, fontSize: 15))
@@ -96,12 +118,13 @@ struct QuestionView: View {
                 .padding(10)
                 .disabled(answerPicked)
             }
+            Spacer()
         }
     }
 }
 
 struct QuestionView_Previews: PreviewProvider {
     static var previews: some View {
-        QuestionView()
+        QuestionView(viewState: .constant(ViewState.HOME))
     }
 }
