@@ -8,16 +8,17 @@
 import SwiftUI
 
 struct QuestionScreen: View {
+    @Binding var viewState: ViewState
     var body: some View {
         ZStack {
             BackgroundView()
-            QuestionView()
+            QuestionView(viewState: $viewState)
         }
     }
 }
 
 struct QuestionScreen_Previews: PreviewProvider {
     static var previews: some View {
-        QuestionScreen()
+        QuestionScreen(viewState: .constant(ViewState.GAME))
     }
 }

@@ -10,7 +10,7 @@ import SwiftUI
 struct LogoImageWhite: View {
      var body: some View {
          Image(decorative: "QuizWithMeQhite")
-             .resizable()
+            .resizable()
             .frame(width: 120, height: 120)
      }
  }
