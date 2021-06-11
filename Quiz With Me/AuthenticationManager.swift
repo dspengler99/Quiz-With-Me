@@ -27,7 +27,7 @@ class AuthenticationManager {
                 completion(false, error)
             }
             if let result = authResult {
-                self.addUserToFireStore(user: QuizUser(userID: result.user.uid, username: username))
+                DataManager.shared.addUserToFireStore(user: QuizUser(userID: result.user.uid, username: username))
                 Auth.auth().signIn(withEmail: email, password: password) {auth, err in
                     if let _ = err {
                         completion(false, AuthenticationError.loginFailed("Registrierung erfolgreich, aber der Login ist fehlgeschlagen. Versuche dich auf der Login-Seite anzumelden."))
@@ -52,16 +52,16 @@ class AuthenticationManager {
         }
     }
     
-    func addUserToFireStore(user: QuizUser) {
-        let db = Firestore.firestore()
-        do {
-            _ = try db.collection("users").addDocument(from: user)
-        } catch {
-            fatalError("Unable to add user to database: \(error.localizedDescription)")
-        }
-    }
-    
     func foundCredentials() -> Bool {
         return Auth.auth().currentUser?.uid != nil
+    }
+    
+    func signOut() -> Bool {
+        do {
+            try Auth.auth().signOut()
+        } catch {
+            return false
+        }
+        return true
     }
 }

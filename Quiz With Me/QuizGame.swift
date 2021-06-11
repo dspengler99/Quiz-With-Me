@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class QuizGame {
+public class QuizGame: Codable {
      var nameP1: String
      var nameP2: String
      var progressP1: Int

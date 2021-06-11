@@ -40,6 +40,12 @@ struct QuizMainScreen: View {
             }
         }
         .overlay(SideMenu(menuToggled: $menuToggeled))
+        .onAppear() {
+            DataManager.shared.getUserIDs() { userIDs in
+                print(userIDs!)
+            }
+            print("After IDs")
+        }
     }
 }
 
