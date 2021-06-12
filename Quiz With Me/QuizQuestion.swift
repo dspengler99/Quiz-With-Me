@@ -7,12 +7,12 @@
 
 import Foundation
 
-public class QuizQuestion {
+public class QuizQuestion: Codable {
     var question: String
     var answers: [String]
     var rightAnswer: String
     
-    init(question: String, answers: [String], rightAnswer: String) {
+    init(answers: [String], question: String, rightAnswer: String) {
         self.question = question
         self.answers = answers
         self.rightAnswer = rightAnswer

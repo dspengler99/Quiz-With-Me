@@ -14,11 +14,11 @@ struct QuestionView: View {
     
     var body: some View {
         let questions: [QuizQuestion] = [
-            QuizQuestion(question: "Wie heißt das Betriebssystem von Apple für Smartphones?", answers: ["macOS", "iOS", "ipadOS", "watchOS"], rightAnswer: "iOS"),
-            QuizQuestion(question: "Welche Farbe hat eine geöhnliche Banane", answers: ["grün", "blau", "orange", "gelb"], rightAnswer: "gelb"),
-            QuizQuestion(question: "Wie ist das Wetter heute", answers: ["bewölkt", "regnerisch", "klar", "sonnig"], rightAnswer: "klar"),
-            QuizQuestion(question: "Wie heißt das Betriebssystem von Apple für Smartphones?", answers: ["macOS", "iOS", "ipadOS", "watchOS"], rightAnswer: "iOS"),
-            QuizQuestion(question: "Welche Farbe hat eine geöhnliche Banane", answers: ["grün", "blau", "orange", "gelb"], rightAnswer: "gelb")
+            QuizQuestion(answers: ["macOS", "iOS", "ipadOS", "watchOS"], question: "Wie heißt das Betriebssystem von Apple für Smartphones?", rightAnswer: "iOS"),
+            QuizQuestion(answers: ["grün", "blau", "orange", "gelb"], question: "Welche Farbe hat eine geöhnliche Banane", rightAnswer: "gelb"),
+            QuizQuestion(answers: ["bewölkt", "regnerisch", "klar", "sonnig"], question: "Wie ist das Wetter heute", rightAnswer: "klar"),
+            QuizQuestion(answers: ["macOS", "iOS", "ipadOS", "watchOS"], question: "Wie heißt das Betriebssystem von Apple für Smartphones?", rightAnswer: "iOS"),
+            QuizQuestion(answers: ["grün", "blau", "orange", "gelb"], question: "Welche Farbe hat eine geöhnliche Banane", rightAnswer: "gelb")
         ]
         
         VStack {

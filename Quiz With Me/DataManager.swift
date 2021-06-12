@@ -46,6 +46,34 @@ class DataManager {
         }
     }
     
+    func getQuestion(questionID: String, completion: @escaping (_: QuizQuestion?) -> Void) -> Void {
+        Firestore.firestore().collection("questions").document(questionID).getDocument() { document, error in
+            if let _ = error {
+                completion(nil)
+                return
+            }
+            let result = Result {
+                try document?.data(as: QuizQuestion.self)
+            }
+            
+            switch result {
+            case .success(let question):
+                if let question = question {
+                    // A `Question` value was successfully initialized from the DocumentSnapshot.
+                    completion(question)
+                    //print("Question: \(question)")
+                } else {
+                    // A nil value was successfully initialized from the DocumentSnapshot,
+                    // or the DocumentSnapshot was nil.
+                    print("Document does not exist")
+                }
+            case .failure(let error):
+                // A `Question` value could not be initialized from the DocumentSnapshot.
+                print("Error decoding question: \(error)")
+            }
+        }
+    }
+    
     func addUserToList(uid: String) -> Void {
         Firestore.firestore().collection("general").document(generalDocument).updateData([
             "userIDs": FieldValue.arrayUnion([uid])
@@ -179,7 +207,7 @@ class DataManager {
             }
             finished = true
         }
-                
+        
         while(!finished) {}
         finished = false
         
@@ -211,5 +239,45 @@ class DataManager {
         ])
         return quizGame
     }
-
+    
+    func getGameQuestions(completion: @escaping (_: [QuizQuestion]?) -> Void) {
+        var questionIDs: [String]? = nil
+        var gameQuestionIDs: [String]? = nil
+        var getIDsFinished: Bool = false
+        var getQuestionFinished: Int = 0
+        var gameQuestions: [QuizQuestion]? = Array(repeating: QuizQuestion(answers: ["","","",""], question: "", rightAnswer: ""), count: 10)
+        
+        getQuestionIDs() { resultQuestionIDs in
+            if let ids = resultQuestionIDs {
+                questionIDs = ids
+                questionIDs?.shuffle()
+                gameQuestionIDs = Array((questionIDs?.prefix(10))!)
+                getIDsFinished = true
+            } else {
+                fatalError("Couldn't get Question during game creation process")
+            }
+        }
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
+            if getIDsFinished {
+                for i in 0..<10 {
+                    self.getQuestion(questionID: gameQuestionIDs![i]) { question in
+                        if let gameQuestion = question {
+                            gameQuestions?[i] = gameQuestion
+                            getQuestionFinished += 1
+                        }
+                        else {
+                            fatalError("Couldn't get Question during game creation process")
+                        }
+                    }
+                }
+                timer.invalidate()
+            }
+        }
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (timer) in
+            if getQuestionFinished >= 10 {
+                completion(gameQuestions)
+                timer.invalidate()
+            }
+        }
+    }
 }
