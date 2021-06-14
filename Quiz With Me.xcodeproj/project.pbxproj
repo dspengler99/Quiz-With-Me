@@ -37,6 +37,7 @@
 		C34C5417264D327600392EFA /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34C5416264D327600392EFA /* LoginView.swift */; };
 		C34C5419264D33A000392EFA /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34C5418264D33A000392EFA /* AuthenticationManager.swift */; };
 		C34C541B264D43D200392EFA /* QuizUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34C541A264D43D200392EFA /* QuizUser.swift */; };
+		C37DF74B2677AE85003DE235 /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = C37DF74A2677AE85003DE235 /* PromiseKit */; };
 		C38CF0C3265559D50055A20A /* LogoImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38CF0C2265559D50055A20A /* LogoImage.swift */; };
 		C38CF0C7265560070055A20A /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38CF0C6265560070055A20A /* RegisterView.swift */; };
 		C38CF0CA265567E90055A20A /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38CF0C9265567E90055A20A /* ViewState.swift */; };
@@ -104,6 +105,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C34C5415264D2E4100392EFA /* FirebaseFirestoreSwift-Beta in Frameworks */,
+				C37DF74B2677AE85003DE235 /* PromiseKit in Frameworks */,
 				C34C5411264D2E4100392EFA /* FirebaseAuth in Frameworks */,
 				C34C5413264D2E4100392EFA /* FirebaseFirestore in Frameworks */,
 			);
@@ -333,6 +335,7 @@
 				C34C5410264D2E4100392EFA /* FirebaseAuth */,
 				C34C5412264D2E4100392EFA /* FirebaseFirestore */,
 				C34C5414264D2E4100392EFA /* FirebaseFirestoreSwift-Beta */,
+				C37DF74A2677AE85003DE235 /* PromiseKit */,
 			);
 			productName = "Quiz With Me";
 			productReference = C3D76E9A264AE87B001FCD34 /* Quiz With Me.app */;
@@ -364,6 +367,7 @@
 			mainGroup = C3D76E91264AE87B001FCD34;
 			packageReferences = (
 				C34C540F264D2E4100392EFA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				C37DF7492677AE85003DE235 /* XCRemoteSwiftPackageReference "PromiseKit" */,
 			);
 			productRefGroup = C3D76E9B264AE87B001FCD34 /* Products */;
 			projectDirPath = "";
@@ -629,6 +633,14 @@
 				minimumVersion = 8.0.0;
 			};
 		};
+		C37DF7492677AE85003DE235 /* XCRemoteSwiftPackageReference "PromiseKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mxcl/PromiseKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.15.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -646,6 +658,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C34C540F264D2E4100392EFA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseFirestoreSwift-Beta";
+		};
+		C37DF74A2677AE85003DE235 /* PromiseKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C37DF7492677AE85003DE235 /* XCRemoteSwiftPackageReference "PromiseKit" */;
+			productName = PromiseKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 

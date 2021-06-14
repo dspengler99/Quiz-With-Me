@@ -8,6 +8,7 @@
 import SwiftUI
 import Firebase
 import FirebaseFirestoreSwift
+import PromiseKit
 struct QuizMainScreen: View {
     @State var menuToggeled = false
     var testGames: [QuizGame] = [
@@ -41,19 +42,13 @@ struct QuizMainScreen: View {
         }
         .overlay(SideMenu(menuToggled: $menuToggeled))
         .onAppear() {
-            /*
-            DataManager.shared.getUserIDs() { userIDs in
-                print(userIDs!)
+            DataManager.shared.getGameQuestions().done { gameQuestionIDs in
+                print(gameQuestionIDs!)
             }
- */
-            print("After IDs")
-            DataManager.shared.getGameQuestions() { questions in
-                print(questions)
-            }
-            DataManager.shared.createNewGame()
-            
         }
     }
+    
+    
 }
 
 struct QuizMainScreen_Previews: PreviewProvider {
