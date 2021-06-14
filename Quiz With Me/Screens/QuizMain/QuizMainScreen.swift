@@ -45,11 +45,13 @@ struct QuizMainScreen: View {
             DataManager.shared.getUserIDs() { userIDs in
                 print(userIDs!)
             }
+ */
             print("After IDs")
-             */
             DataManager.shared.getGameQuestions() { questions in
-                print(questions?[0].question)
+                print(questions)
             }
+            DataManager.shared.createNewGame()
+            
         }
     }
 }
