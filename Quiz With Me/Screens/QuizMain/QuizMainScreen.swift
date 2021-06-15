@@ -42,9 +42,7 @@ struct QuizMainScreen: View {
         }
         .overlay(SideMenu(menuToggled: $menuToggeled))
         .onAppear() {
-            DataManager.shared.getGameQuestions().done { gameQuestionIDs in
-                print(gameQuestionIDs!)
-            }
+            
         }
     }
     
