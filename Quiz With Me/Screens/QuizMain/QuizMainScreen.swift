@@ -11,11 +11,6 @@ import FirebaseFirestoreSwift
 import PromiseKit
 struct QuizMainScreen: View {
     @State var menuToggeled = false
-    var testGames: [QuizGame] = [
-        QuizGame(nameP1: "Tom", nameP2: "Kevin"),
-        QuizGame(nameP1: "Tom", nameP2: "Thomas"),
-        QuizGame(nameP1: "Tom", nameP2: "Justus")
-    ]
     @Binding var viewState: ViewState
     
     var body: some View {
