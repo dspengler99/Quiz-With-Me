@@ -25,7 +25,7 @@ struct QuizListView: View {
          ScrollView(.vertical) {
              VStack(spacing: 15) {
                 if gameObjects.count >= 1 {
-                    ForEach(0..<gameObjects.count) { index in QuizItemCard(viewState: $viewState, quizGame: gameObjects[index])
+                    ForEach(0..<gameObjects.count) { index in QuizItemCard(viewState: $viewState, quizGame: gameObjects[index], gameID: gameIDs[index])
                      }
                 }
              }
