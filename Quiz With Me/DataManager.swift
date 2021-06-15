@@ -49,33 +49,43 @@ class DataManager {
         }
     }
     
-    /*func getQuestion(questionID: String, completion: @escaping (_: QuizQuestion?) -> Void) -> Void {
-        Firestore.firestore().collection("questions").document(questionID).getDocument() { document, error in
-            if let _ = error {
-                completion(nil)
-                return
-            }
-            let result = Result {
-                try document?.data(as: QuizQuestion.self)
-            }
-            
-            switch result {
-            case .success(let question):
-                if let question = question {
-                    // A `Question` value was successfully initialized from the DocumentSnapshot.
-                    completion(question)
-                    //print("Question: \(question)")
-                } else {
-                    // A nil value was successfully initialized from the DocumentSnapshot,
-                    // or the DocumentSnapshot was nil.
-                    print("Document does not exist")
+    func getGame(gameID: String) -> Promise<(QuizGame?, String?)> {
+        var quizGame: QuizGame? = nil
+        var id: String? = nil
+        return Promise { promise in
+            Firestore.firestore().collection("games").document(gameID).getDocument() { documentSnapshot, error in
+                if let error = error {
+                    print(error.localizedDescription)
                 }
-            case .failure(let error):
-                // A `Question` value could not be initialized from the DocumentSnapshot.
-                print("Error decoding question: \(error)")
+                if let document = documentSnapshot {
+                    do {
+                        quizGame = try document.data(as: QuizGame.self)
+                        id = document.documentID
+                    } catch {
+                        fatalError("Couldn't convert result to a game. This should never happen.")
+                    }
+                }
+                promise.fulfill((quizGame, id))
             }
         }
-    }*/
+    }
+    
+    func getGames(gameIDs: [String]) -> Promise<[String: QuizGame]?> {
+        var fetchedGames: [String: QuizGame] = [:]
+        return Promise { promise in
+            for index in 0..<gameIDs.count {
+                self.getGame(gameID: gameIDs[index]).done { (response: (QuizGame?, String?)) in
+                    if response.0 == nil || response.1 == nil {
+                        promise.fulfill(nil)
+                    }
+                    fetchedGames[response.1!] = response.0!
+                    if fetchedGames.count == gameIDs.count {
+                        promise.fulfill(fetchedGames)
+                    }
+                }
+            }
+        }
+    }
     
     func addUserToList(uid: String) -> Void {
         Firestore.firestore().collection("general").document(generalDocument).updateData([
