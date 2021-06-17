@@ -7,7 +7,6 @@
 
 import SwiftUI
 import Firebase
-import FirebaseFirestoreSwift
 
 struct LoginView: View {
     @EnvironmentObject var quizUserWrapper: QuizUserWrapper
@@ -56,10 +55,10 @@ struct LoginView: View {
                                     DataManager.shared.getUser(uid: uid).done { response in
                                         if response != nil {
                                             quizUserWrapper.quizUser = response!
+                                            withAnimation {
+                                                viewState = .HOME
+                                            }
                                         }
-                                    }
-                                    withAnimation {
-                                        viewState = .HOME
                                     }
                                 }
                             }

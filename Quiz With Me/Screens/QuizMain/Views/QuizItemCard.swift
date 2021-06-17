@@ -33,8 +33,8 @@ struct QuizItemCard: View {
          .frame(width: 350, height: 200)
          .cornerRadius(20)
          .shadow(radius: 5)
-     }
- }
+    }
+}
 
  struct QuizItemView_Previews: PreviewProvider {
      static var testGame = QuizGame(nameP1: "Tom", nameP2: "Kevin")
