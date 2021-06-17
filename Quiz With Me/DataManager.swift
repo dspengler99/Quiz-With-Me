@@ -7,6 +7,7 @@
 
 import Firebase
 import FirebaseFirestoreSwift
+import PromiseKit
 
 class DataManager {
     static let shared: DataManager = DataManager()
@@ -26,20 +27,60 @@ class DataManager {
         }
     }
     
-    func getUser(uid: String, completion: @escaping (_: QuizUser?) -> Void) -> Void {
-        Firestore.firestore().collection("users").whereField("userID", isEqualTo: uid).getDocuments() { querySnapshot, error in
-            if let _ = error {
-                completion(nil)
-                return
+    func getUser(uid: String) -> Promise<QuizUser?> {
+        var quizUser: QuizUser? = nil
+        return Promise { promise in
+            Firestore.firestore().collection("users").whereField("userID", isEqualTo: uid).getDocuments() { querySnapshot, error in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+                if let documents = querySnapshot?.documents {
+                    if documents.count == 1 {
+                        do {
+                            quizUser = try documents[0].data(as: QuizUser.self)
+                        } catch {
+                            fatalError("Could not convert user to user object. This should never happen.")
+                        }
+                    }
+                }
+                promise.fulfill(quizUser)
             }
-            if let documents = querySnapshot?.documents {
-                if documents.count != 1 {
-                    completion(nil)
-                } else {
+        }
+    }
+    
+    func getGame(gameID: String) -> Promise<(QuizGame?, String?)> {
+        var quizGame: QuizGame? = nil
+        var id: String? = nil
+        return Promise { promise in
+            Firestore.firestore().collection("games").document(gameID).getDocument() { documentSnapshot, error in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+                if let document = documentSnapshot {
                     do {
-                        try completion(documents[0].data(as: QuizUser.self))
+                        quizGame = try document.data(as: QuizGame.self)
+                        id = document.documentID
                     } catch {
-                        fatalError("Could not convert user to user object. This should never happen.")
+                        fatalError("Couldn't convert result to a game. This should never happen.")
+                    }
+                }
+                promise.fulfill((quizGame, id))
+            }
+        }
+    }
+    
+    func getGames(gameIDs: [String]) -> Promise<[String: QuizGame]?> {
+        var fetchedGames: [String: QuizGame] = [:]
+        return Promise { promise in
+            for index in 0..<gameIDs.count {
+                self.getGame(gameID: gameIDs[index]).done { (response: (QuizGame?, String?)) in
+                    if response.0 == nil || response.1 == nil {
+                        promise.fulfill(nil)
+                    }
+                    fetchedGames[response.1!] = response.0!
+                    if fetchedGames.count == gameIDs.count {
+                        promise.fulfill(fetchedGames)
                     }
                 }
             }
@@ -52,17 +93,19 @@ class DataManager {
         ])
     }
     
-    func getUserIDs(completion: @escaping (_: [String]?) -> Void) -> Void {
+    func getUserIDs() -> Promise<[String]?> {
         var userIDs: [String]? = nil
-        Firestore.firestore().collection("general").document(generalDocument).getDocument() { document, error in
-            if let error = error {
-                print(error.localizedDescription)
-            }
-            do {
-                userIDs = try document?.data(as: GeneralInfo.self)?.userIDs
-                completion(userIDs)
-            } catch {
-                fatalError("This should never happen!")
+        return Promise { promise in
+            Firestore.firestore().collection("general").document(generalDocument).getDocument() { document, error in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+                do {
+                    userIDs = try document?.data(as: GeneralInfo.self)?.userIDs
+                } catch {
+                    fatalError("This should never happen!")
+                }
+                promise.fulfill(userIDs)
             }
         }
     }
@@ -82,134 +125,124 @@ class DataManager {
         }
     }
     
-    func createNewGame() -> QuizGame? {
-        // Handles if the current database operation is completed
-        var finished: Bool = false
-        
-        // Get all userIDs that are available
-        var userIDs: [String]? = nil
-        getUserIDs() { resultUserIDs in
-            if let ids = resultUserIDs {
-                userIDs = ids
-            } else {
-                fatalError("Couldn't get userIDs during game creation process")
-            }
-            finished = true
-        }
-        while(!finished) {}
-        
-        // If no users were returned, we can't create a game
-        guard let allUserIDs = userIDs else {
-            return nil
-        }
-        
-        // Get the ID of the user who is creating the game, if no ID is set, return with nil
-        guard let ownID = Auth.auth().currentUser?.uid else {
-            return nil
-        }
-        // Choose a random ID from userIDs that is not the own users ID
-        guard let ownIndex = allUserIDs.firstIndex(of: ownID) else {
-            return nil
-        }
-        var choosenIndex: Int = Int.random(in: 0..<allUserIDs.count)
-        while(ownIndex == choosenIndex) {
-            choosenIndex = Int.random(in: 0..<allUserIDs.count)
-        }
-        let choosenUserID = allUserIDs[choosenIndex]
-        
-        // Get both usernames to create a QuizGame instance
-        var ownUsername: String? = nil
-        var othersUsername: String? = nil
-        finished = false
-        getUser(uid: ownID) { quizUser in
-            if let username = quizUser?.username {
-                ownUsername = username
-            }
-            finished = true
-        }
-        
-        while(!finished) {}
-        finished = false
-        
-        getUser(uid: choosenUserID) { quizUser in
-            if let username = quizUser?.username {
-                othersUsername = username
-            }
-            finished = true
-        }
-        while(!finished) {}
-        
-        // Check if both users have got an username in the database
-        guard let p1Name = ownUsername else {
-            return nil
-        }
-        guard let p2Name = othersUsername else {
-            return nil
-        }
-        
-        // Create the new game instance
-        let quizGame = QuizGame(nameP1: p1Name, nameP2: p2Name)
-        
-        // Add this game to fire store and save its document ID
-        var documentID: String? = nil
-        do {
-            let document: DocumentReference = try Firestore.firestore().collection("games").addDocument(from: quizGame)
-            documentID = document.documentID
-        } catch {
-            return nil
-        }
-        guard let gameID = documentID else {
-            return nil
-        }
-        
-        var ownUserDocumentID: String? = nil
-        var othersUserDocumentID: String? = nil
-        
-        finished = false
-        
-        Firestore.firestore().collection("users").whereField("userID", isEqualTo: ownID).getDocuments() { querySnapshot, error in
-            if let _ = error {
-                print(error?.localizedDescription)
-            }
-            if let documents = querySnapshot?.documents {
-                if documents.count != 1 {
+    func getGameQuestions() -> Promise<[String]?> {
+        var questionIDs: [String]? = nil
+        var gameQuestionIDs: [String]? = nil
+        return Promise { promise in
+            getQuestionIDs() { resultQuestionIDs in
+                if let ids = resultQuestionIDs {
+                    questionIDs = ids
+                    questionIDs?.shuffle()
+                    gameQuestionIDs = Array((questionIDs?.prefix(10))!)
                 } else {
-                    ownUserDocumentID = documents[0].documentID
+                    fatalError("Couldn't get Question during game creation process")
                 }
+                promise.fulfill(gameQuestionIDs)
             }
-            finished = true
-        }
-                
-        while(!finished) {}
-        finished = false
-        
-        Firestore.firestore().collection("users").whereField("userID", isEqualTo: choosenUserID).getDocuments() { querySnapshot, error in
-            if let _ = error {
-                print(error?.localizedDescription)
-            }
-            if let documents = querySnapshot?.documents {
-                if documents.count != 1 {
-                } else {
-                    othersUserDocumentID = documents[0].documentID
-                }
-            }
-            finished = true
-        }
-        
-        guard let ownUserDocument = ownUserDocumentID else {
-            return nil
-        }
-        guard let othersUserDocument = othersUserDocumentID else {
-            return nil
-        }
-        
-        Firestore.firestore().collection("users").document(ownUserDocument).updateData([
-            "gameIDs": FieldValue.arrayUnion([gameID])
-        ])
-        Firestore.firestore().collection("users").document(othersUserDocument).updateData([
-            "gameIDs": FieldValue.arrayUnion([gameID])
-        ])
-        return quizGame
     }
+    }
+    
+    private func getUserDocumentID(uid: String) -> Promise<String?> {
+        var documentID: String? = nil
+        return Promise { promise in
+            Firestore.firestore().collection("users").whereField("userID", isEqualTo: uid).getDocuments() { querySnapshot, error in
+                        if let _ = error {
+                            print(error?.localizedDescription)
+                        }
+                        if let documents = querySnapshot?.documents {
+                            if documents.count != 1 {
+                            } else {
+                                documentID = documents[0].documentID
+                            }
+                        }
+                        promise.fulfill(documentID)
+                }
+            }
 
+    }
+    
+    func createNewGame() -> Promise<QuizGame?> {
+        var userIDs: [String] = []
+        var ownUID: String = ""
+        var othersUID: String = ""
+        var ownUsername: String = ""
+        var othersUsername: String = ""
+        var gameQuestionIDs: [String] = []
+        var quizGame: QuizGame?
+        var gameID: String = ""
+        var ownUserDocumentID: String = ""
+        var othersUserDocumentID: String = ""
+        
+        return Promise { promise in
+            getUserIDs().then { (response: [String]?) -> Promise in
+                if response == nil {
+                    promise.fulfill(nil)
+                }
+                userIDs = response!
+                
+                if let ownID = Auth.auth().currentUser?.uid {
+                    ownUID = ownID
+                } else {
+                    promise.fulfill(nil)
+                }
+                let ownIndex = userIDs.firstIndex(of: ownUID)
+                if ownIndex == nil {
+                    promise.fulfill(nil)
+                }
+                var choosenIndex: Int = Int.random(in: 0..<userIDs.count)
+                while(ownIndex == choosenIndex) {
+                                    choosenIndex = Int.random(in: 0..<userIDs.count)
+                                }
+                othersUID = userIDs[choosenIndex]
+                return self.getUser(uid: ownUID)
+            }.then { (response: QuizUser?) -> Promise in
+                if response == nil {
+                    promise.fulfill(nil)
+                }
+                ownUsername = response!.username
+                return self.getUser(uid: othersUID)
+            }.then { (response: QuizUser?) -> Promise in
+                if response == nil {
+                    promise.fulfill(nil)
+                }
+                othersUsername = response!.username
+                quizGame = QuizGame(nameP1: ownUsername, nameP2: othersUsername)
+                return self.getGameQuestions()
+            }.then { (response: [String]?) -> Promise in
+                if quizGame == nil || response == nil {
+                    promise.fulfill(nil)
+                }
+                quizGame?.questionIDs = response!
+                
+                // Store the game in the data base
+                do {
+                    let document: DocumentReference = try Firestore.firestore().collection("games").addDocument(from: quizGame)
+                    gameID = document.documentID
+                } catch {
+                    promise.fulfill(nil)
+                }
+                return self.getUserDocumentID(uid: ownUID)
+            }.then { (response: String?) -> Promise in
+                if response == nil {
+                    promise.fulfill(nil)
+                }
+                ownUserDocumentID = response!
+                return self.getUserDocumentID(uid: othersUID)
+            }.done { (response: String?) in
+                if response == nil {
+                    promise.fulfill(nil)
+                }
+                othersUserDocumentID = response!
+                Firestore.firestore().collection("users").document(ownUserDocumentID).updateData([
+                            "gameIDs": FieldValue.arrayUnion([gameID])
+                ])
+                Firestore.firestore().collection("users").document(othersUserDocumentID).updateData([
+                            "gameIDs": FieldValue.arrayUnion([gameID])
+                ])
+                promise.fulfill(quizGame)
+            }
+        }
+    }
+    
 }
+

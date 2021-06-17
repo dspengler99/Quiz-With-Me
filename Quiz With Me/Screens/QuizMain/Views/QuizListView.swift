@@ -9,25 +9,36 @@ import SwiftUI
 
 struct QuizListView: View {
     @Binding var viewState: ViewState
-     var quizGames: [QuizGame]
+    var quizGames: [String: QuizGame]
+    @State private var gameObjects: [QuizGame] = []
+    @State private var gameIDs: [String] = []
+    
+    func splitGameDict() {
+        for (key, value) in quizGames {
+            print("Appending!")
+            gameObjects.append(value)
+            gameIDs.append(key)
+        }
+    }
 
      var body: some View {
          ScrollView(.vertical) {
              VStack(spacing: 15) {
-                ForEach(0..<quizGames.count) { index in QuizItemCard(viewState: $viewState, quizGame: quizGames[index])
-                 }
+                if gameObjects.count >= 1 {
+                    ForEach(0..<gameObjects.count) { index in QuizItemCard(viewState: $viewState, quizGame: gameObjects[index], gameID: gameIDs[index])
+                     }
+                }
              }
+         }
+         .onAppear {
+            splitGameDict()
          }
      }
  }
 
  struct QuizListView_Previews: PreviewProvider {
-     static var quizGames: [QuizGame] = [
-         QuizGame(nameP1: "Tom", nameP2: "Kevin"),
-         QuizGame(nameP1: "Tom", nameP2: "Thomas"),
-         QuizGame(nameP1: "Tom", nameP2: "Justus")
-     ]
+     
      static var previews: some View {
-         QuizListView(viewState: .constant(ViewState.HOME), quizGames: quizGames)
+        QuizListView(viewState: .constant(ViewState.HOME), quizGames: ["1": QuizGame(nameP1: "Daniel", nameP2: "Egzon")])
      }
  }
