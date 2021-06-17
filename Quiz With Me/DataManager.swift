@@ -44,6 +44,7 @@ class DataManager {
                     if documents.count == 1 {
                         do {
                             quizUser = try documents[0].data(as: QuizUser.self)
+                            self.addUserToList(uid: uid)
                         } catch {
                             fatalError("Could not convert user to user object. This should never happen.")
                         }

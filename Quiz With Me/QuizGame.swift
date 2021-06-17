@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class QuizGame: Codable {
+public class QuizGame: Codable, Equatable {
     var nameP1: String
     var nameP2: String
     var progressP1: Int
@@ -20,5 +20,9 @@ public class QuizGame: Codable {
         self.progressP1 = progressP1
         self.progressP2 = progressP2
         self.questionIDs = questions
+    }
+    
+    public static func ==(lhs: QuizGame, rhs: QuizGame) -> Bool {
+        return lhs.nameP1 == rhs.nameP1 && lhs.nameP2 == rhs.nameP2
     }
 }
