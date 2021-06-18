@@ -50,7 +50,7 @@ struct QuestionView: View {
                         .foregroundColor(Color.primaryButtonDefaultBackground)
                     
                     HStack {
-                        Button(gameQuestion.answers[0]) {
+                        Button(action: {
                             answerPicked = true
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                                 if(progress < gameQuestionIds!.count-1) {
@@ -58,7 +58,10 @@ struct QuestionView: View {
                                     DataManager.shared.incrementProgress(gameId: selectedGame, playerProgress: playerProgress, progress: progress)
                                     answerPicked = false
                                     DataManager.shared.getQuestion(questionID: self.gameQuestionIds![self.progress]).done { response in
-                                        question = response
+                                        if let newQuestion = response {
+                                            newQuestion.answers.shuffle()
+                                            question = newQuestion
+                                        }
                                     }
                                 } else {
                                     progress += 1
@@ -67,15 +70,17 @@ struct QuestionView: View {
                                     viewState = .GAMEOVERVIEW
                                 }
                             }
+                        }) {
+                            Text(gameQuestion.answers[0])
+                                .frame(width: 150, height: 120)
                         }
-                        .buttonStyle(QuestionButton(width: 150, height: 120, fontSize: 15))
                         .background(answerPicked ? (gameQuestion.checkAnswer(answer: gameQuestion.answers[0]) ? Color.green : Color.red) : Color.primaryButtonDefaultBackground)
                         .cornerRadius(25)
                         .shadow(radius: 20)
                         .padding(10)
                         .disabled(answerPicked)
                         
-                        Button(gameQuestion.answers[1]) {
+                        Button(action:  {
                             answerPicked = true
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                                 if(progress < gameQuestionIds!.count-1) {
@@ -83,7 +88,10 @@ struct QuestionView: View {
                                     DataManager.shared.incrementProgress(gameId: selectedGame, playerProgress: playerProgress, progress: progress)
                                     answerPicked = false
                                     DataManager.shared.getQuestion(questionID: self.gameQuestionIds![self.progress]).done { response in
-                                        question = response
+                                        if let newQuestion = response {
+                                            newQuestion.answers.shuffle()
+                                            question = newQuestion
+                                        }
                                     }
                                 } else {
                                     progress += 1
@@ -91,8 +99,10 @@ struct QuestionView: View {
                                     viewState = .GAMEOVERVIEW
                                 }
                             }
+                        }) {
+                            Text(gameQuestion.answers[1])
+                                .frame(width: 150, height: 120)
                         }
-                        .buttonStyle(QuestionButton(width: 150, height: 120, fontSize: 15))
                         .background(answerPicked ? (gameQuestion.checkAnswer(answer: gameQuestion.answers[1]) ? Color.green : Color.red) : Color.primaryButtonDefaultBackground)
                         .cornerRadius(25)
                         .shadow(radius: 20)
@@ -101,7 +111,7 @@ struct QuestionView: View {
                     }
                     
                     HStack {
-                        Button(gameQuestion.answers[2]) {
+                        Button(action: {
                             answerPicked = true
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                                 if(progress < gameQuestionIds!.count-1) {
@@ -109,7 +119,10 @@ struct QuestionView: View {
                                     DataManager.shared.incrementProgress(gameId: selectedGame, playerProgress: playerProgress, progress: progress)
                                     answerPicked = false
                                     DataManager.shared.getQuestion(questionID: self.gameQuestionIds![self.progress]).done { response in
-                                        question = response
+                                        if let newQuestion = response {
+                                            newQuestion.answers.shuffle()
+                                            question = newQuestion
+                                        }
                                     }
                                 } else {
                                     progress += 1
@@ -117,15 +130,17 @@ struct QuestionView: View {
                                     viewState = .GAMEOVERVIEW
                                 }
                             }
+                        }) {
+                            Text(gameQuestion.answers[2])
+                                .frame(width: 150, height: 120)
                         }
-                        .buttonStyle(QuestionButton(width: 150, height: 120, fontSize: 15))
                         .background(answerPicked ? (gameQuestion.checkAnswer(answer: gameQuestion.answers[2]) ? Color.green : Color.red) : Color.primaryButtonDefaultBackground)
                         .cornerRadius(25)
                         .shadow(radius: 20)
                         .padding(10)
                         .disabled(answerPicked)
                         
-                        Button(gameQuestion.answers[3]) {
+                        Button(action: {
                             answerPicked = true
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                                 if(progress < gameQuestionIds!.count-1) {
@@ -133,7 +148,10 @@ struct QuestionView: View {
                                     DataManager.shared.incrementProgress(gameId: selectedGame, playerProgress: playerProgress, progress: progress  )
                                     answerPicked = false
                                     DataManager.shared.getQuestion(questionID: self.gameQuestionIds![self.progress]).done { response in
-                                        question = response
+                                        if let newQuestion = response {
+                                            newQuestion.answers.shuffle()
+                                            question = newQuestion
+                                        }
                                     }
                                 } else {
                                     progress += 1
@@ -141,8 +159,10 @@ struct QuestionView: View {
                                     viewState = .GAMEOVERVIEW
                                 }
                             }
+                        }) {
+                            Text(gameQuestion.answers[3])
+                                .frame(width: 150, height: 120)
                         }
-                        .buttonStyle(QuestionButton(width: 150, height: 120, fontSize: 15))
                         .background(answerPicked ? (gameQuestion.checkAnswer(answer: gameQuestion.answers[3]) ? Color.green : Color.red) : Color.primaryButtonDefaultBackground)
                         .cornerRadius(25)
                         .shadow(radius: 20)
@@ -169,7 +189,10 @@ struct QuestionView: View {
                     self.playerProgress = "progressP2"
                 }
                 DataManager.shared.getQuestion(questionID: self.gameQuestionIds![self.progress]).done { response in
-                    question = response
+                    if let newQuestion = response {
+                        newQuestion.answers.shuffle()
+                        question = newQuestion
+                    }
                 }
             }
         }

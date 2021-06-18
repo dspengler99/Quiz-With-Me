@@ -8,8 +8,17 @@
 import SwiftUI
 
 struct QuizItemCard: View {
+    @EnvironmentObject var quizUserWrapper: QuizUserWrapper
     @Binding var viewState: ViewState
-    @Binding var selectedgame: String
+    @Binding var selectedGame: String
+    
+    private var isPlayer1: Bool {
+        guard let quizUser = quizUserWrapper.quizUser else {
+            fatalError("There should be a user to show this view.")
+        }
+        return quizUser.username == quizGame.nameP1
+    }
+    
     var quizGame: QuizGame
     var gameID: String
     
@@ -17,13 +26,13 @@ struct QuizItemCard: View {
         ZStack {
             Color.blue
             VStack(alignment: .leading) {
-                Text("Spiel mit \(quizGame.nameP2)")
+                Text("Spiel mit \(isPlayer1 ? quizGame.nameP2 : quizGame.nameP1)")
                     .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                Text("Runde: \(quizGame.progressP1)")
+                Text("Beantwortete Fragen: \(isPlayer1 ? quizGame.progressP1 : quizGame.progressP2)/\(quizGame.questionIDs.count)")
                     .font(.title2)
                 Button("Zur Spielübersicht") {
                     withAnimation {
-                        selectedgame = gameID
+                        selectedGame = gameID
                         viewState = .GAMEOVERVIEW
                     }
                 }

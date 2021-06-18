@@ -8,13 +8,22 @@
 import SwiftUI
 
 struct OverviewView: View {
+    @EnvironmentObject var quizUserWrapper: QuizUserWrapper
     @Binding var viewState: ViewState
     @Binding var selectedGame: String
-    @Binding var game: QuizGame?
-    @State var gameId: String? = nil
+    @State private var game: QuizGame?
+    
+    private var isPlayer1: Bool {
+        guard let quizUser = quizUserWrapper.quizUser, let quizGame = game else {
+            fatalError("There should be a user to show this view.")
+        }
+        return quizUser.username == quizGame.nameP1
+    }
+    
     var body: some View {
         Group {
-            if let quizGame = game {
+            EmptyView()
+            if let quizGame = game, let quizUser = quizUserWrapper.quizUser {
                 VStack {
                     HStack {
                         BackButton(viewState: $viewState, changeView: .HOME)
@@ -41,7 +50,7 @@ struct OverviewView: View {
                                 HStack {
                                     Text("Aktueller Fortschritt:")
                                     Spacer()
-                                    Text("3/10")
+                                    Text((isPlayer1 ? String(quizGame.progressP1) : String(quizGame.progressP2)) + "/\(quizGame.questionIDs.count)")
                                 }
                                 .padding(.bottom, 5)
                                 HStack {
@@ -50,16 +59,11 @@ struct OverviewView: View {
                                     Text("2/10")
                                 }
                                 .padding(.bottom, 5)
-                                HStack {
-                                    Text("Punkte:")
-                                    Spacer()
-                                    Text("20")
-                                }
                             }
                             Divider()
                             Group {
                                 HStack {
-                                    Text(quizGame.nameP2)
+                                    Text(isPlayer1 ? quizGame.nameP2 : quizGame.nameP1)
                                         .underline()
                                         .foregroundColor(Color.primaryButtonDefaultBackground)
                                     Spacer()
@@ -68,7 +72,7 @@ struct OverviewView: View {
                                 HStack {
                                     Text("Aktueller Fortschritt:")
                                     Spacer()
-                                    Text(String(quizGame.progressP2))
+                                    Text(isPlayer1 ? String(quizGame.progressP2) : String(quizGame.progressP1))
                                 }
                             }
                             Spacer()
@@ -79,13 +83,17 @@ struct OverviewView: View {
                     .cornerRadius(25)
                     .shadow(radius: 20)
                     Spacer()
-                    Button("Weiterspielen") {
-                        withAnimation {
-                            viewState = .GAME
+                    if (isPlayer1 && quizGame.progressP1 < quizGame.questionIDs.count) || (!isPlayer1 && quizGame.progressP2 < quizGame.questionIDs.count) {
+                        Button("Weiterspielen") {
+                            withAnimation {
+                                viewState = .GAME
+                            }
                         }
+                        .buttonStyle(PrimaryButton(width: 300, height: 50, fontSize: 15))
+                        .shadow(radius: 20)
+                    } else {
+                        Text("Du hast alle Fragen beantwortet!")
                     }
-                    .buttonStyle(PrimaryButton(width: 300, height: 50, fontSize: 15))
-                    .shadow(radius: 20)
                 }
                 .padding()
             } else {
@@ -98,7 +106,6 @@ struct OverviewView: View {
                     print("Es ist ein Fehler aufgetreten")
                 }
                 self.game = response.0
-                self.gameId = response.1
             }
         }
     }

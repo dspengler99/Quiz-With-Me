@@ -10,13 +10,13 @@ import SwiftUI
 struct GameOverviewScreen: View {
     @Binding var viewState: ViewState
     @Binding var selectedGame: String
-    @State var game: QuizGame? = nil
+    
     var body: some View {
         
         ZStack {
             BackgroundView()
             VStack {
-                OverviewView(viewState: $viewState, selectedGame: $selectedGame, game: $game)
+                OverviewView(viewState: $viewState, selectedGame: $selectedGame)
             }
         }
     }

@@ -52,7 +52,7 @@ struct QuizMainScreen: View {
                     ScrollView(.vertical) {
                         VStack(spacing: 15) {
                             if gameObjects.count >= 1 {
-                                ForEach(gameIndizes, id: \.self) { index in QuizItemCard(viewState: $viewState, selectedgame: $selectedGame, quizGame: gameObjects[index], gameID: gameIDs[index])
+                                ForEach(gameIndizes, id: \.self) { index in QuizItemCard(viewState: $viewState, selectedGame: $selectedGame, quizGame: gameObjects[index], gameID: gameIDs[index])
                                 }
                             }
                         }
@@ -66,9 +66,9 @@ struct QuizMainScreen: View {
                         Button("Neues Spiel") {
                             do {
                                 try DataManager.shared.createNewGame().done { (response: (String, QuizGame)?) in
-                                    if response != nil && games != nil {
-                                        var newGames = games
-                                        newGames![response!.0] = response!.1
+                                    if let returnedGame = response {
+                                        var newGames = quizGames
+                                        newGames[returnedGame.0] = returnedGame.1
                                         games = newGames
                                         splitGameDict()
                                         gameIndizes = Array(0..<gameObjects.count)
@@ -89,16 +89,21 @@ struct QuizMainScreen: View {
             guard let quizUser = quizUserWrapper.quizUser else  {
                 return
             }
-            if quizUser.gameIDs.count != 0 {
-                DataManager.shared.getGames(gameIDs: quizUser.gameIDs).done { response in
-                    if let quizGames = response {
-                        games = quizGames
-                        splitGameDict()
-                        gameIndizes = Array(0..<gameObjects.count)
-                    }
+            DataManager.shared.getUser(uid: quizUser.userID).done {response in
+                guard let quizUser = response else {
+                    return
                 }
-            } else {
-                games = [:]
+                if quizUser.gameIDs.count != 0 {
+                    DataManager.shared.getGames(gameIDs: quizUser.gameIDs).done { response in
+                        if let quizGames = response {
+                            games = quizGames
+                            splitGameDict()
+                            gameIndizes = Array(0..<gameObjects.count)
+                        }
+                    }
+                } else {
+                    games = [:]
+                }
             }
             
         }
