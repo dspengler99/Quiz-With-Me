@@ -55,7 +55,7 @@ struct QuestionView: View {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                                 if(progress < gameQuestionIds!.count-1) {
                                     progress += 1
-                                    DataManager.shared.incrementProgress(gameId: selectedGame, playerProgress: playerProgress, progress: String(progress))
+                                    DataManager.shared.incrementProgress(gameId: selectedGame, playerProgress: playerProgress, progress: progress)
                                     answerPicked = false
                                     DataManager.shared.getQuestion(questionID: self.gameQuestionIds![self.progress]).done { response in
                                         question = response
@@ -77,7 +77,7 @@ struct QuestionView: View {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                                 if(progress < gameQuestionIds!.count-1) {
                                     progress += 1
-                                    DataManager.shared.incrementProgress(gameId: selectedGame, playerProgress: playerProgress, progress: String(progress))
+                                    DataManager.shared.incrementProgress(gameId: selectedGame, playerProgress: playerProgress, progress: progress)
                                     answerPicked = false
                                     DataManager.shared.getQuestion(questionID: self.gameQuestionIds![self.progress]).done { response in
                                         question = response
@@ -101,7 +101,7 @@ struct QuestionView: View {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                                 if(progress < gameQuestionIds!.count-1) {
                                     progress += 1
-                                    DataManager.shared.incrementProgress(gameId: selectedGame, playerProgress: playerProgress, progress: String(progress))
+                                    DataManager.shared.incrementProgress(gameId: selectedGame, playerProgress: playerProgress, progress: progress)
                                     answerPicked = false
                                     DataManager.shared.getQuestion(questionID: self.gameQuestionIds![self.progress]).done { response in
                                         question = response
@@ -123,7 +123,7 @@ struct QuestionView: View {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                                 if(progress < gameQuestionIds!.count-1) {
                                     progress += 1
-                                    DataManager.shared.incrementProgress(gameId: selectedGame, playerProgress: playerProgress, progress: String(progress))
+                                    DataManager.shared.incrementProgress(gameId: selectedGame, playerProgress: playerProgress, progress: progress)
                                     answerPicked = false
                                     DataManager.shared.getQuestion(questionID: self.gameQuestionIds![self.progress]).done { response in
                                         question = response
