@@ -72,7 +72,7 @@ struct OverviewView: View {
                                 HStack {
                                     Text("Aktueller Fortschritt:")
                                     Spacer()
-                                    Text(isPlayer1 ? String(quizGame.progressP2) : String(quizGame.progressP1))
+                                    Text("\(isPlayer1 ? String(quizGame.progressP2) : String(quizGame.progressP1))/\(quizGame.questionIDs.count)")
                                 }
                             }
                             Spacer()
