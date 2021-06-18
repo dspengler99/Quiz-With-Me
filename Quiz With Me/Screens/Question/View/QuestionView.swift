@@ -61,6 +61,9 @@ struct QuestionView: View {
                                         question = response
                                     }
                                 } else {
+                                    DataManager.shared.getQuestion(questionID: self.gameQuestionIds![self.progress]).done { response in
+                                        question = response
+                                    }
                                     viewState = .GAMEOVERVIEW
                                 }
                             }
@@ -83,6 +86,9 @@ struct QuestionView: View {
                                         question = response
                                     }
                                 } else {
+                                    DataManager.shared.getQuestion(questionID: self.gameQuestionIds![self.progress]).done { response in
+                                        question = response
+                                    }
                                     viewState = .GAMEOVERVIEW
                                 }
                             }
@@ -107,6 +113,9 @@ struct QuestionView: View {
                                         question = response
                                     }
                                 } else {
+                                    DataManager.shared.getQuestion(questionID: self.gameQuestionIds![self.progress]).done { response in
+                                        question = response
+                                    }
                                     viewState = .GAMEOVERVIEW
                                 }
                             }
@@ -123,12 +132,15 @@ struct QuestionView: View {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                                 if(progress < gameQuestionIds!.count-1) {
                                     progress += 1
-                                    DataManager.shared.incrementProgress(gameId: selectedGame, playerProgress: playerProgress, progress: progress)
+                                    DataManager.shared.incrementProgress(gameId: selectedGame, playerProgress: playerProgress, progress: progress  )
                                     answerPicked = false
                                     DataManager.shared.getQuestion(questionID: self.gameQuestionIds![self.progress]).done { response in
                                         question = response
                                     }
                                 } else {
+                                    DataManager.shared.getQuestion(questionID: self.gameQuestionIds![self.progress]).done { response in
+                                        question = response
+                                    }
                                     viewState = .GAMEOVERVIEW
                                 }
                             }
