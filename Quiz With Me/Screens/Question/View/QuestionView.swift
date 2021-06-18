@@ -61,9 +61,7 @@ struct QuestionView: View {
                                         question = response
                                     }
                                 } else {
-                                    DataManager.shared.getQuestion(questionID: self.gameQuestionIds![self.progress]).done { response in
-                                        question = response
-                                    }
+                                    DataManager.shared.incrementProgress(gameId: selectedGame, playerProgress: playerProgress, progress: progress)
                                     viewState = .GAMEOVERVIEW
                                 }
                             }
@@ -86,9 +84,7 @@ struct QuestionView: View {
                                         question = response
                                     }
                                 } else {
-                                    DataManager.shared.getQuestion(questionID: self.gameQuestionIds![self.progress]).done { response in
-                                        question = response
-                                    }
+                                    DataManager.shared.incrementProgress(gameId: selectedGame, playerProgress: playerProgress, progress: progress)
                                     viewState = .GAMEOVERVIEW
                                 }
                             }
@@ -113,9 +109,7 @@ struct QuestionView: View {
                                         question = response
                                     }
                                 } else {
-                                    DataManager.shared.getQuestion(questionID: self.gameQuestionIds![self.progress]).done { response in
-                                        question = response
-                                    }
+                                    DataManager.shared.incrementProgress(gameId: selectedGame, playerProgress: playerProgress, progress: progress)
                                     viewState = .GAMEOVERVIEW
                                 }
                             }
@@ -138,9 +132,7 @@ struct QuestionView: View {
                                         question = response
                                     }
                                 } else {
-                                    DataManager.shared.getQuestion(questionID: self.gameQuestionIds![self.progress]).done { response in
-                                        question = response
-                                    }
+                                    DataManager.shared.incrementProgress(gameId: selectedGame, playerProgress: playerProgress, progress: progress)
                                     viewState = .GAMEOVERVIEW
                                 }
                             }

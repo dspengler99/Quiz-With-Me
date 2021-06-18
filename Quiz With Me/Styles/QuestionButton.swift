@@ -26,7 +26,7 @@ struct QuestionButton: ButtonStyle {
     
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .frame(minWidth: width, minHeight: height)
+            .frame(minWidth: width, maxWidth: width, minHeight: height, maxHeight: height)
             .font(.system(size: fontSize))
             .foregroundColor(.white)
     }
