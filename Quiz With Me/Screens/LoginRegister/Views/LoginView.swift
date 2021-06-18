@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct LoginView: View {
+    @EnvironmentObject var quizUserWrapper: QuizUserWrapper
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var showAlert = false
@@ -49,8 +51,15 @@ struct LoginView: View {
                                 errorMessage = error.localizedDescription
                                 showAlert = true
                             } else {
-                                withAnimation {
-                                    viewState = .HOME
+                                if let uid = Auth.auth().currentUser?.uid {
+                                    DataManager.shared.getUser(uid: uid).done { response in
+                                        if response != nil {
+                                            quizUserWrapper.quizUser = response!
+                                            withAnimation {
+                                                viewState = .HOME
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
