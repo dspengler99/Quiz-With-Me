@@ -52,12 +52,14 @@ struct QuizMainScreen: View {
                 return
             }
             print(quizUser.gameIDs)
+            
             DataManager.shared.getGames(gameIDs: quizUser.gameIDs).done { response in
                 if let quizGames = response {
                     games = quizGames
                     print("Found \(quizGames.count) games")
                 }
             }
+ 
         }
     }
 

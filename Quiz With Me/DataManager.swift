@@ -178,6 +178,11 @@ class DataManager {
 
     }
     
+    func incrementProgress(gameId: String, playerProgress: String, progress: String) -> Void {
+        let db = Firestore.firestore()
+        db.collection("games").document(gameId).updateData([playerProgress: progress])
+    }
+    
     func createNewGame() -> Promise<QuizGame?> {
         var userIDs: [String] = []
         var ownUID: String = ""
