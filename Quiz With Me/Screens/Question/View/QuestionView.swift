@@ -61,7 +61,9 @@ struct QuestionView: View {
                                         question = response
                                     }
                                 } else {
+                                    progress += 1
                                     DataManager.shared.incrementProgress(gameId: selectedGame, playerProgress: playerProgress, progress: progress)
+                                    print(progress)
                                     viewState = .GAMEOVERVIEW
                                 }
                             }
@@ -84,6 +86,7 @@ struct QuestionView: View {
                                         question = response
                                     }
                                 } else {
+                                    progress += 1
                                     DataManager.shared.incrementProgress(gameId: selectedGame, playerProgress: playerProgress, progress: progress)
                                     viewState = .GAMEOVERVIEW
                                 }
@@ -109,6 +112,7 @@ struct QuestionView: View {
                                         question = response
                                     }
                                 } else {
+                                    progress += 1
                                     DataManager.shared.incrementProgress(gameId: selectedGame, playerProgress: playerProgress, progress: progress)
                                     viewState = .GAMEOVERVIEW
                                 }
@@ -132,6 +136,7 @@ struct QuestionView: View {
                                         question = response
                                     }
                                 } else {
+                                    progress += 1
                                     DataManager.shared.incrementProgress(gameId: selectedGame, playerProgress: playerProgress, progress: progress)
                                     viewState = .GAMEOVERVIEW
                                 }

@@ -34,9 +34,10 @@ struct QuizMainScreen: View {
         self.gameObjects = gameObjects
         self.gameIDs = gameIDs
     }
-
+    
     
     var body: some View {
+        
         Group {
             if let quizGames = games {
                 VStack {
@@ -50,10 +51,10 @@ struct QuizMainScreen: View {
                     .padding()
                     ScrollView(.vertical) {
                         VStack(spacing: 15) {
-                           if gameObjects.count >= 1 {
-                            ForEach(gameIndizes, id: \.self) { index in QuizItemCard(viewState: $viewState, quizGame: gameObjects[index], gameID: gameIDs[index])
+                            if gameObjects.count >= 1 {
+                                ForEach(gameIndizes, id: \.self) { index in QuizItemCard(viewState: $viewState, selectedgame: $selectedGame, quizGame: gameObjects[index], gameID: gameIDs[index])
                                 }
-                           }
+                            }
                         }
                     }
                     ZStack {
@@ -99,15 +100,15 @@ struct QuizMainScreen: View {
             } else {
                 games = [:]
             }
- 
+            
         }
     }
 }
 
 /*
-struct QuizMainScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        QuizMainScreen(viewState: .constant(ViewState.HOME))
-    }
-}
-*/
+ struct QuizMainScreen_Previews: PreviewProvider {
+ static var previews: some View {
+ QuizMainScreen(viewState: .constant(ViewState.HOME))
+ }
+ }
+ */
