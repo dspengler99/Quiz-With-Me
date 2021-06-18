@@ -14,6 +14,7 @@ struct QuizMainScreen: View {
     @State var menuToggeled = false
     @State private var games: [String: QuizGame]? = nil
     @Binding var viewState: ViewState
+    @Binding var selectedGame: String
     
     var body: some View {
         Group {
@@ -27,7 +28,7 @@ struct QuizMainScreen: View {
                         MenuButton(menuToggled: $menuToggeled)
                     }
                     .padding()
-                    QuizListView(viewState: $viewState, quizGames: quizGames)
+                    QuizListView(viewState: $viewState, selectedgame: $selectedGame, quizGames: quizGames)
                     ZStack {
                         LinearGradient(gradient: Gradient(colors: [Color.white.opacity(0.01), Color.white]), startPoint: .top, endPoint: .bottom)
                             .frame(width: .infinity, height: 50, alignment: .center)
@@ -62,8 +63,10 @@ struct QuizMainScreen: View {
 
 }
 
+/*
 struct QuizMainScreen_Previews: PreviewProvider {
     static var previews: some View {
         QuizMainScreen(viewState: .constant(ViewState.HOME))
     }
 }
+*/
