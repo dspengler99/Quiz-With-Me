@@ -145,7 +145,24 @@ class DataManager {
                 }
                 promise.fulfill(gameQuestionIDs)
             }
+        }
     }
+    
+    func getQuestion(questionID: String) -> Promise<QuizQuestion?> {
+        var question: QuizQuestion? = nil
+        return Promise { promise in
+            Firestore.firestore().collection("questions").document(questionID).getDocument() { document, error in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+                do {
+                    question = try document?.data(as: QuizQuestion.self)
+                } catch {
+                    fatalError("This should never happen!")
+                }
+                promise.fulfill(question)
+            }
+        }
     }
     
     private func getUserDocumentID(uid: String) -> Promise<String?> {
@@ -167,13 +184,17 @@ class DataManager {
 
     }
     
+    func incrementProgress(gameId: String, playerProgress: String, progress: Int) -> Void {
+        let db = Firestore.firestore()
+        db.collection("games").document(gameId).updateData([playerProgress: progress])
+    }
+
     func createNewGame() throws -> Promise<(String, QuizGame)?> {
         var userIDs: [String] = []
         var ownUID: String = ""
         var othersUID: String = ""
         var ownUsername: String = ""
         var othersUsername: String = ""
-        var gameQuestionIDs: [String] = []
         var quizGame: QuizGame?
         var gameID: String = ""
         var ownUserDocumentID: String = ""

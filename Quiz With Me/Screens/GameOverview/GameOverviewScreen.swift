@@ -9,18 +9,23 @@ import SwiftUI
 
 struct GameOverviewScreen: View {
     @Binding var viewState: ViewState
+    @Binding var selectedGame: String
+    
     var body: some View {
+        
         ZStack {
             BackgroundView()
             VStack {
-                OverviewView(viewState: $viewState)
+                OverviewView(viewState: $viewState, selectedGame: $selectedGame)
             }
         }
     }
 }
 
-struct GameOverviewScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        GameOverviewScreen(viewState: .constant(ViewState.HOME))
-    }
-}
+/*
+ struct GameOverviewScreen_Previews: PreviewProvider {
+ static var previews: some View {
+ GameOverviewScreen(viewState: .constant(ViewState.HOME))
+ }
+ }
+ */
