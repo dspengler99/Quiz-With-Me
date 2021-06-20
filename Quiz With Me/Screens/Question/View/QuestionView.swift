@@ -26,6 +26,25 @@ struct QuestionView: View {
         return false
     }
     
+    func nextQuestion(selectedGame: String, playerProgress: String, progress: Int, gameQuestionIDs: [String]?) -> Void {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            if(progress < gameQuestionIDs!.count-1) {
+                DataManager.shared.incrementProgress(gameId: selectedGame, playerProgress: playerProgress)
+                answerPicked = false
+                self.progress = progress + 1
+                _ = DataManager.shared.getQuestion(questionID: gameQuestionIDs![self.progress]).done { response in
+                    if let newQuestion = response {
+                        newQuestion.answers.shuffle()
+                        self.question = newQuestion
+                    }
+                }
+            } else {
+                DataManager.shared.incrementProgress(gameId: selectedGame, playerProgress: playerProgress)
+                viewState = .GAMEOVERVIEW
+            }
+        }
+    }
+    
     var body: some View {
         Group {
             EmptyView()
@@ -59,24 +78,7 @@ struct QuestionView: View {
                                 rightAnswer = 0
                             }
                             answerPicked = true
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                if(progress < gameQuestionIds!.count-1) {
-                                    progress += 1
-                                    DataManager.shared.incrementProgress(gameId: selectedGame, playerProgress: playerProgress, progress: progress)
-                                    answerPicked = false
-                                    DataManager.shared.getQuestion(questionID: self.gameQuestionIds![self.progress]).done { response in
-                                        if let newQuestion = response {
-                                            newQuestion.answers.shuffle()
-                                            question = newQuestion
-                                        }
-                                    }
-                                } else {
-                                    progress += 1
-                                    DataManager.shared.incrementProgress(gameId: selectedGame, playerProgress: playerProgress, progress: progress)
-                                    print(progress)
-                                    viewState = .GAMEOVERVIEW
-                                }
-                            }
+                            nextQuestion(selectedGame: selectedGame, playerProgress: playerProgress, progress: progress, gameQuestionIDs: gameQuestionIds)
                         }) {
                             Text(gameQuestion.answers[0])
                                 .frame(width: 150, height: 120)
@@ -93,23 +95,7 @@ struct QuestionView: View {
                                 DataManager.shared.incrementPoints(gameId: selectedGame, playerPoints: playerPoints)
                             }
                             answerPicked = true
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                if(progress < gameQuestionIds!.count-1) {
-                                    progress += 1
-                                    DataManager.shared.incrementProgress(gameId: selectedGame, playerProgress: playerProgress, progress: progress)
-                                    answerPicked = false
-                                    DataManager.shared.getQuestion(questionID: self.gameQuestionIds![self.progress]).done { response in
-                                        if let newQuestion = response {
-                                            newQuestion.answers.shuffle()
-                                            question = newQuestion
-                                        }
-                                    }
-                                } else {
-                                    progress += 1
-                                    DataManager.shared.incrementProgress(gameId: selectedGame, playerProgress: playerProgress, progress: progress)
-                                    viewState = .GAMEOVERVIEW
-                                }
-                            }
+                            nextQuestion(selectedGame: selectedGame, playerProgress: playerProgress, progress: progress, gameQuestionIDs: gameQuestionIds)
                         }) {
                             Text(gameQuestion.answers[1])
                                 .frame(width: 150, height: 120)
@@ -128,23 +114,7 @@ struct QuestionView: View {
                                 DataManager.shared.incrementPoints(gameId: selectedGame, playerPoints: playerPoints)
                             }
                             answerPicked = true
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                if(progress < gameQuestionIds!.count-1) {
-                                    progress += 1
-                                    DataManager.shared.incrementProgress(gameId: selectedGame, playerProgress: playerProgress, progress: progress)
-                                    answerPicked = false
-                                    DataManager.shared.getQuestion(questionID: self.gameQuestionIds![self.progress]).done { response in
-                                        if let newQuestion = response {
-                                            newQuestion.answers.shuffle()
-                                            question = newQuestion
-                                        }
-                                    }
-                                } else {
-                                    progress += 1
-                                    DataManager.shared.incrementProgress(gameId: selectedGame, playerProgress: playerProgress, progress: progress)
-                                    viewState = .GAMEOVERVIEW
-                                }
-                            }
+                            nextQuestion(selectedGame: selectedGame, playerProgress: playerProgress, progress: progress, gameQuestionIDs: gameQuestionIds)
                         }) {
                             Text(gameQuestion.answers[2])
                                 .frame(width: 150, height: 120)
@@ -161,23 +131,7 @@ struct QuestionView: View {
                                 DataManager.shared.incrementPoints(gameId: selectedGame, playerPoints: playerPoints)
                             }
                             answerPicked = true
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                if(progress < gameQuestionIds!.count-1) {
-                                    progress += 1
-                                    DataManager.shared.incrementProgress(gameId: selectedGame, playerProgress: playerProgress, progress: progress  )
-                                    answerPicked = false
-                                    DataManager.shared.getQuestion(questionID: self.gameQuestionIds![self.progress]).done { response in
-                                        if let newQuestion = response {
-                                            newQuestion.answers.shuffle()
-                                            question = newQuestion
-                                        }
-                                    }
-                                } else {
-                                    progress += 1
-                                    DataManager.shared.incrementProgress(gameId: selectedGame, playerProgress: playerProgress, progress: progress)
-                                    viewState = .GAMEOVERVIEW
-                                }
-                            }
+                            nextQuestion(selectedGame: selectedGame, playerProgress: playerProgress, progress: progress, gameQuestionIDs: gameQuestionIds)
                         }) {
                             Text(gameQuestion.answers[3])
                                 .frame(width: 150, height: 120)
@@ -195,21 +149,21 @@ struct QuestionView: View {
             }
         }
         .onAppear {
-            DataManager.shared.getGame(gameID: selectedGame).done { (response: (QuizGame?, String?)) in
+            _ = DataManager.shared.getGame(gameID: selectedGame).done { (response: (QuizGame?, String?)) in
                 if response.0 == nil || response.1 == nil {
                     print("Es ist ein Fehler aufgetreten")
                 }
                 self.gameQuestionIds = response.0?.questionIDs
                 if(checkPlayer(userName: quizUserWrapper.quizUser!.username, nameP1: response.0!.nameP1)) {
-                    self.progress = Int(response.0!.progressP1)
+                    self.progress = response.0!.progressP1
                     self.playerProgress = "progressP1"
                     self.playerPoints = "pointsP1"
                 } else {
-                    self.progress = Int(response.0!.progressP2)
+                    self.progress = response.0!.progressP2
                     self.playerProgress = "progressP2"
                     self.playerPoints = "pointsP2"
                 }
-                DataManager.shared.getQuestion(questionID: self.gameQuestionIds![self.progress]).done { response in
+                _ = DataManager.shared.getQuestion(questionID: self.gameQuestionIds![self.progress]).done { response in
                     if let newQuestion = response {
                         newQuestion.answers.shuffle()
                         question = newQuestion
