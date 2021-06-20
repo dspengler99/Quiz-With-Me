@@ -45,6 +45,10 @@ struct QuestionView: View {
         }
     }
     
+    func getRightAnswerIndex(question: QuizQuestion?) -> Int {
+        return (question?.answers.firstIndex(of: question!.rightAnswer))!
+    }
+    
     var body: some View {
         Group {
             EmptyView()
@@ -75,8 +79,8 @@ struct QuestionView: View {
                         Button(action: {
                             if(gameQuestion.checkAnswer(answer: gameQuestion.answers[0])) {
                                 DataManager.shared.incrementPoints(gameId: selectedGame, playerPoints: playerPoints)
-                                rightAnswer = 0
                             }
+                            rightAnswer = getRightAnswerIndex(question: question)
                             answerPicked = true
                             nextQuestion(selectedGame: selectedGame, playerProgress: playerProgress, progress: progress, gameQuestionIDs: gameQuestionIds)
                         }) {
@@ -91,9 +95,9 @@ struct QuestionView: View {
                         
                         Button(action:  {
                             if(gameQuestion.checkAnswer(answer: gameQuestion.answers[1])) {
-                                rightAnswer = 1
                                 DataManager.shared.incrementPoints(gameId: selectedGame, playerPoints: playerPoints)
                             }
+                            rightAnswer = getRightAnswerIndex(question: question)
                             answerPicked = true
                             nextQuestion(selectedGame: selectedGame, playerProgress: playerProgress, progress: progress, gameQuestionIDs: gameQuestionIds)
                         }) {
@@ -110,9 +114,9 @@ struct QuestionView: View {
                     HStack {
                         Button(action: {
                             if(gameQuestion.checkAnswer(answer: gameQuestion.answers[2])) {
-                                rightAnswer = 2
                                 DataManager.shared.incrementPoints(gameId: selectedGame, playerPoints: playerPoints)
                             }
+                            rightAnswer = getRightAnswerIndex(question: question)
                             answerPicked = true
                             nextQuestion(selectedGame: selectedGame, playerProgress: playerProgress, progress: progress, gameQuestionIDs: gameQuestionIds)
                         }) {
@@ -127,9 +131,9 @@ struct QuestionView: View {
                         
                         Button(action: {
                             if(gameQuestion.checkAnswer(answer: gameQuestion.answers[3])) {
-                                rightAnswer = 3
                                 DataManager.shared.incrementPoints(gameId: selectedGame, playerPoints: playerPoints)
                             }
+                            rightAnswer = getRightAnswerIndex(question: question)
                             answerPicked = true
                             nextQuestion(selectedGame: selectedGame, playerProgress: playerProgress, progress: progress, gameQuestionIDs: gameQuestionIds)
                         }) {
