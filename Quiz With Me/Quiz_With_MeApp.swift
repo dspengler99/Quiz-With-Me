@@ -22,12 +22,12 @@ struct Quiz_With_MeApp: App {
         WindowGroup {
             Group {
                 if isFinished {
-                    Main(viewState: AuthenticationManager.shared.foundCredentials() ? .PROFILE : .LOGIN)
+                    Main(viewState: AuthenticationManager.shared.foundCredentials() ? .HOME : .LOGIN)
                     .environmentObject(quizUserWrapper)
                 }
             }.onAppear {
                 if let uid = Auth.auth().currentUser?.uid {
-                    DataManager.shared.getUser(uid: uid).done {
+                    _ = DataManager.shared.getUser(uid: uid).done {
                         response in
                         if let quizUser = response {
                             quizUserWrapper.quizUser = quizUser

@@ -80,7 +80,7 @@ class DataManager {
         var fetchedGames: [String: QuizGame] = [:]
         return Promise { promise in
             for index in 0..<gameIDs.count {
-                self.getGame(gameID: gameIDs[index]).done { (response: (QuizGame?, String?)) in
+                _ = self.getGame(gameID: gameIDs[index]).done { (response: (QuizGame?, String?)) in
                     if response.0 == nil || response.1 == nil {
                         promise.fulfill(nil)
                     }
@@ -169,8 +169,8 @@ class DataManager {
         var documentID: String? = nil
         return Promise { promise in
             Firestore.firestore().collection("users").whereField("userID", isEqualTo: uid).getDocuments() { querySnapshot, error in
-                        if let _ = error {
-                            print(error?.localizedDescription)
+                        if let error = error {
+                            print(error.localizedDescription)
                         }
                         if let documents = querySnapshot?.documents {
                             if documents.count != 1 {
@@ -201,7 +201,7 @@ class DataManager {
         var othersUserDocumentID: String = ""
         
         return Promise { promise in
-            getUserIDs().then { (response: [String]?) -> Promise in
+            _ = getUserIDs().then { (response: [String]?) -> Promise in
                 if response == nil {
                     throw GameCreationError.gameCreationFailed("Failed to get all userIDs from the DB.")
                 }
@@ -255,7 +255,7 @@ class DataManager {
                 }
                 ownUserDocumentID = response!
                 return self.getUserDocumentID(uid: othersUID)
-            }.done { (response: String?) in
+            }.done { (response: String?) -> Void in
                 if response == nil {
                     throw GameCreationError.gameCreationFailed("Couldn't get documentID from opponent from DB.")
                 }

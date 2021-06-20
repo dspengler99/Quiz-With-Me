@@ -57,7 +57,7 @@ struct QuestionView: View {
                                     progress += 1
                                     DataManager.shared.incrementProgress(gameId: selectedGame, playerProgress: playerProgress, progress: progress)
                                     answerPicked = false
-                                    DataManager.shared.getQuestion(questionID: self.gameQuestionIds![self.progress]).done { response in
+                                    _ = DataManager.shared.getQuestion(questionID: self.gameQuestionIds![self.progress]).done { response in
                                         if let newQuestion = response {
                                             newQuestion.answers.shuffle()
                                             question = newQuestion
@@ -87,7 +87,7 @@ struct QuestionView: View {
                                     progress += 1
                                     DataManager.shared.incrementProgress(gameId: selectedGame, playerProgress: playerProgress, progress: progress)
                                     answerPicked = false
-                                    DataManager.shared.getQuestion(questionID: self.gameQuestionIds![self.progress]).done { response in
+                                    _ = DataManager.shared.getQuestion(questionID: self.gameQuestionIds![self.progress]).done { response in
                                         if let newQuestion = response {
                                             newQuestion.answers.shuffle()
                                             question = newQuestion
@@ -118,7 +118,7 @@ struct QuestionView: View {
                                     progress += 1
                                     DataManager.shared.incrementProgress(gameId: selectedGame, playerProgress: playerProgress, progress: progress)
                                     answerPicked = false
-                                    DataManager.shared.getQuestion(questionID: self.gameQuestionIds![self.progress]).done { response in
+                                    _ = DataManager.shared.getQuestion(questionID: self.gameQuestionIds![self.progress]).done { response in
                                         if let newQuestion = response {
                                             newQuestion.answers.shuffle()
                                             question = newQuestion
@@ -147,7 +147,7 @@ struct QuestionView: View {
                                     progress += 1
                                     DataManager.shared.incrementProgress(gameId: selectedGame, playerProgress: playerProgress, progress: progress  )
                                     answerPicked = false
-                                    DataManager.shared.getQuestion(questionID: self.gameQuestionIds![self.progress]).done { response in
+                                    _ = DataManager.shared.getQuestion(questionID: self.gameQuestionIds![self.progress]).done { response in
                                         if let newQuestion = response {
                                             newQuestion.answers.shuffle()
                                             question = newQuestion
@@ -176,7 +176,7 @@ struct QuestionView: View {
             }
         }
         .onAppear {
-            DataManager.shared.getGame(gameID: selectedGame).done { (response: (QuizGame?, String?)) in
+            _ = DataManager.shared.getGame(gameID: selectedGame).done { (response: (QuizGame?, String?)) in
                 if response.0 == nil || response.1 == nil {
                     print("Es ist ein Fehler aufgetreten")
                 }
@@ -188,7 +188,7 @@ struct QuestionView: View {
                     self.progress = Int(response.0!.progressP2)
                     self.playerProgress = "progressP2"
                 }
-                DataManager.shared.getQuestion(questionID: self.gameQuestionIds![self.progress]).done { response in
+                _ = DataManager.shared.getQuestion(questionID: self.gameQuestionIds![self.progress]).done { response in
                     if let newQuestion = response {
                         newQuestion.answers.shuffle()
                         question = newQuestion
