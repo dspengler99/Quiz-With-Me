@@ -71,7 +71,7 @@ struct QuestionView: View {
                                     .multilineTextAlignment(.center),
                                  alignment: .center)
                     
-                    Text("Frage \(progress + 1)/10")
+                    Text("Frage \(progress + 1)/\(gameQuestionIds!.count)")
                         .padding(10)
                         .foregroundColor(Color.primaryButtonDefaultBackground)
                     
