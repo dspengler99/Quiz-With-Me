@@ -22,7 +22,7 @@ struct Quiz_With_MeApp: App {
         WindowGroup {
             Group {
                 if isFinished {
-                    Main(viewState: AuthenticationManager.shared.foundCredentials() ? .HOME : .LOGIN)
+                    Main(viewState: AuthenticationManager.shared.foundCredentials() ? .PROFILE : .LOGIN)
                     .environmentObject(quizUserWrapper)
                 }
             }.onAppear {

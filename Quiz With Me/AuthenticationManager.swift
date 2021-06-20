@@ -64,4 +64,11 @@ class AuthenticationManager {
         }
         return true
     }
+    
+    func getEMail() -> String {
+        guard let email = Auth.auth().currentUser?.email else {
+            return ""
+        }
+        return email
+    }
 }
