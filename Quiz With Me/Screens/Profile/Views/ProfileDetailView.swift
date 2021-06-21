@@ -10,17 +10,20 @@ import SwiftUI
 import SwiftUI
 
  struct ProfileDetailView: View {
+    var totalGames: Int
+    var wonGames: Int
+    
      var body: some View {
          VStack(alignment: .leading) {
              Text("Anzahl der Spiele:")
                  .font(.title2)
-             Text("5")
+             Text("\(totalGames)")
                  .foregroundColor(.red)
                  .font(.title)
              Divider()
              Text("Anzahl der erfolgreichen Spiele:")
                  .font(.title2)
-             Text("1")
+             Text("\(wonGames)")
                  .foregroundColor(.green)
                  .font(.title)
          }
@@ -30,6 +33,6 @@ import SwiftUI
 
  struct ProfileDetailView_Previews: PreviewProvider {
      static var previews: some View {
-         ProfileDetailView()
+         ProfileDetailView(totalGames: 5, wonGames: 1)
      }
  }
