@@ -55,7 +55,7 @@ struct OverviewView: View {
                                 HStack {
                                     Text("Richtige Antworten:")
                                     Spacer()
-                                    Text("2/10")
+                                    Text((isPlayer1 ? String(quizGame.pointsP1) : String(quizGame.pointsP2)) + "/\(quizGame.questionIDs.count)")
                                 }
                                 .padding(.bottom, 5)
                             }

@@ -184,9 +184,14 @@ class DataManager {
 
     }
     
-    func incrementProgress(gameId: String, playerProgress: String, progress: Int) -> Void {
+    func incrementProgress(gameId: String, playerProgress: String) -> Void {
         let db = Firestore.firestore()
-        db.collection("games").document(gameId).updateData([playerProgress: progress])
+        db.collection("games").document(gameId).updateData([playerProgress: FirebaseFirestore.FieldValue.increment(Int64(1))])
+    }
+    
+    func incrementPoints(gameId: String, playerPoints: String) -> Void {
+        let db = Firestore.firestore()
+        db.collection("games").document(gameId).updateData([playerPoints: FirebaseFirestore.FieldValue.increment(Int64(1))])
     }
 
     func createNewGame() throws -> Promise<(String, QuizGame)?> {
