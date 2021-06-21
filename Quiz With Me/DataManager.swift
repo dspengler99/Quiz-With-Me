@@ -10,7 +10,7 @@ import FirebaseFirestoreSwift
 import PromiseKit
 
 // Needed to send an error message when the creation of a new game fails
-enum GameCreationError: Error {
+enum DataManagerError: Error {
     case gameCreationFailed(String)
 }
 
@@ -27,6 +27,7 @@ class DataManager {
         let db = Firestore.firestore()
         do {
             _ = try db.collection("users").addDocument(from: user)
+            self.addUserToList(uid: user.userID)
         } catch {
             fatalError("Unable to add user to database: \(error.localizedDescription)")
         }
@@ -44,13 +45,31 @@ class DataManager {
                     if documents.count == 1 {
                         do {
                             quizUser = try documents[0].data(as: QuizUser.self)
-                            self.addUserToList(uid: uid)
                         } catch {
                             fatalError("Could not convert user to user object. This should never happen.")
                         }
                     }
                 }
                 promise.fulfill(quizUser)
+            }
+        }
+    }
+    
+    func usernameAlreadyExists(username: String) -> Promise<Bool> {
+        return Promise { promise in
+            Firestore.firestore().collection("users").whereField("username", isEqualTo: username).getDocuments() { querySnapshot, error in
+                if let error = error {
+                    print(error.localizedDescription)
+                    promise.fulfill(true)
+                    return
+                }
+                if let documents = querySnapshot?.documents {
+                    if documents.count != 0 {
+                        promise.fulfill(true)
+                    } else {
+                        promise.fulfill(false)
+                    }
+                }
             }
         }
     }
@@ -208,18 +227,18 @@ class DataManager {
         return Promise { promise in
             _ = getUserIDs().then { (response: [String]?) -> Promise in
                 if response == nil {
-                    throw GameCreationError.gameCreationFailed("Failed to get all userIDs from the DB.")
+                    throw DataManagerError.gameCreationFailed("Failed to get all userIDs from the DB.")
                 }
                 userIDs = response!
                 
                 if let ownID = Auth.auth().currentUser?.uid {
                     ownUID = ownID
                 } else {
-                    throw GameCreationError.gameCreationFailed("Method was called, though no user is signed in.")
+                    throw DataManagerError.gameCreationFailed("Method was called, though no user is signed in.")
                 }
                 let ownIndex = userIDs.firstIndex(of: ownUID)
                 if ownIndex == nil {
-                    throw GameCreationError.gameCreationFailed("Own userID was not included in all userIDs.")
+                    throw DataManagerError.gameCreationFailed("Own userID was not included in all userIDs.")
                 }
                 var choosenIndex: Int = Int.random(in: 0..<userIDs.count)
                 while(ownIndex == choosenIndex) {
@@ -229,20 +248,20 @@ class DataManager {
                 return self.getUser(uid: ownUID)
             }.then { (response: QuizUser?) -> Promise in
                 if response == nil {
-                    throw GameCreationError.gameCreationFailed("Couldn't get own user.")
+                    throw DataManagerError.gameCreationFailed("Couldn't get own user.")
                 }
                 ownUsername = response!.username
                 return self.getUser(uid: othersUID)
             }.then { (response: QuizUser?) -> Promise in
                 if response == nil {
-                    throw GameCreationError.gameCreationFailed("Couldn't get opponent user.")
+                    throw DataManagerError.gameCreationFailed("Couldn't get opponent user.")
                 }
                 othersUsername = response!.username
                 quizGame = QuizGame(nameP1: ownUsername, nameP2: othersUsername)
                 return self.getGameQuestions()
             }.then { (response: [String]?) -> Promise in
                 if quizGame == nil || response == nil {
-                    throw GameCreationError.gameCreationFailed("Failed to get questions for the game.")
+                    throw DataManagerError.gameCreationFailed("Failed to get questions for the game.")
                 }
                 quizGame?.questionIDs = response!
                 
@@ -251,18 +270,18 @@ class DataManager {
                     let document: DocumentReference = try Firestore.firestore().collection("games").addDocument(from: quizGame)
                     gameID = document.documentID
                 } catch {
-                    throw GameCreationError.gameCreationFailed("Couldn't upload game to DB.")
+                    throw DataManagerError.gameCreationFailed("Couldn't upload game to DB.")
                 }
                 return self.getUserDocumentID(uid: ownUID)
             }.then { (response: String?) -> Promise in
                 if response == nil {
-                    throw GameCreationError.gameCreationFailed("Couldn't get documentID from own user from DB")
+                    throw DataManagerError.gameCreationFailed("Couldn't get documentID from own user from DB")
                 }
                 ownUserDocumentID = response!
                 return self.getUserDocumentID(uid: othersUID)
             }.done { (response: String?) -> Void in
                 if response == nil {
-                    throw GameCreationError.gameCreationFailed("Couldn't get documentID from opponent from DB.")
+                    throw DataManagerError.gameCreationFailed("Couldn't get documentID from opponent from DB.")
                 }
                 othersUserDocumentID = response!
                 Firestore.firestore().collection("users").document(ownUserDocumentID).updateData([
@@ -274,7 +293,7 @@ class DataManager {
                 if let game = quizGame {
                     promise.fulfill((gameID, game))
                 } else {
-                    throw GameCreationError.gameCreationFailed("The quiz game was nil after the whole process of creation")
+                    throw DataManagerError.gameCreationFailed("The quiz game was nil after the whole process of creation")
                 }
             }
         }

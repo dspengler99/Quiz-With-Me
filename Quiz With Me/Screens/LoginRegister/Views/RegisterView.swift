@@ -15,6 +15,7 @@ struct RegisterView: View {
     @State private var password: String = ""
     @State private var repeatedPassword: String = ""
     @State private var showAlert = false
+    @State private var usernameInUse = false
     @State private var errorMessage: String = ""
     
     // Needed for handling the shown view
@@ -37,6 +38,9 @@ struct RegisterView: View {
                         TextField("Nutzername", text: $username)
                         .background(Color.white)
                             .padding(.trailing, 30)
+                    }
+                    .alert(isPresented: $usernameInUse) {
+                        Alert(title: Text("Nutzername bereits vergeben"), message: Text("Der von dir gewählte Nutzername ist bereits vergeben."), dismissButton: .default(Text("Ok")))
                     }
                     HStack {
                         Text("E-Mail")
@@ -64,17 +68,23 @@ struct RegisterView: View {
                         .padding(.trailing, 30)
                     }
                     Button("Konto erstellen") {
-                        AuthenticationManager.shared.signupWith(username: username, email: email, and: password) { result, error in
-                            if let error = error {
-                                errorMessage = error.localizedDescription
-                                showAlert = true
-                            } else {
-                                if let uid = Auth.auth().currentUser?.uid {
-                                    _ = DataManager.shared.getUser(uid: uid).done { response in
-                                        if response != nil {
-                                            quizUserWrapper.quizUser = response!
-                                            withAnimation {
-                                                viewState = .HOME
+                        _ = DataManager.shared.usernameAlreadyExists(username: username).done { response in
+                            guard response == false else {
+                                usernameInUse = true
+                                return
+                            }
+                            AuthenticationManager.shared.signupWith(username: username, email: email, and: password) { result, error in
+                                if let error = error {
+                                    errorMessage = error.localizedDescription
+                                    showAlert = true
+                                } else {
+                                    if let uid = Auth.auth().currentUser?.uid {
+                                        _ = DataManager.shared.getUser(uid: uid).done { response in
+                                            if response != nil {
+                                                quizUserWrapper.quizUser = response!
+                                                withAnimation {
+                                                    viewState = .HOME
+                                                }
                                             }
                                         }
                                     }
