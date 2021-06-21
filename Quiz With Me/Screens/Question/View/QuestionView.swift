@@ -115,6 +115,7 @@ struct QuestionView: View {
                         Button(action: {
                             if(gameQuestion.checkAnswer(answer: gameQuestion.answers[2])) {
                                 DataManager.shared.incrementPoints(gameId: selectedGame, playerPoints: playerPoints)
+
                             }
                             rightAnswer = getRightAnswerIndex(question: question)
                             answerPicked = true

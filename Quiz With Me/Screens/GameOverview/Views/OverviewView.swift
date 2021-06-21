@@ -22,8 +22,7 @@ struct OverviewView: View {
     
     var body: some View {
         Group {
-            EmptyView()
-            if let quizGame = game, let quizUser = quizUserWrapper.quizUser {
+            if let quizGame = game, let _ = quizUserWrapper.quizUser {
                 VStack {
                     HStack {
                         BackButton(viewState: $viewState, changeView: .HOME)
@@ -101,7 +100,7 @@ struct OverviewView: View {
             }
         }.onAppear {
             print(selectedGame)
-            DataManager.shared.getGame(gameID: selectedGame).done { (response: (QuizGame?, String?)) in
+            _ = DataManager.shared.getGame(gameID: selectedGame).done { (response: (QuizGame?, String?)) in
                 if response.0 == nil || response.1 == nil {
                     print("Es ist ein Fehler aufgetreten")
                 }

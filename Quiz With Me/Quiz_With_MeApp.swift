@@ -27,7 +27,7 @@ struct Quiz_With_MeApp: App {
                 }
             }.onAppear {
                 if let uid = Auth.auth().currentUser?.uid {
-                    DataManager.shared.getUser(uid: uid).done {
+                    _ = DataManager.shared.getUser(uid: uid).done {
                         response in
                         if let quizUser = response {
                             quizUserWrapper.quizUser = quizUser

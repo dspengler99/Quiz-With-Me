@@ -65,7 +65,7 @@ struct QuizMainScreen: View {
                             .frame(width: .infinity, height: 50, alignment: .center)
                         Button("Neues Spiel") {
                             do {
-                                try DataManager.shared.createNewGame().done { (response: (String, QuizGame)?) in
+                                _ = try DataManager.shared.createNewGame().done { (response: (String, QuizGame)?) in
                                     if let returnedGame = response {
                                         var newGames = quizGames
                                         newGames[returnedGame.0] = returnedGame.1
@@ -89,12 +89,12 @@ struct QuizMainScreen: View {
             guard let quizUser = quizUserWrapper.quizUser else  {
                 return
             }
-            DataManager.shared.getUser(uid: quizUser.userID).done {response in
+            _ = DataManager.shared.getUser(uid: quizUser.userID).done {response in
                 guard let quizUser = response else {
                     return
                 }
                 if quizUser.gameIDs.count != 0 {
-                    DataManager.shared.getGames(gameIDs: quizUser.gameIDs).done { response in
+                    _ = DataManager.shared.getGames(gameIDs: quizUser.gameIDs).done { response in
                         if let quizGames = response {
                             games = quizGames
                             splitGameDict()

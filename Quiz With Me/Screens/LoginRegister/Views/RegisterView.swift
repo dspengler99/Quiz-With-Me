@@ -70,7 +70,7 @@ struct RegisterView: View {
                                 showAlert = true
                             } else {
                                 if let uid = Auth.auth().currentUser?.uid {
-                                    DataManager.shared.getUser(uid: uid).done { response in
+                                    _ = DataManager.shared.getUser(uid: uid).done { response in
                                         if response != nil {
                                             quizUserWrapper.quizUser = response!
                                             withAnimation {
