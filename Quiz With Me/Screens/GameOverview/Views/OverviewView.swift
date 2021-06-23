@@ -22,10 +22,11 @@ struct OverviewView: View {
     
     var body: some View {
         Group {
+            EmptyView()
             if let quizGame = game, let _ = quizUserWrapper.quizUser {
                 VStack {
                     HStack {
-                        BackButton(viewState: $viewState, changeView: .HOME)
+                        BackButton(viewState: $viewState, changeView: .HOME, color: .blue)
                         Spacer()
                     }
                     Spacer()

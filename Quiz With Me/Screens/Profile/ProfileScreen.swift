@@ -9,40 +9,33 @@ import SwiftUI
 
 struct ProfileScreen: View {
     @Binding var viewState: ViewState
-    
     @EnvironmentObject var quizUserWrapper: QuizUserWrapper
     @State private var isLoading = true
-    
     @State private var email = AuthenticationManager.shared.getEMail()
     
     var body: some View {
-
+        
         Group {
+            EmptyView()
             if let quizUser = quizUserWrapper.quizUser, !isLoading {
-                VStack(alignment: .leading) {
+                VStack() {
                     ZStack {
-                        Rectangle()
-                            .frame(width: .infinity, height: 150, alignment: .top)
-                            .foregroundColor(.blue)
+                        BackgroundView()
                         VStack {
-                            HStack {
-                                Text(quizUser.username)
-                                    .font(.title)
+                            HStack() {
+                                BackButton(viewState: $viewState, changeView: .HOME, color: .white)
                                 Spacer()
                             }
-                            HStack {
-                                Text(email)
-                                Spacer()
-                            }
+                            Spacer()
                         }
                         .padding()
+                        AvatarImage(userShortname: String(quizUser.username.prefix(2)))
+                            .offset(y: 20)
+                            .padding(.top, 20)
                     }
-                    AvatarImage()
-                    ProfileDetailView(totalGames: quizUser.totalGames, wonGames: quizUser.wonGames)
-                        .padding(.top, 40)
+                    ProfileDetailView(name: quizUser.username, email: email, totalGames: quizUser.totalGames, wonGames: quizUser.wonGames)
                     Spacer()
                 }
-                .edgesIgnoringSafeArea(.top)
             } else {
                 ProgressView()
             }
@@ -59,11 +52,12 @@ struct ProfileScreen: View {
                 isLoading = false
             }
         }
-     }
- }
+    }
+}
 
- struct ProfileScreen_Previews: PreviewProvider {
-     static var previews: some View {
+struct ProfileScreen_Previews: PreviewProvider {
+    static var previews: some View {
         ProfileScreen(viewState: .constant(.PROFILE))
-     }
- }
+            .environmentObject(QuizUserWrapper())
+    }
+}

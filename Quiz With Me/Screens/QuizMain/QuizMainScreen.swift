@@ -45,11 +45,11 @@ struct QuizMainScreen: View {
             fatalError("There should be loaded a user for this operation")
             return
         }
-        var othersUsername: String = quizUser.username == gameObjects[index].nameP1 ? gameObjects[index].nameP2 : gameObjects[index].nameP1
+        let othersUsername: String = quizUser.username == gameObjects[index].nameP1 ? gameObjects[index].nameP2 : gameObjects[index].nameP1
         var ownUserHasWon: Bool? = quizUser.username == gameObjects[index].nameP1 ? gameObjects[index].pointsP1 > gameObjects[index].pointsP2 : gameObjects[index].pointsP2 > gameObjects[index].pointsP1
         ownUserHasWon = gameObjects[index].pointsP1 == gameObjects[index].pointsP2 ? nil : ownUserHasWon
-        var ownPoints: Int = quizUser.username == gameObjects[index].nameP1 ? gameObjects[index].pointsP1 : gameObjects[index].pointsP2
-        var othersPoints: Int = quizUser.username == gameObjects[index].nameP1 ? gameObjects[index].pointsP2 : gameObjects[index].pointsP1
+        let ownPoints: Int = quizUser.username == gameObjects[index].nameP1 ? gameObjects[index].pointsP1 : gameObjects[index].pointsP2
+        let othersPoints: Int = quizUser.username == gameObjects[index].nameP1 ? gameObjects[index].pointsP2 : gameObjects[index].pointsP1
         DataManager.shared.updateStatistics(userID: quizUser.userID, hasWon: ownUserHasWon)
         finishedGameInformation = (othersUsername, ownUserHasWon, ownPoints, othersPoints)
     }
@@ -109,6 +109,7 @@ struct QuizMainScreen: View {
     var body: some View {
         
         Group {
+            EmptyView()
             if let quizGames = games, let quizUser = quizUserWrapper.quizUser{
                 VStack {
                     HStack(alignment: .top) {
@@ -153,7 +154,7 @@ struct QuizMainScreen: View {
                         .buttonStyle(PrimaryButton(width: 300, height: 50, fontSize: 15))
                     }
                 }
-                .overlay(SideMenu(menuToggled: $menuToggeled))
+                .overlay(SideMenu(menuToggled: $menuToggeled, viewState: $viewState))
             } else {
                 Text("Loading...")
             }

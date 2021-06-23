@@ -55,7 +55,7 @@ struct QuestionView: View {
             if let gameQuestion = question {
                 VStack {
                     HStack {
-                        BackButton(viewState: $viewState, changeView: .HOME)
+                        BackButton(viewState: $viewState, changeView: .HOME, color: .blue)
                         Spacer()
                     }
                     .padding()

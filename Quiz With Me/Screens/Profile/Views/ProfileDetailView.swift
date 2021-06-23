@@ -7,14 +7,25 @@
 
 import SwiftUI
 
-import SwiftUI
-
  struct ProfileDetailView: View {
+    var name: String
+    var email: String
     var totalGames: Int
     var wonGames: Int
     
      var body: some View {
          VStack(alignment: .leading) {
+            HStack {
+                Text(name)
+                    .font(.title)
+                Spacer()
+            }
+            HStack {
+                Text(email)
+                    .font(.title2)
+                Spacer()
+            }
+            .padding(.bottom, 30)
              Text("Anzahl der Spiele:")
                  .font(.title2)
              Text("\(totalGames)")
@@ -33,6 +44,6 @@ import SwiftUI
 
  struct ProfileDetailView_Previews: PreviewProvider {
      static var previews: some View {
-         ProfileDetailView(totalGames: 5, wonGames: 1)
+        ProfileDetailView(name: "Test", email: "Test@email.de", totalGames: 5, wonGames: 1)
      }
  }
