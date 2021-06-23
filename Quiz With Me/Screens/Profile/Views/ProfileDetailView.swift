@@ -37,6 +37,7 @@ import SwiftUI
              Text("\(wonGames)")
                  .foregroundColor(.green)
                  .font(.title)
+            Spacer()
          }
          .padding()
      }

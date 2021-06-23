@@ -29,6 +29,6 @@ struct PrimaryButton: ButtonStyle {
             .font(.system(size: fontSize))
             .background(getButtonColor(pressed: configuration.isPressed, enabled: isEnabled))
             .foregroundColor(.white)
-            .cornerRadius(20)
+            .cornerRadius(15)
     }
 }

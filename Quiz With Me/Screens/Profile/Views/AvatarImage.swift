@@ -13,8 +13,8 @@ struct AvatarImage: View {
     var body: some View {
         VStack {
             Text(userShortname)
-                .frame(width: 220, height: 220, alignment: .center)
-                .font(.system(size: 100))
+                .frame(width: 200, height: 200, alignment: .center)
+                .font(.system(size: 80))
                 .foregroundColor(.white)
                 .padding()
                 .background(Color.blue)

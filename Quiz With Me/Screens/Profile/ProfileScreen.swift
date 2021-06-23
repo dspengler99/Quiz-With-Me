@@ -30,11 +30,10 @@ struct ProfileScreen: View {
                         }
                         .padding()
                         AvatarImage(userShortname: String(quizUser.username.prefix(2)))
-                            .offset(y: 20)
-                            .padding(.top, 20)
+                            .offset(y: 15)
+                            .padding(.top, 15)
                     }
                     ProfileDetailView(name: quizUser.username, email: email, totalGames: quizUser.totalGames, wonGames: quizUser.wonGames)
-                    Spacer()
                 }
             } else {
                 ProgressView()
