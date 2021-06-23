@@ -121,7 +121,7 @@ struct QuizMainScreen: View {
                     }
                     .padding()
                     ScrollView(.vertical) {
-                        VStack(spacing: 15) {
+                        VStack() {
                             if gameObjects.count >= 1 {
                                 ForEach(gameIndizes, id: \.self) { index in QuizItemCard(viewState: $viewState, selectedGame: $selectedGame, quizGame: gameObjects[index], gameID: gameIDs[index])
                                 }
@@ -136,8 +136,8 @@ struct QuizMainScreen: View {
                     }
                     ZStack {
                         LinearGradient(gradient: Gradient(colors: [Color.white.opacity(0.01), Color.white]), startPoint: .top, endPoint: .bottom)
-                            .frame(width: .infinity, height: 50, alignment: .center)
-                            .offset(x: 0, y: -58)
+                            .frame(width: .infinity, height: 15, alignment: .center)
+                            .offset(x: 0, y: -48)
                         Color.white
                             .frame(width: .infinity, height: 50, alignment: .center)
                         Button("Neues Spiel") {
@@ -152,6 +152,8 @@ struct QuizMainScreen: View {
                             }
                         }
                         .buttonStyle(PrimaryButton(width: 300, height: 50, fontSize: 15))
+                        .shadow(radius: 10)
+                        .padding(.bottom)
                     }
                 }
                 .overlay(SideMenu(menuToggled: $menuToggeled, viewState: $viewState))

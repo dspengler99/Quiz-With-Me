@@ -150,7 +150,7 @@ struct QuestionView: View {
                     Spacer()
                 }
             } else {
-                Text("Loading...")
+                Loa
             }
         }
         .onAppear {
