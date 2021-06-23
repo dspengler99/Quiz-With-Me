@@ -74,6 +74,58 @@ class DataManager {
         }
     }
     
+    func getUserDocumentID(userID: String) -> Promise<String?> {
+        return Promise { promise in
+            Firestore.firestore().collection("users").whereField("userID", isEqualTo: userID).getDocuments() { querySnapshot, error in
+                if let error = error {
+                    print(error.localizedDescription)
+                    promise.fulfill(nil)
+                    return
+                }
+                if let documents = querySnapshot?.documents {
+                    if documents.count == 1 {
+                        promise.fulfill(documents[0].documentID)
+                    } else {
+                        promise.fulfill(nil)
+                    }
+                }
+            }
+        }
+    }
+    
+    func deleteGameFromUser(userID: String, gameID: String, completion: @escaping () -> Void) -> Void {
+        _ = getUserDocumentID(uid: userID).done { response in
+            guard let documentID = response else {
+                return
+            }
+            Firestore.firestore().collection("users").document(documentID).updateData([
+                "gameIDs": FieldValue.arrayRemove([gameID])
+            ])
+            completion()
+        }
+    }
+    
+    func updateStatistics(userID: String, hasWon: Bool?) -> Void {
+        _ = getUserDocumentID(uid: userID).done { response in
+            guard let documentID = response else {
+                fatalError("Couldn't get documentID from user.")
+                return
+            }
+            Firestore.firestore().collection("users").document(documentID).updateData([
+                "totalGames": FieldValue.increment(Int64(1))
+            ])
+            if hasWon == true {
+                Firestore.firestore().collection("users").document(documentID).updateData([
+                    "wonGames": FieldValue.increment((Int64(1)))
+                ])
+            } else if hasWon == false {
+                Firestore.firestore().collection("users").document(documentID).updateData([
+                    "lostGames": FieldValue.increment(Int64(1))
+                ])
+            }
+        }
+    }
+    
     func getGame(gameID: String) -> Promise<(QuizGame?, String?)> {
         var quizGame: QuizGame? = nil
         var id: String? = nil
