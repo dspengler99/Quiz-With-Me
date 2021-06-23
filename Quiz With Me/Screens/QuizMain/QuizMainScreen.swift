@@ -19,7 +19,40 @@ struct QuizMainScreen: View {
     @State private var gameObjects: [QuizGame] = []
     @State private var gameIDs: [String] = []
     @State private var gameIndizes: [Int] = []
+    @State private var gameFinished = false
+    @State private var finishedGameInformation: (String, Bool?, Int, Int) = ("Not set", nil, -1, -1)
     
+    func searchFinishedGame() -> Void {
+        for (index, game) in gameObjects.enumerated() {
+            if game.progressP1 == 10 && game.progressP2 == 10 {
+                setFinishedGame(index: index)
+                gameFinished = true
+                return
+            }
+        }
+        finishedGameInformation = ("Not set", nil, -1, -1)
+        gameFinished = false
+    }
+    
+    func setFinishedGame(index: Int) -> Void {
+        guard let quizUser = quizUserWrapper.quizUser else {
+            fatalError("There should be loaded a user for this operation")
+            return
+        }
+        var othersUsername: String = quizUser.username == gameObjects[index].nameP1 ? gameObjects[index].nameP2 : gameObjects[index].nameP1
+        var ownUserHasWon: Bool? = quizUser.username == gameObjects[index].nameP1 ? gameObjects[index].pointsP1 > gameObjects[index].pointsP2 : gameObjects[index].pointsP2 > gameObjects[index].pointsP1
+        ownUserHasWon = gameObjects[index].pointsP1 == gameObjects[index].pointsP2 ? nil : ownUserHasWon
+        var ownPoints: Int = quizUser.username == gameObjects[index].nameP1 ? gameObjects[index].pointsP1 : gameObjects[index].pointsP2
+        var othersPoints: Int = quizUser.username == gameObjects[index].nameP1 ? gameObjects[index].pointsP2 : gameObjects[index].pointsP1
+        finishedGameInformation = (othersUsername, ownUserHasWon, ownPoints, othersPoints)
+    }
+    
+    func constructInformationMessage() -> String {
+        guard let won = finishedGameInformation.1 else {
+            return "Das Spiel gegen \(finishedGameInformation.0) ging unentschieden aus!"
+        }
+        return "Du hast das Spiel gegen \(finishedGameInformation.0) mit \(finishedGameInformation.2) zu \(finishedGameInformation.3) \(won ? "gewonnen" : "verloren")!"
+    }
     
     func splitGameDict() {
         guard let quizGames = games else {
@@ -35,6 +68,30 @@ struct QuizMainScreen: View {
         self.gameIDs = gameIDs
     }
     
+    func reloadData() -> Void {
+        guard let quizUser = quizUserWrapper.quizUser else  {
+            return
+        }
+        _ = DataManager.shared.getUser(uid: quizUser.userID).done {response in
+            guard let quizUser = response else {
+                return
+            }
+            if quizUser.gameIDs.count != 0 {
+                _ = DataManager.shared.getGames(gameIDs: quizUser.gameIDs).done { response in
+                    if let quizGames = response {
+                        games = quizGames
+                        splitGameDict()
+                        gameIndizes = Array(0..<gameObjects.count)
+                        if finishedGameInformation.2 == -1 && finishedGameInformation.3 == -1 {
+                            self.searchFinishedGame()
+                        }
+                    }
+                }
+            } else {
+                games = [:]
+            }
+        }
+    }
     
     var body: some View {
         
@@ -56,6 +113,11 @@ struct QuizMainScreen: View {
                                 }
                             }
                         }
+                    }
+                    .alert(isPresented: $gameFinished) {
+                        Alert(title: Text("Spiel beendet"), message: Text(constructInformationMessage()), dismissButton: .default(Text("Ok")) {
+                            searchFinishedGame()
+                        })
                     }
                     ZStack {
                         LinearGradient(gradient: Gradient(colors: [Color.white.opacity(0.01), Color.white]), startPoint: .top, endPoint: .bottom)
@@ -86,26 +148,7 @@ struct QuizMainScreen: View {
                 Text("Loading...")
             }
         }.onAppear {
-            guard let quizUser = quizUserWrapper.quizUser else  {
-                return
-            }
-            _ = DataManager.shared.getUser(uid: quizUser.userID).done {response in
-                guard let quizUser = response else {
-                    return
-                }
-                if quizUser.gameIDs.count != 0 {
-                    _ = DataManager.shared.getGames(gameIDs: quizUser.gameIDs).done { response in
-                        if let quizGames = response {
-                            games = quizGames
-                            splitGameDict()
-                            gameIndizes = Array(0..<gameObjects.count)
-                        }
-                    }
-                } else {
-                    games = [:]
-                }
-            }
-            
+            reloadData()
         }
     }
 }
