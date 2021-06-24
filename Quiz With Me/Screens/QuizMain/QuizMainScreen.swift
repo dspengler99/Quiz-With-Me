@@ -43,7 +43,6 @@ struct QuizMainScreen: View {
     func setFinishedGame(index: Int) -> Void {
         guard let quizUser = quizUserWrapper.quizUser else {
             fatalError("There should be loaded a user for this operation")
-            return
         }
         var othersUsername: String = quizUser.username == gameObjects[index].nameP1 ? gameObjects[index].nameP2 : gameObjects[index].nameP1
         var ownUserHasWon: Bool? = quizUser.username == gameObjects[index].nameP1 ? gameObjects[index].pointsP1 > gameObjects[index].pointsP2 : gameObjects[index].pointsP2 > gameObjects[index].pointsP1
