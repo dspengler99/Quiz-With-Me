@@ -143,7 +143,7 @@ struct QuizMainScreen: View {
                                 .offset(x: 0, y: -48)
                             Color.backgroundWhite
                                 .frame(width: .infinity, height: 50, alignment: .center)
-                            Button("Neues Spiel") {
+                            Button(action: {
                                 do {
                                     _ = try DataManager.shared.createNewGame().done { (response: (String, QuizGame)?) in
                                         if let returnedGame = response {
@@ -153,6 +153,10 @@ struct QuizMainScreen: View {
                                 } catch {
                                     print(error.localizedDescription)
                                 }
+                            }) {
+                                Text("Neus Spiel")
+                                    .h3()
+                                    .frame(width: 300, height: 50, alignment: .center)
                             }
                             .buttonStyle(PrimaryButton(width: 300, height: 50, fontSize: 15))
                             .shadow(radius: 10)

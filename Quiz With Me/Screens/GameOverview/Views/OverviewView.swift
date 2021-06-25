@@ -88,10 +88,14 @@ struct OverviewView: View {
                     .shadow(radius: 20)
                     Spacer()
                     if (isPlayer1 && quizGame.progressP1 < quizGame.questionIDs.count) || (!isPlayer1 && quizGame.progressP2 < quizGame.questionIDs.count) {
-                        Button("Weiterspielen") {
+                        Button(action: {
                             withAnimation {
                                 viewState = .GAME
                             }
+                        }) {
+                            Text("Weiterspielen")
+                                .h3()
+                                .frame(width: 300, height: 50, alignment: .center)
                         }
                         .buttonStyle(PrimaryButton(width: 300, height: 50, fontSize: 15))
                         .shadow(radius: 20)

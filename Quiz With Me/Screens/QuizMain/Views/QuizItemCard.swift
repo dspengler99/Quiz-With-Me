@@ -32,11 +32,15 @@ struct QuizItemCard: View {
                 Text("Beantwortete Fragen: \(isPlayer1 ? quizGame.progressP1 : quizGame.progressP2)/\(quizGame.questionIDs.count)")
                     .h2()
                     .foregroundColor(.backgroundWhite)
-                Button("Zur Spielübersicht") {
+                Button(action: {
                     withAnimation {
                         selectedGame = gameID
                         viewState = .GAMEOVERVIEW
                     }
+                }) {
+                    Text("Zur Spielübersicht")
+                        .h3()
+                        .frame(width: 300, height: 50, alignment: .center)
                 }
                 .buttonStyle(PrimaryButton(width: 300, height: 50, fontSize: 15))
                 .shadow(radius: 10)
