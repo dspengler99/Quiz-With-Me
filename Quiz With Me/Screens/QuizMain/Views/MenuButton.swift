@@ -21,7 +21,7 @@ struct MenuButton: View {
             Image(systemName: "person.circle")
                 .resizable()
                 .frame(width: 50, height: 50)
-                .foregroundColor(.blue)
+                .foregroundColor(.primaryBlue)
         }
     }
 }

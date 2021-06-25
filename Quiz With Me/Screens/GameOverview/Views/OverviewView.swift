@@ -26,37 +26,39 @@ struct OverviewView: View {
             if let quizGame = game, let _ = quizUserWrapper.quizUser {
                 VStack {
                     HStack {
-                        BackButton(viewState: $viewState, changeView: .HOME, color: .white)
+                        BackButton(viewState: $viewState, changeView: .HOME, color: .backgroundWhite)
                         Spacer()
                     }
                     Spacer()
                     ZStack {
-                        Color.white
-                            .ignoresSafeArea(edges: .all)
+                        Color.backgroundWhite
                         VStack {
                             Text("Spielübersicht")
-                                .underline()
-                                .font(.title)
-                                .foregroundColor(Color.primaryButtonDefaultBackground)
+                                .h1_underline()
+                                .foregroundColor(Color.darkBlue)
                                 .padding(.bottom, 40)
                             Group {
                                 HStack {
                                     Text("Du")
-                                        .underline()
-                                        .foregroundColor(Color.primaryButtonDefaultBackground)
+                                        .h2_underline()
+                                        .foregroundColor(Color.darkBlue)
                                     Spacer()
                                 }
-                                .padding(.bottom, /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                                .padding(.bottom, 10)
                                 HStack {
                                     Text("Aktueller Fortschritt:")
+                                        .h3()
                                     Spacer()
                                     Text((isPlayer1 ? String(quizGame.progressP1) : String(quizGame.progressP2)) + "/\(quizGame.questionIDs.count)")
+                                        .h3()
                                 }
                                 .padding(.bottom, 5)
                                 HStack {
                                     Text("Richtige Antworten:")
+                                        .h3()
                                     Spacer()
                                     Text((isPlayer1 ? String(quizGame.pointsP1) : String(quizGame.pointsP2)) + "/\(quizGame.questionIDs.count)")
+                                        .h3()
                                 }
                                 .padding(.bottom, 5)
                             }
@@ -64,15 +66,17 @@ struct OverviewView: View {
                             Group {
                                 HStack {
                                     Text(isPlayer1 ? quizGame.nameP2 : quizGame.nameP1)
-                                        .underline()
-                                        .foregroundColor(Color.primaryButtonDefaultBackground)
+                                        .h2_underline()
+                                        .foregroundColor(Color.darkBlue)
                                     Spacer()
                                 }
                                 .padding(.bottom, 10)
                                 HStack {
                                     Text("Aktueller Fortschritt:")
+                                        .h3()
                                     Spacer()
                                     Text("\(isPlayer1 ? String(quizGame.progressP2) : String(quizGame.progressP1))/\(quizGame.questionIDs.count)")
+                                        .h3()
                                 }
                             }
                             Spacer()
@@ -93,11 +97,12 @@ struct OverviewView: View {
                         .shadow(radius: 20)
                     } else {
                         Text("Du hast alle Fragen beantwortet!")
+                            .h3()
                     }
                 }
                 .padding()
             } else {
-                Text("Loading...")
+                ProgressView()
             }
         }.onAppear {
             print(selectedGame)
@@ -112,9 +117,9 @@ struct OverviewView: View {
 }
 
 /*
-struct OverviewView_Previews: PreviewProvider {
-    static var previews: some View {
-        OverviewView(viewState: .constant(ViewState.HOME))
-    }
-}
-*/
+ struct OverviewView_Previews: PreviewProvider {
+ static var previews: some View {
+ OverviewView(viewState: .constant(ViewState.HOME))
+ }
+ }
+ */

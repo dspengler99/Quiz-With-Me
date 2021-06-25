@@ -24,6 +24,12 @@
 		351CB6D7266972F200DA9B55 /* QuizQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351CB6D6266972F200DA9B55 /* QuizQuestion.swift */; };
 		35D9BF7A266B938600E5E70E /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D9BF79266B938600E5E70E /* BackgroundView.swift */; };
 		35D9BF7C266CE46E00E5E70E /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D9BF7B266CE46D00E5E70E /* BackButton.swift */; };
+		35EA02DC2685E5C700E60EE3 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EA02DB2685E5C700E60EE3 /* FontExtension.swift */; };
+		35EA02E32685EB6500E60EE3 /* Rubik-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 35EA02DF2685EB6400E60EE3 /* Rubik-Light.ttf */; };
+		35EA02E42685EB6500E60EE3 /* Rubik-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 35EA02E02685EB6400E60EE3 /* Rubik-Regular.ttf */; };
+		35EA02E52685EB6500E60EE3 /* Rubik-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 35EA02E12685EB6500E60EE3 /* Rubik-Medium.ttf */; };
+		35EA02E62685EB6500E60EE3 /* Rubik-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 35EA02E22685EB6500E60EE3 /* Rubik-SemiBold.ttf */; };
+		35EA02E92685EBB300E60EE3 /* VarelaRound-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 35EA02E82685EBB300E60EE3 /* VarelaRound-Regular.ttf */; };
 		C30283FB265FF100007F0BB2 /* FriendsListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30283FA265FF100007F0BB2 /* FriendsListScreen.swift */; };
 		C30283FF265FF590007F0BB2 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30283FE265FF590007F0BB2 /* FriendsView.swift */; };
 		C3028403265FF665007F0BB2 /* FriendRequestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3028402265FF665007F0BB2 /* FriendRequestsView.swift */; };
@@ -71,6 +77,12 @@
 		351CB6D6266972F200DA9B55 /* QuizQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizQuestion.swift; sourceTree = "<group>"; };
 		35D9BF79266B938600E5E70E /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		35D9BF7B266CE46D00E5E70E /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
+		35EA02DB2685E5C700E60EE3 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
+		35EA02DF2685EB6400E60EE3 /* Rubik-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Light.ttf"; sourceTree = "<group>"; };
+		35EA02E02685EB6400E60EE3 /* Rubik-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Regular.ttf"; sourceTree = "<group>"; };
+		35EA02E12685EB6500E60EE3 /* Rubik-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Medium.ttf"; sourceTree = "<group>"; };
+		35EA02E22685EB6500E60EE3 /* Rubik-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-SemiBold.ttf"; sourceTree = "<group>"; };
+		35EA02E82685EBB300E60EE3 /* VarelaRound-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VarelaRound-Regular.ttf"; sourceTree = "<group>"; };
 		C30283FA265FF100007F0BB2 /* FriendsListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListScreen.swift; sourceTree = "<group>"; };
 		C30283FE265FF590007F0BB2 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
 		C3028402265FF665007F0BB2 /* FriendRequestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestsView.swift; sourceTree = "<group>"; };
@@ -195,6 +207,34 @@
 			path = HelperView;
 			sourceTree = "<group>";
 		};
+		35EA02DD2685EABA00E60EE3 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				35EA02E72685EB8D00E60EE3 /* Varela_Round */,
+				35EA02DE2685EB0F00E60EE3 /* Rubik */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		35EA02DE2685EB0F00E60EE3 /* Rubik */ = {
+			isa = PBXGroup;
+			children = (
+				35EA02DF2685EB6400E60EE3 /* Rubik-Light.ttf */,
+				35EA02E12685EB6500E60EE3 /* Rubik-Medium.ttf */,
+				35EA02E02685EB6400E60EE3 /* Rubik-Regular.ttf */,
+				35EA02E22685EB6500E60EE3 /* Rubik-SemiBold.ttf */,
+			);
+			path = Rubik;
+			sourceTree = "<group>";
+		};
+		35EA02E72685EB8D00E60EE3 /* Varela_Round */ = {
+			isa = PBXGroup;
+			children = (
+				35EA02E82685EBB300E60EE3 /* VarelaRound-Regular.ttf */,
+			);
+			path = Varela_Round;
+			sourceTree = "<group>";
+		};
 		C30283FC265FF523007F0BB2 /* FriendsList */ = {
 			isa = PBXGroup;
 			children = (
@@ -277,6 +317,7 @@
 			isa = PBXGroup;
 			children = (
 				C3958AA82667697E006704A5 /* Quiz With Me.entitlements */,
+				35EA02DD2685EABA00E60EE3 /* Fonts */,
 				C3EF215A2656E75F00384221 /* Styles */,
 				C38CF0C8265567D70055A20A /* Helpers */,
 				C38CF0BD265553860055A20A /* Screens */,
@@ -311,6 +352,7 @@
 				C3EF215B2656E79C00384221 /* PrimaryButton.swift */,
 				C307CAC02657DE3000223917 /* ColorExtension.swift */,
 				351CB6D426696BAA00DA9B55 /* QuestionButton.swift */,
+				35EA02DB2685E5C700E60EE3 /* FontExtension.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -384,8 +426,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3D76EA5264AE87C001FCD34 /* Preview Assets.xcassets in Resources */,
+				35EA02E32685EB6500E60EE3 /* Rubik-Light.ttf in Resources */,
 				C3D76EA2264AE87C001FCD34 /* Assets.xcassets in Resources */,
+				35EA02E52685EB6500E60EE3 /* Rubik-Medium.ttf in Resources */,
+				35EA02E42685EB6500E60EE3 /* Rubik-Regular.ttf in Resources */,
+				35EA02E92685EBB300E60EE3 /* VarelaRound-Regular.ttf in Resources */,
 				C3443343264F12A1001FB1B9 /* GoogleService-Info.plist in Resources */,
+				35EA02E62685EB6500E60EE3 /* Rubik-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,6 +449,7 @@
 				351CB6B42664228100DA9B55 /* QuizMainScreen.swift in Sources */,
 				351CB6D7266972F200DA9B55 /* QuizQuestion.swift in Sources */,
 				C30283FF265FF590007F0BB2 /* FriendsView.swift in Sources */,
+				35EA02DC2685E5C700E60EE3 /* FontExtension.swift in Sources */,
 				351CB6BF2664241D00DA9B55 /* SideMenu.swift in Sources */,
 				351CB6D526696BAA00DA9B55 /* QuestionButton.swift in Sources */,
 				351CB6C22664F23F00DA9B55 /* ProfileScreen.swift in Sources */,

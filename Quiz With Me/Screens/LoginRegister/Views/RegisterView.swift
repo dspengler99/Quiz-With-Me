@@ -36,7 +36,7 @@ struct RegisterView: View {
                             .frame(width: 100)
                             .padding()
                         TextField("Nutzername", text: $username)
-                        .background(Color.white)
+                        .background(Color.backgroundWhite)
                             .padding(.trailing, 30)
                     }
                     .alert(isPresented: $usernameInUse) {
@@ -47,7 +47,7 @@ struct RegisterView: View {
                             .frame(width: 100)
                             .padding()
                         TextField("E-Mail", text: $email)
-                        .background(Color.white)
+                        .background(Color.backgroundWhite)
                             .padding(.trailing, 30)
                     }
                     HStack {
@@ -55,7 +55,7 @@ struct RegisterView: View {
                             .frame(width: 100)
                             .padding()
                         SecureField("Passwort", text: $password)
-                        .background(Color.white)
+                        .background(Color.backgroundWhite)
                             .padding(.trailing, 30)
                     }
                     HStack {
@@ -64,7 +64,7 @@ struct RegisterView: View {
                             .padding()
                         Spacer()
                         SecureField("Passwort wiederholen", text: $repeatedPassword)
-                        .background(Color.white)
+                        .background(Color.backgroundWhite)
                         .padding(.trailing, 30)
                     }
                     Button("Konto erstellen") {

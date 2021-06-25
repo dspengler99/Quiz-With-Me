@@ -20,67 +20,71 @@ struct LoginView: View {
     
     var body: some View {
         ScrollView {
-            VStack {
-                LogoImage()
-                Spacer()
-                Group {
-                    Text("Melde dich mit deinem Konto an!")
-                        .font(.title2)
-                        .foregroundColor(.black)
-                        .padding()
-                    HStack {
-                        Text("E-Mail")
-                            .frame(width: 100)
+            ZStack {
+                Color.backgroundWhite
+                    .ignoresSafeArea()
+                VStack {
+                    LogoImage()
+                    Spacer()
+                    Group {
+                        Text("Melde dich mit deinem Konto an!")
+                            .font(.title2)
+                            .foregroundColor(.black)
                             .padding()
-                        TextField("E-Mail", text: $email)
-                            .background(Color.white)
-                            .padding(.trailing, 30)
-                    }
-                        .padding(.top, 20)
-                    HStack {
-                        Text("Passwort")
-                            .frame(width: 100)
-                            .padding()
-                        SecureField("Passwort", text: $password)
-                            .background(Color.white)
-                            .padding(.trailing, 30)
-                    }
-                    Button("Anmelden") {
-                        AuthenticationManager.shared.loginWith(email: email, and: password) { result, error in
-                            if let error = error {
-                                errorMessage = error.localizedDescription
-                                showAlert = true
-                            } else {
-                                if let uid = Auth.auth().currentUser?.uid {
-                                    _ = DataManager.shared.getUser(uid: uid).done { response in
-                                        if response != nil {
-                                            quizUserWrapper.quizUser = response!
-                                            withAnimation {
-                                                viewState = .HOME
+                        HStack {
+                            Text("E-Mail")
+                                .frame(width: 100)
+                                .padding()
+                            TextField("E-Mail", text: $email)
+                                .background(Color.backgroundWhite)
+                                .padding(.trailing, 30)
+                        }
+                            .padding(.top, 20)
+                        HStack {
+                            Text("Passwort")
+                                .frame(width: 100)
+                                .padding()
+                            SecureField("Passwort", text: $password)
+                                .background(Color.backgroundWhite)
+                                .padding(.trailing, 30)
+                        }
+                        Button("Anmelden") {
+                            AuthenticationManager.shared.loginWith(email: email, and: password) { result, error in
+                                if let error = error {
+                                    errorMessage = error.localizedDescription
+                                    showAlert = true
+                                } else {
+                                    if let uid = Auth.auth().currentUser?.uid {
+                                        _ = DataManager.shared.getUser(uid: uid).done { response in
+                                            if response != nil {
+                                                quizUserWrapper.quizUser = response!
+                                                withAnimation {
+                                                    viewState = .HOME
+                                                }
                                             }
                                         }
                                     }
                                 }
                             }
                         }
+                        .buttonStyle(PrimaryButton(width: 300, height: 50, fontSize: 15))
+                        .padding()
+                        .alert(isPresented: $showAlert) {
+                            Alert(title: Text("Fehler"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
+                        }
                     }
-                    .buttonStyle(PrimaryButton(width: 300, height: 50, fontSize: 15))
+                    Spacer()
+                    Text("Noch kein Konto?")
+                        .font(.system(size: 15))
+                        .padding(.top, 30)
+                    Button("Jetzt Konto erstellen") {
+                        withAnimation {
+                            viewState = .REGISTER
+                        }
+                    }
+                    .buttonStyle(PrimaryButton(width: 200, height: 50, fontSize: 15))
                     .padding()
-                    .alert(isPresented: $showAlert) {
-                        Alert(title: Text("Fehler"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
-                    }
                 }
-                Spacer()
-                Text("Noch kein Konto?")
-                    .font(.system(size: 15))
-                    .padding(.top, 30)
-                Button("Jetzt Konto erstellen") {
-                    withAnimation {
-                        viewState = .REGISTER
-                    }
-                }
-                .buttonStyle(PrimaryButton(width: 200, height: 50, fontSize: 15))
-                .padding()
             }
         }
     }

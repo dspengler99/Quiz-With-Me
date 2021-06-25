@@ -15,12 +15,12 @@ struct AvatarImage: View {
             Text(userShortname)
                 .frame(width: 200, height: 200, alignment: .center)
                 .font(.system(size: 80))
-                .foregroundColor(.white)
+                .foregroundColor(.backgroundWhite)
                 .padding()
-                .background(Color.blue)
+                .background(Color.primaryBlue)
                 .clipShape(Circle())
                 .shadow(radius: 20)
-                .overlay(Circle().stroke(Color.white, lineWidth: 10))
+                .overlay(Circle().stroke(Color.backgroundWhite, lineWidth: 10))
         }
     }
 }

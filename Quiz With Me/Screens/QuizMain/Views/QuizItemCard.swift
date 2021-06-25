@@ -24,12 +24,14 @@ struct QuizItemCard: View {
     
     var body: some View {
         ZStack {
-            Color.blue
+            Color.primaryBlue
             VStack(alignment: .leading) {
                 Text("Spiel mit \(isPlayer1 ? quizGame.nameP2 : quizGame.nameP1)")
-                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                    .h1()
+                    .foregroundColor(.backgroundWhite)
                 Text("Beantwortete Fragen: \(isPlayer1 ? quizGame.progressP1 : quizGame.progressP2)/\(quizGame.questionIDs.count)")
-                    .font(.title2)
+                    .h2()
+                    .foregroundColor(.backgroundWhite)
                 Button("Zur Spielübersicht") {
                     withAnimation {
                         selectedGame = gameID

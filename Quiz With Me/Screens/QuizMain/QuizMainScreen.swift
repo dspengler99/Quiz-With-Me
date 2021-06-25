@@ -111,54 +111,58 @@ struct QuizMainScreen: View {
         Group {
             EmptyView()
             if let quizGames = games, let quizUser = quizUserWrapper.quizUser{
-                VStack {
-                    HStack(alignment: .top) {
-                        Spacer()
-                        LogoImageWhite()
-                            .padding(.leading, 50)
-                        Spacer()
-                        MenuButton(menuToggled: $menuToggeled)
-                    }
-                    .padding()
-                    ScrollView(.vertical) {
-                        VStack() {
-                            if gameObjects.count >= 1 {
-                                ForEach(gameIndizes, id: \.self) { index in QuizItemCard(viewState: $viewState, selectedGame: $selectedGame, quizGame: gameObjects[index], gameID: gameIDs[index])
-                                }
-                            }
+                ZStack {
+                    Color.backgroundWhite
+                        .ignoresSafeArea()
+                    VStack {
+                        HStack(alignment: .top) {
+                            Spacer()
+                            LogoImageWhite()
+                                .padding(.leading, 50)
+                            Spacer()
+                            MenuButton(menuToggled: $menuToggeled)
                         }
-                    }
-                    .alert(isPresented: $gameFinished) {
-                        Alert(title: Text("Spiel beendet"), message: Text(constructInformationMessage()), dismissButton: .default(Text("Ok")) {
-                            finishedGameInformation = ("Not set", nil, -1, -1)
-                            reloadData()
-                        })
-                    }
-                    ZStack {
-                        LinearGradient(gradient: Gradient(colors: [Color.white.opacity(0.01), Color.white]), startPoint: .top, endPoint: .bottom)
-                            .frame(width: .infinity, height: 15, alignment: .center)
-                            .offset(x: 0, y: -48)
-                        Color.white
-                            .frame(width: .infinity, height: 50, alignment: .center)
-                        Button("Neues Spiel") {
-                            do {
-                                _ = try DataManager.shared.createNewGame().done { (response: (String, QuizGame)?) in
-                                    if let returnedGame = response {
-                                        self.reloadData()
+                        .padding()
+                        ScrollView(.vertical) {
+                            VStack() {
+                                if gameObjects.count >= 1 {
+                                    ForEach(gameIndizes, id: \.self) { index in QuizItemCard(viewState: $viewState, selectedGame: $selectedGame, quizGame: gameObjects[index], gameID: gameIDs[index])
                                     }
                                 }
-                            } catch {
-                                print(error.localizedDescription)
                             }
                         }
-                        .buttonStyle(PrimaryButton(width: 300, height: 50, fontSize: 15))
-                        .shadow(radius: 10)
-                        .padding(.bottom)
+                        .alert(isPresented: $gameFinished) {
+                            Alert(title: Text("Spiel beendet"), message: Text(constructInformationMessage()), dismissButton: .default(Text("Ok")) {
+                                finishedGameInformation = ("Not set", nil, -1, -1)
+                                reloadData()
+                            })
+                        }
+                        ZStack {
+                            LinearGradient(gradient: Gradient(colors: [Color.backgroundWhite.opacity(0.01), Color.backgroundWhite]), startPoint: .top, endPoint: .bottom)
+                                .frame(width: .infinity, height: 15, alignment: .center)
+                                .offset(x: 0, y: -48)
+                            Color.backgroundWhite
+                                .frame(width: .infinity, height: 50, alignment: .center)
+                            Button("Neues Spiel") {
+                                do {
+                                    _ = try DataManager.shared.createNewGame().done { (response: (String, QuizGame)?) in
+                                        if let returnedGame = response {
+                                            self.reloadData()
+                                        }
+                                    }
+                                } catch {
+                                    print(error.localizedDescription)
+                                }
+                            }
+                            .buttonStyle(PrimaryButton(width: 300, height: 50, fontSize: 15))
+                            .shadow(radius: 10)
+                            .padding(.bottom)
+                        }
                     }
+                    .overlay(SideMenu(menuToggled: $menuToggeled, viewState: $viewState))
                 }
-                .overlay(SideMenu(menuToggled: $menuToggeled, viewState: $viewState))
             } else {
-                Text("Loading...")
+                ProgressView()
             }
         }.onAppear {
             reloadData()

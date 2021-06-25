@@ -23,21 +23,30 @@ struct SideMenu: View {
             }
             HStack {
                 Spacer()
-                List {
-                    Text("Mein Profil")
-                        .onTapGesture {
-                            viewState = .PROFILE
-                        }
-                    Text("Abmelden")
-                        .onTapGesture {
-                            if(AuthenticationManager.shared.signOut()) {
-                                viewState = .LOGIN
+                ZStack {
+                   
+                    List {
+                        Text("Mein Profil")
+                            .h3()
+                            .frame(width: 100, height: 30, alignment: .leading)
+                            .foregroundColor(.darkBlue)
+                            .onTapGesture {
+                                viewState = .PROFILE
                             }
-                        }
+                        Text("Abmelden")
+                            .h3()
+                            .frame(width: 100, height: 30, alignment: .leading)
+                            .foregroundColor(.darkBlue)
+                            .onTapGesture {
+                                if(AuthenticationManager.shared.signOut()) {
+                                    viewState = .LOGIN
+                                }
+                            }
+                    }
+                    .frame(width: 150)
+                    .offset(x: menuToggled ? 0 : 150)
+                    .animation(.default)
                 }
-                .frame(width: 250)
-                .offset(x: menuToggled ? 0 : 250)
-                .animation(.default)
             }
         }
         .edgesIgnoringSafeArea(.all)

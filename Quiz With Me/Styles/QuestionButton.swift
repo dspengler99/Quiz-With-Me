@@ -28,6 +28,6 @@ struct QuestionButton: ButtonStyle {
         configuration.label
             .frame(minWidth: width, maxWidth: width, minHeight: height, maxHeight: height)
             .font(.system(size: fontSize))
-            .foregroundColor(.white)
+            .foregroundColor(.backgroundWhite)
     }
 }

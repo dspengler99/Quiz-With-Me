@@ -18,22 +18,26 @@ struct ProfileScreen: View {
         Group {
             EmptyView()
             if let quizUser = quizUserWrapper.quizUser, !isLoading {
-                VStack() {
-                    ZStack {
-                        BackgroundView()
-                        VStack {
-                            HStack() {
-                                BackButton(viewState: $viewState, changeView: .HOME, color: .white)
+                ZStack {
+                    Color.backgroundWhite
+                        .ignoresSafeArea()
+                    VStack() {
+                        ZStack {
+                            BackgroundView()
+                            VStack {
+                                HStack() {
+                                    BackButton(viewState: $viewState, changeView: .HOME, color: Color.backgroundWhite)
+                                    Spacer()
+                                }
                                 Spacer()
                             }
-                            Spacer()
+                            .padding()
+                            AvatarImage(userShortname: String(quizUser.username.prefix(2)))
+                                .offset(y: 15)
+                                .padding(.top, 15)
                         }
-                        .padding()
-                        AvatarImage(userShortname: String(quizUser.username.prefix(2)))
-                            .offset(y: 15)
-                            .padding(.top, 15)
+                        ProfileDetailView(name: quizUser.username, email: email, totalGames: quizUser.totalGames, wonGames: quizUser.wonGames)
                     }
-                    ProfileDetailView(name: quizUser.username, email: email, totalGames: quizUser.totalGames, wonGames: quizUser.wonGames)
                 }
             } else {
                 ProgressView()

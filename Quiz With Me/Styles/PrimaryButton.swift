@@ -19,7 +19,7 @@ struct PrimaryButton: ButtonStyle {
         } else if !enabled {
             return Color.primaryButtonDisabledBackground
         } else {
-            return Color.primaryButtonDefaultBackground
+            return Color.darkBlue
         }
     }
     
@@ -28,7 +28,7 @@ struct PrimaryButton: ButtonStyle {
             .frame(minWidth: width, minHeight: height)
             .font(.system(size: fontSize))
             .background(getButtonColor(pressed: configuration.isPressed, enabled: isEnabled))
-            .foregroundColor(.white)
+            .foregroundColor(.backgroundWhite)
             .cornerRadius(15)
     }
 }
