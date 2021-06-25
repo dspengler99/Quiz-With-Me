@@ -106,7 +106,7 @@ struct OverviewView: View {
                                 .foregroundColor(Color.backgroundWhite)
                                 .frame(width: 300, height: 50, alignment: .center)
                         }
-                        .buttonStyle(PrimaryButton(width: 300, height: 50, fontSize: 15))
+                        .buttonStyle(PrimaryButton(width: 300, height: 50))
                         .padding(.bottom)
                         .shadow(radius: 20)
                     } else {

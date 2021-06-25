@@ -42,7 +42,7 @@ struct QuizItemCard: View {
                         .h3()
                         .frame(width: 300, height: 50, alignment: .center)
                 }
-                .buttonStyle(PrimaryButton(width: 300, height: 50, fontSize: 15))
+                .buttonStyle(PrimaryButton(width: 300, height: 50))
                 .shadow(radius: 10)
                 .padding()
             }

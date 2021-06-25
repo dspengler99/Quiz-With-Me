@@ -29,11 +29,14 @@ struct RegisterView: View {
                 
                 Group {
                     Text("Erstelle dir ein neues Konto")
-                        .font(.title2)
+                        .h2()
+                        .foregroundColor(Color.darkBlue)
                         .padding()
                     HStack {
                         Text("Nutzername")
-                            .frame(width: 100)
+                            .h2()
+                            .foregroundColor(Color.darkBlue)
+                            .frame(width: 100, alignment: .leading)
                             .padding()
                         TextField("Nutzername", text: $username)
                         .background(Color.backgroundWhite)
@@ -44,7 +47,9 @@ struct RegisterView: View {
                     }
                     HStack {
                         Text("E-Mail")
-                            .frame(width: 100)
+                            .h2()
+                            .foregroundColor(Color.darkBlue)
+                            .frame(width: 100, alignment: .leading)
                             .padding()
                         TextField("E-Mail", text: $email)
                         .background(Color.backgroundWhite)
@@ -52,7 +57,9 @@ struct RegisterView: View {
                     }
                     HStack {
                         Text("Paswort")
-                            .frame(width: 100)
+                            .h2()
+                            .foregroundColor(Color.darkBlue)
+                            .frame(width: 100, alignment: .leading)
                             .padding()
                         SecureField("Passwort", text: $password)
                         .background(Color.backgroundWhite)
@@ -60,14 +67,16 @@ struct RegisterView: View {
                     }
                     HStack {
                         Text("Passwort wiederholen")
-                            .frame(width: 100)
+                            .h2()
+                            .foregroundColor(Color.darkBlue)
+                            .frame(width: 100, alignment: .leading)
                             .padding()
                         Spacer()
                         SecureField("Passwort wiederholen", text: $repeatedPassword)
                         .background(Color.backgroundWhite)
                         .padding(.trailing, 30)
                     }
-                    Button("Konto erstellen") {
+                    Button(action: {
                         _ = DataManager.shared.usernameAlreadyExists(username: username).done { response in
                             guard response == false else {
                                 usernameInUse = true
@@ -91,8 +100,13 @@ struct RegisterView: View {
                                 }
                             }
                         }
+                    }) {
+                        Text("Konto erstellen")
+                            .h2()
+                            .frame(width: 300, height: 50, alignment: .center)
+                            .foregroundColor(Color.backgroundWhite)
                     }
-                    .buttonStyle(PrimaryButton(width: 300, height: 50, fontSize: 20))
+                    .buttonStyle(PrimaryButton(width: 300, height: 50))
                     .padding()
                     .disabled((username == "" && email == "" && password == "" && repeatedPassword == "") || password != repeatedPassword || password.count < 8)
                     .alert(isPresented: $showAlert) {
@@ -101,14 +115,20 @@ struct RegisterView: View {
                 }
                 Spacer()
                 Text("Du hast bereits ein Konto?")
-                    .font(.system(size: 12))
+                    .h3()
+                    .foregroundColor(Color.darkBlue)
                     .padding(.top, 30)
-                Button("Jetzt anmelden") {
+                Button(action: {
                     withAnimation {
                         viewState = .LOGIN
                     }
+                }) {
+                    Text("Jetzt anmelden")
+                        .h2()
+                        .frame(width: 200, height: 50, alignment: .center)
+                        .foregroundColor(Color.backgroundWhite)
                 }
-                .buttonStyle(PrimaryButton(width: 200, height: 50, fontSize: 20))
+                .buttonStyle(PrimaryButton(width: 200, height: 50))
                 .padding()
             }
         }

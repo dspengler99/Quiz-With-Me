@@ -107,7 +107,6 @@ struct QuizMainScreen: View {
     }
     
     var body: some View {
-        
         Group {
             EmptyView()
             if let quizGames = games, let quizUser = quizUserWrapper.quizUser{
@@ -158,9 +157,10 @@ struct QuizMainScreen: View {
                                     .h3()
                                     .frame(width: 300, height: 50, alignment: .center)
                             }
-                            .buttonStyle(PrimaryButton(width: 300, height: 50, fontSize: 15))
+                            .buttonStyle(PrimaryButton(width: 300, height: 50))
                             .shadow(radius: 10)
                             .padding(.bottom)
+
                         }
                     }
                     .overlay(SideMenu(menuToggled: $menuToggeled, viewState: $viewState))

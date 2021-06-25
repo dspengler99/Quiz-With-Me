@@ -21,7 +21,7 @@ struct FriendRequestRow: View {
             Button(action: {}) {
                 Image(systemName: "plus")
             }
-            .buttonStyle(PrimaryButton(width: 25, height: 25, fontSize: 15))
+            .buttonStyle(PrimaryButton(width: 25, height: 25))
             .accessibility(label: Text("Freundschaftsanfrage annehmen"))
         }
     }
