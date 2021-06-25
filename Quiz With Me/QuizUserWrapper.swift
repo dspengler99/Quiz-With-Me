@@ -18,7 +18,6 @@ class QuizUserWrapper : ObservableObject {
      */
     init() {
         Timer.scheduledTimer(withTimeInterval: 30, repeats: true) { timer in
-            print("Timer fired!")
             guard let oldQuizUser = self.quizUser else {
                 return
             }
