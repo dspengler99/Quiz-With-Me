@@ -12,10 +12,10 @@ extension Text {
         self.font(.custom("Nunito-Regular", size: 26))
     }
     func h1_bold() -> some View {
-        self.font(.custom("Nunito-SemiBold", size: 26))
+        self.font(.custom("Nunito-Bold", size: 26))
     }
     func h1_underline() -> some View {
-        self.font(.custom("Nunito-SemiBold", size: 26))
+        self.font(.custom("Nunito-Bold", size: 26))
             .underline()
     }
     func h2() -> some View {

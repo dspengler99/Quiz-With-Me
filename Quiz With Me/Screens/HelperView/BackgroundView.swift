@@ -18,7 +18,7 @@ struct BackgroundView: View {
             VStack {
                 Rectangle()
                     .fill(Color.primaryBlue)
-                    .frame(width: .infinity, height: 260)
+                    .frame(width: UIScreen.main.bounds.width, height: 260)
                     .cornerRadius(25)
                     .offset(x: 0, y: -20)
                     .ignoresSafeArea(edges: .top)

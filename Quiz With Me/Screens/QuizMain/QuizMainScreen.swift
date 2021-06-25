@@ -169,10 +169,10 @@ struct QuizMainScreen: View {
                         }
                         ZStack {
                             LinearGradient(gradient: Gradient(colors: [Color.backgroundWhite.opacity(0.01), Color.backgroundWhite]), startPoint: .top, endPoint: .bottom)
-                                .frame(width: .infinity, height: 15, alignment: .center)
+                                .frame(width: UIScreen.main.bounds.width, height: 15, alignment: .center)
                                 .offset(x: 0, y: -48)
                             Color.backgroundWhite
-                                .frame(width: .infinity, height: 50, alignment: .center)
+                                .frame(width: UIScreen.main.bounds.width, height: 50, alignment: .center)
                             Button(action: {
                                 do {
                                     _ = try DataManager.shared.createNewGame().done { (response: (String, QuizGame)?) in

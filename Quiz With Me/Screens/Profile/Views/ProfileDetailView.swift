@@ -24,13 +24,13 @@ import SwiftUI
             VStack(alignment: .leading) {
                 HStack {
                     Text(name)
-                        .h1()
+                        .h1_bold()
                         .foregroundColor(.darkBlue)
                     Spacer()
                 }
                 HStack {
                     Text(email)
-                        .h2()
+                        .h2_bold()
                         .foregroundColor(.darkBlue)
                     Spacer()
                 }
