@@ -7,12 +7,20 @@
 
 import SwiftUI
 
+/**
+ This view represents the information of both players for the selected game.
+ */
 struct OverviewView: View {
     @EnvironmentObject var quizUserWrapper: QuizUserWrapper
     @Binding var viewState: ViewState
     @Binding var selectedGame: String
     @State private var game: QuizGame?
     
+    /**
+     This computed property returns true, when the own user is player 1 in the game and false if this is not the case.
+     
+     This information is used for rendering the right information.
+     */
     private var isPlayer1: Bool {
         guard let quizUser = quizUserWrapper.quizUser, let quizGame = game else {
             fatalError("There should be a user to show this view.")

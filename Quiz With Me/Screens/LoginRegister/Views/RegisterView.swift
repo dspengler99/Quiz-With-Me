@@ -8,6 +8,11 @@
 import SwiftUI
 import Firebase
 
+/**
+ This view renders all information for the registration process and includes checks for misstyped passwords.
+ 
+ At the end of the process, the environment object will be set, atleast when the user clicks on the signup button.
+ */
 struct RegisterView: View {
     @EnvironmentObject var quizUserWrapper: QuizUserWrapper
     @State private var email: String = ""
