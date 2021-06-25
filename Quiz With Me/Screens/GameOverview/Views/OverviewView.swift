@@ -116,7 +116,7 @@ struct OverviewView: View {
                         }
                         .buttonStyle(PrimaryButton(width: 300, height: 50))
                         .padding(.bottom)
-                        .shadow(radius: 20)
+                        .shadow(radius: 10)
                     } else {
                         Text("Du hast alle Fragen beantwortet!")
                             .h3()

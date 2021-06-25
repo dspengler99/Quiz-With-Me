@@ -7,11 +7,6 @@
 		<string>Nunito-Bold.ttf</string>
 		<string>Nunito-Regular.ttf</string>
 		<string>Nunito-SemiBold.ttf</string>
-		<string>Rubik-Light.ttf</string>
-		<string>Rubik-Medium.ttf</string>
-		<string>Rubik-Regular.ttf</string>
-		<string>Rubik-SemiBold.ttf</string>
-		<string>VarelaRound-Regular.ttf</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
