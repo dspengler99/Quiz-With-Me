@@ -156,6 +156,9 @@ struct QuizMainScreen: View {
                                 }
                             }
                         }
+                        .onChange(of: quizUserWrapper.quizUser) { newUser in
+                            self.reloadData()
+                        }
                         .alert(isPresented: $gameFinished) {
                             Alert(title: Text("Spiel beendet"), message: Text(constructInformationMessage()), dismissButton: .default(Text("Ok")) {
                                 finishedGameInformation = ("Not set", nil, -1, -1)
