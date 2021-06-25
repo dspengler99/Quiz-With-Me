@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+/**
+ This view represents the question and its answers. The background of the buttons is changed depending on the answer of the user.
+ */
 struct QuestionView: View {
     @State var progress = 0
     @State var answerPicked = false
@@ -19,6 +22,14 @@ struct QuestionView: View {
     @State var playerPoints: String = ""
     @State var rightAnswer = 0
     
+    /**
+     Checks if the given user is equal to player 1 in a game.
+     
+     - Parameter userName: The username that should be checked against player 1
+     - Parameter nameP1: The name of player 1 in the game.
+     
+     - returns: True if both given names are equal, false if not.
+     */
     func checkPlayer(userName: String, nameP1: String) -> Bool {
         if(userName == nameP1) {
             return true
@@ -26,6 +37,14 @@ struct QuestionView: View {
         return false
     }
     
+    /**
+     Prepares the view for the next question and returns to the main screen when all questions are answered.
+     
+     - Parameter selectedGame: The id of the currently played game.
+     - Parameter playerProgress: Is either `nameP1` or `nameP2`, depending on which player the user is in the game.
+     - Parameter progress: The progress of the player.
+     - Parameter gameQuestionIDs: The IDs of the questions belonging to the game.
+     */
     func nextQuestion(selectedGame: String, playerProgress: String, progress: Int, gameQuestionIDs: [String]?) -> Void {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             if(progress < gameQuestionIDs!.count-1) {
@@ -45,6 +64,15 @@ struct QuestionView: View {
         }
     }
     
+    /**
+     This method returns the index of the right answer from the answers for the current question.
+     
+     Note that the return value can be unpacked explicitly, because we can be sure that the right answer needs to be included in all answers. If this is not the case, there has happened something wrong when questions were added to the Firebase.
+     
+     - Parameter question: The question of which we index of the right answer index should be determened.
+     
+     - returns: The index of the right answer for the given question.
+     */
     func getRightAnswerIndex(question: QuizQuestion?) -> Int {
         return (question?.answers.firstIndex(of: question!.rightAnswer))!
     }

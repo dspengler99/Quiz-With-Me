@@ -7,7 +7,11 @@
 
 import SwiftUI
 
-struct ProfileDetailView: View {
+
+/**
+ This view renders all information that should be visible to the player. This information in general are statistics about the users played games.
+ */
+ struct ProfileDetailView: View {
     var name: String
     var email: String
     var totalGames: Int

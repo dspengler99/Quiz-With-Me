@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+/**
+ Extends the colors that swift proviedes defaultly with our most used colors.
+ */
 extension Color {
     static let primaryButtonDefaultBackground = Color(red: 7/255, green: 49/255, blue: 106/255)
     static let primaryButtonPressedBackground = Color(red: 7/255, green: 49/255, blue: 103/255)

@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+/**
+ This screen represents the question and loads all needed information for it.
+ */
 struct QuestionScreen: View {
     @Binding var viewState: ViewState
     @Binding var selectedGame: String

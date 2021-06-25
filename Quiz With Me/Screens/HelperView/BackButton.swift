@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+/**
+ This view represents the back button that is used in many views.
+ */
 struct BackButton: View {
     @Binding var viewState: ViewState
     var changeView: ViewState

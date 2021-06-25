@@ -8,6 +8,11 @@
 import SwiftUI
 import Firebase
 
+/**
+ This view renders the login-screen with all needed input fields for the app.
+ 
+ The environment object will be set, when the user clicks on signin.
+ */
 struct LoginView: View {
     @EnvironmentObject var quizUserWrapper: QuizUserWrapper
     @State private var email: String = ""

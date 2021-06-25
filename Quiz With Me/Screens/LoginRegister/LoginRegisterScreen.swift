@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+/**
+ This screen renders the login or registration screen. Which one is rendered, is dependent from the given view state.
+ */
 struct LoginRegisterScreen: View {
     @Binding var viewState: ViewState
     var body: some View {

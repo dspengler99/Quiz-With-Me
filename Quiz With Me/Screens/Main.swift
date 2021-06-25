@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+/**
+ This View renders all screens. Which screen will be rendered is dependent on the view state. How the navigation in our app works is written down in the dedecated documentation, found in the readme-file of the reposetory.
+ */
 struct Main: View {
     @State var viewState: ViewState
     @State var selectedGame: String = ""
