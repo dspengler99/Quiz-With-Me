@@ -13,6 +13,9 @@ import Combine
 class QuizUserWrapper : ObservableObject {
     @Published var quizUser: QuizUser?
 
+    /**
+     Initializes the object and starts a timer that will update the property of `quizUser` every 30 seconds.
+     */
     init() {
         Timer.scheduledTimer(withTimeInterval: 30, repeats: true) { timer in
             print("Timer fired!")
