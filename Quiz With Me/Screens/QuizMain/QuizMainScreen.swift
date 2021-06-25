@@ -31,7 +31,6 @@ struct QuizMainScreen: View {
     func searchFinishedGame() -> Void {
         guard let quizUser = quizUserWrapper.quizUser else {
             fatalError("There should be a user loaded")
-            return
         }
         for (index, game) in gameObjects.enumerated() {
             if game.progressP1 >= 10 && game.progressP2 >= 10 {
@@ -59,11 +58,11 @@ struct QuizMainScreen: View {
         guard let quizUser = quizUserWrapper.quizUser else {
             fatalError("There should be loaded a user for this operation")
         }
-        var othersUsername: String = quizUser.username == gameObjects[index].nameP1 ? gameObjects[index].nameP2 : gameObjects[index].nameP1
+        let othersUsername: String = quizUser.username == gameObjects[index].nameP1 ? gameObjects[index].nameP2 : gameObjects[index].nameP1
         var ownUserHasWon: Bool? = quizUser.username == gameObjects[index].nameP1 ? gameObjects[index].pointsP1 > gameObjects[index].pointsP2 : gameObjects[index].pointsP2 > gameObjects[index].pointsP1
         ownUserHasWon = gameObjects[index].pointsP1 == gameObjects[index].pointsP2 ? nil : ownUserHasWon
-        var ownPoints: Int = quizUser.username == gameObjects[index].nameP1 ? gameObjects[index].pointsP1 : gameObjects[index].pointsP2
-        var othersPoints: Int = quizUser.username == gameObjects[index].nameP1 ? gameObjects[index].pointsP2 : gameObjects[index].pointsP1
+        let ownPoints: Int = quizUser.username == gameObjects[index].nameP1 ? gameObjects[index].pointsP1 : gameObjects[index].pointsP2
+        let othersPoints: Int = quizUser.username == gameObjects[index].nameP1 ? gameObjects[index].pointsP2 : gameObjects[index].pointsP1
         DataManager.shared.updateStatistics(userID: quizUser.userID, hasWon: ownUserHasWon)
         finishedGameInformation = (othersUsername, ownUserHasWon, ownPoints, othersPoints)
     }
@@ -136,7 +135,7 @@ struct QuizMainScreen: View {
         
         Group {
             EmptyView()
-            if let quizGames = games, let quizUser = quizUserWrapper.quizUser{
+            if let _ = games, let _ = quizUserWrapper.quizUser{
                 VStack {
                     HStack(alignment: .top) {
                         Spacer()
@@ -179,7 +178,7 @@ struct QuizMainScreen: View {
                         Button("Neues Spiel") {
                             do {
                                 _ = try DataManager.shared.createNewGame().done { (response: (String, QuizGame)?) in
-                                    if let returnedGame = response {
+                                    if let _ = response {
                                         self.reloadData()
                                     }
                                 }

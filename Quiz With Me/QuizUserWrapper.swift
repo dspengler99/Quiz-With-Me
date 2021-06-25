@@ -22,7 +22,7 @@ class QuizUserWrapper : ObservableObject {
             guard let oldQuizUser = self.quizUser else {
                 return
             }
-            DataManager.shared.getUser(uid: oldQuizUser.userID).done { response in
+            _ = DataManager.shared.getUser(uid: oldQuizUser.userID).done { response in
                 guard let newQuizUser = response else {
                     return
                 }
