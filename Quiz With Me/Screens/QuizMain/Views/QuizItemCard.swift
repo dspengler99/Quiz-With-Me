@@ -47,7 +47,7 @@ struct QuizItemCard: View {
                 }
                 .buttonStyle(PrimaryButton(width: 300, height: 50))
                 .shadow(radius: 10)
-                .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+                .padding(EdgeInsets(top: 0, leading: 10, bottom: 10, trailing: 10))
             }
             .padding()
         }

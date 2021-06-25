@@ -35,6 +35,7 @@ struct SideMenu: View {
                                 .frame(width: 170, height: 50, alignment: .leading)
                                 .foregroundColor(.darkBlue)
                                 .onTapGesture {
+                                    MenuButton(menuToggled: $menuToggled).toggleMenu()
                                     viewState = .PROFILE
                             }
                         }

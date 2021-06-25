@@ -27,6 +27,7 @@
 		357138292686631900F71AAB /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 357138262686631800F71AAB /* Nunito-SemiBold.ttf */; };
 		3571382A2686631900F71AAB /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 357138272686631800F71AAB /* Nunito-Bold.ttf */; };
 		3571382B2686631900F71AAB /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 357138282686631800F71AAB /* Nunito-Regular.ttf */; };
+		3571382D2686909700F71AAB /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3571382C2686909700F71AAB /* LoadingView.swift */; };
 		35D9BF7A266B938600E5E70E /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D9BF79266B938600E5E70E /* BackgroundView.swift */; };
 		35D9BF7C266CE46E00E5E70E /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D9BF7B266CE46D00E5E70E /* BackButton.swift */; };
 		35EA02DC2685E5C700E60EE3 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EA02DB2685E5C700E60EE3 /* FontExtension.swift */; };
@@ -80,6 +81,7 @@
 		357138262686631800F71AAB /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
 		357138272686631800F71AAB /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
 		357138282686631800F71AAB /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
+		3571382C2686909700F71AAB /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		35D9BF79266B938600E5E70E /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		35D9BF7B266CE46D00E5E70E /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		35EA02DB2685E5C700E60EE3 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				35D9BF79266B938600E5E70E /* BackgroundView.swift */,
 				35D9BF7B266CE46D00E5E70E /* BackButton.swift */,
 				3571381D2686434B00F71AAB /* BackgroundMainView.swift */,
+				3571382C2686909700F71AAB /* LoadingView.swift */,
 			);
 			path = HelperView;
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 				C38CF0C7265560070055A20A /* RegisterView.swift in Sources */,
 				C33471ED2661556F004E707B /* FriendRequestRow.swift in Sources */,
 				C3B61D38266A681C00D7A68E /* DataManager.swift in Sources */,
+				3571382D2686909700F71AAB /* LoadingView.swift in Sources */,
 				C38CF0CA265567E90055A20A /* ViewState.swift in Sources */,
 				351CB6B72664230600DA9B55 /* LogoImageWhite.swift in Sources */,
 				351CB6C52664F28400DA9B55 /* AvatarImage.swift in Sources */,

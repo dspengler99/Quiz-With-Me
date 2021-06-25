@@ -195,7 +195,9 @@ struct QuestionView: View {
                     Spacer()
                 }
             } else {
-                ProgressView()
+                LoadingView()
+                    .frame(width: 200, height: 200)
+                    .foregroundColor(Color.darkBlue)
             }
         }
         .onAppear {
