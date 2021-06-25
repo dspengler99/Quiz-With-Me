@@ -10,6 +10,9 @@ import Firebase
 import FirebaseFirestoreSwift
 import PromiseKit
 
+/**
+ This screen shows the home screen of the app. It contains a list of all active games and the possibility to create new ones. An alert is shown when a game is finished.
+ */
 struct QuizMainScreen: View {
     @EnvironmentObject var quizUserWrapper: QuizUserWrapper
     @State var menuToggeled = false
@@ -18,10 +21,13 @@ struct QuizMainScreen: View {
     @Binding var selectedGame: String
     @State private var gameObjects: [QuizGame] = []
     @State private var gameIDs: [String] = []
-    @State private var gameIndizes: [Int] = []
+    @State private var gameIndizes: [Int] = [] // Required for ForEach
     @State private var gameFinished = false
     @State private var finishedGameInformation: (String, Bool?, Int, Int) = ("Not set", nil, -1, -1)
     
+    /**
+     Searches the active games for a finished one. If a finished game is found it gets deleted from the user and the user will receive information.
+     */
     func searchFinishedGame() -> Void {
         guard let quizUser = quizUserWrapper.quizUser else {
             fatalError("There should be a user loaded")
@@ -36,10 +42,19 @@ struct QuizMainScreen: View {
                 return
             }
         }
+        // Reseting the game information, so no inconsistencies can appear.
+        // This just happens, when no finished game is found.
         finishedGameInformation = ("Not set", nil, -1, -1)
         gameFinished = false
     }
     
+    /**
+     This method fills the gameInformation variable with the needed values and updates the statistics of the user.
+     
+     The variable `ownUserHasWon` will be `nil`, if a draw has occured (Both players had the same amount of points.
+     
+     - Parameter index: The index in `gameObjects` where the finished game was found.
+     */
     func setFinishedGame(index: Int) -> Void {
         guard let quizUser = quizUserWrapper.quizUser else {
             fatalError("There should be loaded a user for this operation")
@@ -53,6 +68,13 @@ struct QuizMainScreen: View {
         finishedGameInformation = (othersUsername, ownUserHasWon, ownPoints, othersPoints)
     }
     
+    /**
+     This method constructs the message that will be shown in the alert when a game has finished.
+     
+     This job is not done by the alert itself, because it wouldn't be very readable.
+     
+     - returns: A String with the information message of the currently selected finished game.
+     */
     func constructInformationMessage() -> String {
         guard let won = finishedGameInformation.1 else {
             return "Das Spiel gegen \(finishedGameInformation.0) ging unentschieden aus!"
@@ -60,6 +82,11 @@ struct QuizMainScreen: View {
         return "Du hast das Spiel gegen \(finishedGameInformation.0) mit \(finishedGameInformation.2) zu \(finishedGameInformation.3) \(won ? "gewonnen" : "verloren")!"
     }
     
+    /**
+     Splits the dictionary with the game-IDs and coresponding games in two arrays. The entries are connected over their inde. That means that `gameObjects[index}` contains the game that belongs to `gameIDs[index]`. `index` is in both accesses the same value.
+     
+     After the splitting the arrays in the state of this view are refreshed.
+     */
     func splitGameDict() {
         guard let quizGames = games else {
             return
@@ -72,10 +99,11 @@ struct QuizMainScreen: View {
         }
         self.gameObjects = gameObjects
         self.gameIDs = gameIDs
-        print("List has \(self.gameObjects.count) games")
-        print("Dict has \(quizGames.count) values.")
     }
 
+    /**
+     This method reloads the data and all needed information for the screen. It is called whenever the view is loaded or the button for a new game is clicked.
+     */
     func reloadData() -> Void {
         guard let oldQuizUser = quizUserWrapper.quizUser else  {
             return
@@ -101,7 +129,6 @@ struct QuizMainScreen: View {
                 splitGameDict()
                 gameIndizes = []
             }
-            print("User has \(newQuizUser.gameIDs.count) games")
         }
     }
     
@@ -120,7 +147,13 @@ struct QuizMainScreen: View {
                     .padding()
                     ScrollView(.vertical) {
                         VStack(spacing: 15) {
+                            // Check is necessary so no warning is thrown, when the user has no games.
                             if gameObjects.count >= 1 {
+                                /**
+                                 The array with the indezes is used here to render all games.
+                                 
+                                 It would have benn possible to shorten the code by just looping over the game-IDs array, but we found this just hard readable, because you would need a mix of accesses to an array and to a dictionary. Also values in a dictionary are all optionals, so another check would be necessary.
+                                 */
                                 ForEach(gameIndizes, id: \.self) { index in QuizItemCard(viewState: $viewState, selectedGame: $selectedGame, quizGame: gameObjects[index], gameID: gameIDs[index])
                                 }
                             }

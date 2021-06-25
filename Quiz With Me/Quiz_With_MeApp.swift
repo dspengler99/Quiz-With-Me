@@ -8,6 +8,11 @@
 import SwiftUI
 import Firebase
 
+/**
+ This is the starting point of the app. If credentials of a user are saved on the device the user is taken to the home-screen. Othervice he will see the login and registration screen.
+ 
+ Also the user from the database is loaded here and an object of type `QuizUserWrapper` is passed into the view as an environment object.
+ */
 @main
 struct Quiz_With_MeApp: App {
     

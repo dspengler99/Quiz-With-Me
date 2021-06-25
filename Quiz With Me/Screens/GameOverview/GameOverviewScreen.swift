@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+/**
+ This view shows all information about a single selected game.
+ */
 struct GameOverviewScreen: View {
     @Binding var viewState: ViewState
     @Binding var selectedGame: String

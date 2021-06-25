@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+/**
+ This view shows the logo of the app and is used in the registration and login.
+ */
 struct LogoImage: View {
     var body: some View {
         Image(decorative: "QuizWithMeBlue")

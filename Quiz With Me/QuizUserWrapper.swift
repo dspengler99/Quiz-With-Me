@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+/**
+ This class holds the environment object for the game. The wrapper class is needed, because the user can be nil if not signed in. An optional value as an environment object directly seems not supported by swift or atleast not as recomended.
+ */
 class QuizUserWrapper : ObservableObject {
     @Published var quizUser: QuizUser?
 }

@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+/**
+ This view is used to represent the background in most views.
+ */
 struct BackgroundView: View {
     var body: some View {
         ZStack {

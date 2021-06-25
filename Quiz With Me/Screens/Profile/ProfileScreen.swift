@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+/**
+ This screen renders all information for the users profile.
+ */
 struct ProfileScreen: View {
     @Binding var viewState: ViewState
     
