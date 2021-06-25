@@ -153,6 +153,9 @@ struct QuizMainScreen: View {
                                 if gameObjects.count >= 1 {
                                     ForEach(gameIndizes, id: \.self) { index in QuizItemCard(viewState: $viewState, selectedGame: $selectedGame, quizGame: gameObjects[index], gameID: gameIDs[index])
                                     }
+                                } else {
+                                    Spacer()
+                                    NoGameCard()
                                 }
                             }
                         }
@@ -192,7 +195,6 @@ struct QuizMainScreen: View {
                             .alert(isPresented: $gameCreationFailed) {
                                 Alert(title: Text("Spielerstellung fehlgeschlagen"), message: Text("Das Spiel konnte nicht erstellt werden. Bitte versuche es erneut."), dismissButton: .default(Text("Ok")))
                             }
-                            
                         }
                     }
                     .overlay(SideMenu(menuToggled: $menuToggeled, viewState: $viewState))

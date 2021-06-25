@@ -116,13 +116,14 @@ struct QuestionView: View {
                         }) {
                             Text(gameQuestion.answers[0])
                                 .h3()
-                                .frame(width: 150, height: 120)
-                                .padding(5)
+                                .multilineTextAlignment(.center)
+                                .frame(width: 140, height: 120)
+                                .padding(10)
                                 .foregroundColor(Color.backgroundWhite)
                         }
                         .background(answerPicked ? (rightAnswer == 0 ? Color.gameGreen : Color.gameRed) : Color.darkBlue)
                         .cornerRadius(25)
-                        .shadow(radius: 20)
+                        .shadow(radius: 10)
                         .padding(10)
                         .disabled(answerPicked)
                         
@@ -136,13 +137,14 @@ struct QuestionView: View {
                         }) {
                             Text(gameQuestion.answers[1])
                                 .h3()
-                                .frame(width: 150, height: 120)
-                                .padding(5)
+                                .multilineTextAlignment(.center)
+                                .frame(width: 140, height: 120)
+                                .padding(10)
                                 .foregroundColor(Color.backgroundWhite)
                         }
                         .background(answerPicked ? (rightAnswer == 1 ? Color.gameGreen : Color.gameRed) : Color.darkBlue)
                         .cornerRadius(25)
-                        .shadow(radius: 20)
+                        .shadow(radius: 10)
                         .padding(10)
                         .disabled(answerPicked)
                     }
@@ -159,13 +161,14 @@ struct QuestionView: View {
                         }) {
                             Text(gameQuestion.answers[2])
                                 .h3()
-                                .frame(width: 150, height: 120)
-                                .padding(5)
+                                .multilineTextAlignment(.center)
+                                .frame(width: 140, height: 120)
+                                .padding(10)
                                 .foregroundColor(Color.backgroundWhite)
                         }
                         .background(answerPicked ? (rightAnswer == 2 ? Color.gameGreen : Color.gameRed) : Color.darkBlue)
                         .cornerRadius(25)
-                        .shadow(radius: 20)
+                        .shadow(radius: 10)
                         .padding(10)
                         .disabled(answerPicked)
                         
@@ -179,13 +182,14 @@ struct QuestionView: View {
                         }) {
                             Text(gameQuestion.answers[3])
                                 .h3()
-                                .frame(width: 150, height: 120)
-                                .padding(5)
+                                .multilineTextAlignment(.center)
+                                .frame(width: 140, height: 120)
+                                .padding(10)
                                 .foregroundColor(Color.backgroundWhite)
                         }
                         .background(answerPicked ? (rightAnswer == 3 ? Color.gameGreen : Color.gameRed) : Color.darkBlue)
                         .cornerRadius(25)
-                        .shadow(radius: 20)
+                        .shadow(radius: 10)
                         .padding(10)
                         .disabled(answerPicked)
                     }

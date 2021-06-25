@@ -32,7 +32,7 @@ struct SideMenu: View {
                                 .foregroundColor(Color.gameGreen)
                             Text("Mein Profil")
                                 .h3()
-                                .frame(width: 120, height: 50, alignment: .leading)
+                                .frame(width: 150, height: 50, alignment: .leading)
                                 .foregroundColor(.darkBlue)
                                 .onTapGesture {
                                     viewState = .PROFILE
@@ -45,7 +45,7 @@ struct SideMenu: View {
                                 .foregroundColor(Color.gameRed)
                             Text("Abmelden")
                                 .h3()
-                                .frame(width: 120, height: 50, alignment: .leading)
+                                .frame(width: 150, height: 50, alignment: .leading)
                                 .foregroundColor(.darkBlue)
                                 .onTapGesture {
                                     if(AuthenticationManager.shared.signOut()) {
@@ -54,8 +54,9 @@ struct SideMenu: View {
                             }
                         }
                     }
-                    .frame(width: 170)
-                    .offset(x: menuToggled ? 0 : 170)
+                    .frame(width: 180)
+                    .offset(x: menuToggled ? 0 : 180)
+                    .listStyle(SidebarListStyle())
                     .colorMultiply(Color.accentYellow)
                     .animation(.default)
                 }

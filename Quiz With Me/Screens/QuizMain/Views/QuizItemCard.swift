@@ -49,7 +49,7 @@ struct QuizItemCard: View {
             .padding()
         }
         .frame(width: 350, height: 200)
-        .cornerRadius(20)
+        .cornerRadius(25)
         .shadow(radius: 7)
         .padding(EdgeInsets(top: 15, leading: 15, bottom: 0, trailing: 15))
     }
