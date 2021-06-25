@@ -135,6 +135,7 @@ struct QuizMainScreen: View {
     var body: some View {
         
         Group {
+            EmptyView()
             if let quizGames = games, let quizUser = quizUserWrapper.quizUser{
                 VStack {
                     HStack(alignment: .top) {
@@ -158,6 +159,10 @@ struct QuizMainScreen: View {
                                 }
                             }
                         }
+                    }
+                    .onChange(of: quizUserWrapper.quizUser) { input in
+                        print("Reloading")
+                        reloadData()
                     }
                     .alert(isPresented: $gameFinished) {
                         Alert(title: Text("Spiel beendet"), message: Text(constructInformationMessage()), dismissButton: .default(Text("Ok")) {

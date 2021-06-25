@@ -101,7 +101,7 @@ class AuthenticationManager {
      - returns: A string with the email-address if a user is signed in. Othervice an empty string will be returned.
      */
     func getEMail() -> String {
-        guard let email = Auth.auth().currentUser?.emaila else {
+        guard let email = Auth.auth().currentUser?.email else {
             return ""
         }
         return email

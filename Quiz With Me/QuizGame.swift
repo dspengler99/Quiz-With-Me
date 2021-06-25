@@ -31,7 +31,14 @@ public class QuizGame: Codable, Equatable {
         self.pointsP2 = pointsP2
         self.questionIDs = questions
     }
-    
+
+    /**
+     Method, needed to conform to the protocol Equatable. The method checks if two given games are equal.
+     
+     - Parameter lhs: The first object of type `QuizGame`
+     - Parameter rhs: The second object of type `QuizGame`
+     - returns: True if lhs and rhs are equal, else false.
+     */
     public static func ==(lhs: QuizGame, rhs: QuizGame) -> Bool {
         return lhs.nameP1 == rhs.nameP1 && lhs.nameP2 == rhs.nameP2
     }

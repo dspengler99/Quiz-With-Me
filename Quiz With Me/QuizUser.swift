@@ -10,7 +10,7 @@
  
  The structure of the properties represents, how a User is stored in the data base as a document.
  */
-public class QuizUser: Codable {
+public class QuizUser: Codable, Equatable {
     var userID: String
     var username: String
     var totalGames: Int
@@ -31,5 +31,16 @@ public class QuizUser: Codable {
         self.wonGames = wonGames
         self.lostGames = lostGames
         self.gameIDs = gameIDs
+    }
+    
+    /**
+     Method needed to conform to Equatable. This method compares two quiz users and returns true when they are equal.
+     
+     - Parameter lhs: A object of type `QuizUser` that should be compared with another one.
+     - Parameter rhs: The other quiz user that should be compared against the lhs.
+     - returns: True if lhs and rhs are equal, else false.
+     */
+    public static func ==(lhs: QuizUser, rhs: QuizUser) -> Bool {
+        return lhs.username == rhs.username && lhs.gameIDs == rhs.gameIDs && lhs.totalGames == rhs.totalGames && lhs.wonGames == rhs.wonGames && lhs.lostGames == rhs.lostGames && lhs.userID == rhs.userID
     }
 }
