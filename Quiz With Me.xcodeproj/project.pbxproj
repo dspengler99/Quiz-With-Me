@@ -23,6 +23,7 @@
 		351CB6D526696BAA00DA9B55 /* QuestionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351CB6D426696BAA00DA9B55 /* QuestionButton.swift */; };
 		351CB6D7266972F200DA9B55 /* QuizQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351CB6D6266972F200DA9B55 /* QuizQuestion.swift */; };
 		3571381C2686241700F71AAB /* NoGameCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3571381B2686241700F71AAB /* NoGameCard.swift */; };
+		3571381E2686434B00F71AAB /* BackgroundMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3571381D2686434B00F71AAB /* BackgroundMainView.swift */; };
 		35D9BF7A266B938600E5E70E /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D9BF79266B938600E5E70E /* BackgroundView.swift */; };
 		35D9BF7C266CE46E00E5E70E /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D9BF7B266CE46D00E5E70E /* BackButton.swift */; };
 		35EA02DC2685E5C700E60EE3 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EA02DB2685E5C700E60EE3 /* FontExtension.swift */; };
@@ -77,6 +78,7 @@
 		351CB6D426696BAA00DA9B55 /* QuestionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionButton.swift; sourceTree = "<group>"; };
 		351CB6D6266972F200DA9B55 /* QuizQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizQuestion.swift; sourceTree = "<group>"; };
 		3571381B2686241700F71AAB /* NoGameCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoGameCard.swift; sourceTree = "<group>"; };
+		3571381D2686434B00F71AAB /* BackgroundMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundMainView.swift; sourceTree = "<group>"; };
 		35D9BF79266B938600E5E70E /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		35D9BF7B266CE46D00E5E70E /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		35EA02DB2685E5C700E60EE3 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 			children = (
 				35D9BF79266B938600E5E70E /* BackgroundView.swift */,
 				35D9BF7B266CE46D00E5E70E /* BackButton.swift */,
+				3571381D2686434B00F71AAB /* BackgroundMainView.swift */,
 			);
 			path = HelperView;
 			sourceTree = "<group>";
@@ -481,6 +484,7 @@
 				35D9BF7C266CE46E00E5E70E /* BackButton.swift in Sources */,
 				C34C5419264D33A000392EFA /* AuthenticationManager.swift in Sources */,
 				351CB6B92664232D00DA9B55 /* QuizItemCard.swift in Sources */,
+				3571381E2686434B00F71AAB /* BackgroundMainView.swift in Sources */,
 				C38CF0CC26556A8A0055A20A /* LoginRegisterScreen.swift in Sources */,
 				351CB6CA2664F65800DA9B55 /* GameOverviewScreen.swift in Sources */,
 				C3D76E9E264AE87B001FCD34 /* Quiz_With_MeApp.swift in Sources */,

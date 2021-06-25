@@ -137,12 +137,11 @@ struct QuizMainScreen: View {
             EmptyView()
             if let _ = games, let _ = quizUserWrapper.quizUser{
                 ZStack {
-                    Color.backgroundWhite
-                        .ignoresSafeArea()
+                    BackgroundMainView()
                     VStack {
                         HStack(alignment: .top) {
                             Spacer()
-                            LogoImage()
+                            LogoImageWhite()
                                 .padding(.leading, 50)
                             Spacer()
                             MenuButton(menuToggled: $menuToggeled)

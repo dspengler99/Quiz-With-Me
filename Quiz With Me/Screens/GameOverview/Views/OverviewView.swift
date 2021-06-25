@@ -34,7 +34,7 @@ struct OverviewView: View {
             if let quizGame = game, let _ = quizUserWrapper.quizUser {
                 VStack {
                     HStack {
-                        BackButton(viewState: $viewState, changeView: .HOME, color: .backgroundWhite)
+                        BackButton(viewState: $viewState, changeView: .HOME, color: Color.accentYellow)
                         Spacer()
                     }
                     .padding()

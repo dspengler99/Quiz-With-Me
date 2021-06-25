@@ -21,7 +21,7 @@ struct MenuButton: View {
             Image(systemName: "house.circle")
                 .resizable()
                 .frame(width: 50, height: 50)
-                .foregroundColor(.gameGreen)
+                .foregroundColor(.accentYellow)
         }
     }
 }

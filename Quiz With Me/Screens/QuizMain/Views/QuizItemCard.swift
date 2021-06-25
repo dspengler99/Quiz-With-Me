@@ -28,10 +28,10 @@ struct QuizItemCard: View {
             VStack(alignment: .leading) {
                 Text("Spiel mit \(isPlayer1 ? quizGame.nameP2 : quizGame.nameP1)")
                     .h1()
-                    .foregroundColor(.backgroundWhite)
+                    .foregroundColor(.accentYellow)
                 Text("Beantwortete Fragen: \(isPlayer1 ? quizGame.progressP1 : quizGame.progressP2)/\(quizGame.questionIDs.count)")
                     .h2()
-                    .foregroundColor(.backgroundWhite)
+                    .foregroundColor(.accentYellow)
                 Button(action: {
                     withAnimation {
                         selectedGame = gameID

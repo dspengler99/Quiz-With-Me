@@ -29,7 +29,7 @@ struct ProfileScreen: View {
                             BackgroundView()
                             VStack {
                                 HStack() {
-                                    BackButton(viewState: $viewState, changeView: .HOME, color: Color.backgroundWhite)
+                                    BackButton(viewState: $viewState, changeView: .HOME, color: Color.accentYellow)
                                     Spacer()
                                 }
                                 Spacer()

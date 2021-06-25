@@ -9,7 +9,19 @@ import SwiftUI
 
 struct BackgroundMainView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            Color.backgroundWhite
+                .ignoresSafeArea()
+            VStack {
+                Rectangle()
+                    .fill(Color.primaryBlue)
+                    .frame(width: .infinity, height: 150)
+                    .cornerRadius(25)
+                    .offset(x: 0, y: -20)
+                    .ignoresSafeArea(edges: .top)
+                Spacer()
+            }
+        }
     }
 }
 
