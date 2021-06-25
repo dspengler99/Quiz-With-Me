@@ -24,6 +24,7 @@ struct QuizMainScreen: View {
     @State private var gameIndizes: [Int] = [] // Required for ForEach
     @State private var gameFinished = false
     @State private var finishedGameInformation: (String, Bool?, Int, Int) = ("Not set", nil, -1, -1)
+    @State var gameCreationFailed = false
     
     /**
      Searches the active games for a finished one. If a finished game is found it gets deleted from the user and the user will receive information.
@@ -175,7 +176,7 @@ struct QuizMainScreen: View {
                                         }
                                     }
                                 } catch {
-                                    print(error.localizedDescription)
+                                    gameCreationFailed = true
                                 }
                             }) {
                                 Text("Neus Spiel")
@@ -185,6 +186,9 @@ struct QuizMainScreen: View {
                             .buttonStyle(PrimaryButton(width: 300, height: 50))
                             .shadow(radius: 10)
                             .padding(.bottom)
+                            .alert(isPresented: $gameCreationFailed) {
+                                Alert(title: Text("Spielerstellung fehlgeschlagen"), message: Text("Das Spiel konnte nicht erstellt werden. Bitte versuche es erneut."), dismissButton: .default(Text("Ok")))
+                            }
                             
                         }
                     }
