@@ -9,23 +9,29 @@ import SwiftUI
 
 extension Text {
     func h1() -> some View {
-        self.font(.custom("Rubik-Regular", size: 26))
+        self.font(.custom("Nunito-Regular", size: 26))
+    }
+    func h1_bold() -> some View {
+        self.font(.custom("Nunito-SemiBold", size: 26))
     }
     func h1_underline() -> some View {
-        self.font(.custom("Rubik-SemiBold", size: 26))
+        self.font(.custom("Nunito-SemiBold", size: 26))
             .underline()
     }
     func h2() -> some View {
-        self.font(.custom("Rubik-Regular", size: 22))
+        self.font(.custom("Nunito-Regular", size: 22))
+    }
+    func h2_bold() -> some View {
+        self.font(.custom("Nunito-SemiBold", size: 22))
     }
     func h2_underline() -> some View {
-        self.font(.custom("Rubik-SemiBold", size: 22))
+        self.font(.custom("Nunito-SemiBold", size: 22))
             .underline()
     }
     func h3() -> some View {
-        self.font(.custom("Rubik-Regular", size: 18))
+        self.font(.custom("Nunito-Regular", size: 18))
     }
     func avatarFont() -> some View {
-        self.font(.custom("Rubik-SemiBold", size: 80))
+        self.font(.custom("Nunito-SemiBold", size: 80))
     }
 }

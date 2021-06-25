@@ -20,5 +20,5 @@ extension Color {
     static let darkBlue = Color(red: 7/255, green: 49/255, blue: 106/255)
     static let gameGreen = Color(red: 6/255, green: 204/255, blue: 150/255)
     static let gameRed = Color(red: 229/255, green: 71/255, blue: 101/255)
-    static let accentYellow = Color(red: 255/255, green: 209/255, blue: 102/255)
+    static let accentYellow = Color(red: 255/255, green: 209/255, blue: 122/255)
 }

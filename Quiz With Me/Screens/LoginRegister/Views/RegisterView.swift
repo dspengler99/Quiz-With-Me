@@ -132,7 +132,7 @@ struct RegisterView: View {
                                 }
                             }) {
                                 Text("Konto erstellen")
-                                    .h2()
+                                    .h3()
                                     .frame(width: 300, height: 50, alignment: .center)
                                     .foregroundColor(Color.backgroundWhite)
                             }
@@ -155,7 +155,7 @@ struct RegisterView: View {
                             }
                         }) {
                             Text("Jetzt anmelden")
-                                .h2()
+                                .h3()
                                 .frame(width: 200, height: 50, alignment: .center)
                                 .foregroundColor(Color.backgroundWhite)
                         }

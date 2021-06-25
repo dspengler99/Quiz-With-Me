@@ -27,11 +27,14 @@ struct QuizItemCard: View {
             Color.primaryBlue
             VStack(alignment: .leading) {
                 Text("Spiel mit \(isPlayer1 ? quizGame.nameP2 : quizGame.nameP1)")
-                    .h1()
+                    .h1_bold()
                     .foregroundColor(.accentYellow)
+                    .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
                 Text("Beantwortete Fragen: \(isPlayer1 ? quizGame.progressP1 : quizGame.progressP2)/\(quizGame.questionIDs.count)")
-                    .h2()
+                    .h2_bold()
                     .foregroundColor(.accentYellow)
+                    .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+                Spacer()
                 Button(action: {
                     withAnimation {
                         selectedGame = gameID
@@ -44,7 +47,7 @@ struct QuizItemCard: View {
                 }
                 .buttonStyle(PrimaryButton(width: 300, height: 50))
                 .shadow(radius: 10)
-                .padding()
+                .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
             }
             .padding()
         }
