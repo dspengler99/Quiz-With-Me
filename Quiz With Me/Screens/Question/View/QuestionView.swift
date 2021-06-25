@@ -89,7 +89,7 @@ struct QuestionView: View {
                     .padding()
                     Rectangle()
                         .fill(Color.backgroundWhite)
-                        .frame(width: 350, height: 200)
+                        .frame(width: 350, height: 190)
                         .cornerRadius(25)
                         .shadow(radius: 20)
                         .overlay(Text(
@@ -117,7 +117,7 @@ struct QuestionView: View {
                             Text(gameQuestion.answers[0])
                                 .h3()
                                 .multilineTextAlignment(.center)
-                                .frame(width: 140, height: 120)
+                                .frame(width: 140, height: 110)
                                 .padding(10)
                                 .foregroundColor(Color.backgroundWhite)
                         }
@@ -138,7 +138,7 @@ struct QuestionView: View {
                             Text(gameQuestion.answers[1])
                                 .h3()
                                 .multilineTextAlignment(.center)
-                                .frame(width: 140, height: 120)
+                                .frame(width: 140, height: 110)
                                 .padding(10)
                                 .foregroundColor(Color.backgroundWhite)
                         }
@@ -162,7 +162,7 @@ struct QuestionView: View {
                             Text(gameQuestion.answers[2])
                                 .h3()
                                 .multilineTextAlignment(.center)
-                                .frame(width: 140, height: 120)
+                                .frame(width: 140, height: 110)
                                 .padding(10)
                                 .foregroundColor(Color.backgroundWhite)
                         }
@@ -183,7 +183,7 @@ struct QuestionView: View {
                             Text(gameQuestion.answers[3])
                                 .h3()
                                 .multilineTextAlignment(.center)
-                                .frame(width: 140, height: 120)
+                                .frame(width: 140, height: 110)
                                 .padding(10)
                                 .foregroundColor(Color.backgroundWhite)
                         }

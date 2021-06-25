@@ -34,6 +34,7 @@ struct RegisterView: View {
                 ZStack {
                     VStack {
                         LogoImage()
+                            .padding()
                         Spacer()
                         
                         Group {
@@ -46,8 +47,9 @@ struct RegisterView: View {
                                     .h3()
                                     .foregroundColor(Color.darkBlue)
                                     .frame(width: 130, height: 30, alignment: .leading)
-                                    .padding()
+                                    .padding(.leading, 30)
                                 TextField("Nutzername", text: $username)
+                                    .foregroundColor(Color.darkBlue)
                                     .multilineTextAlignment(.center)
                                     .frame(height: 50)
                                     .clipShape(RoundedRectangle(cornerRadius: 20.0))
@@ -63,8 +65,9 @@ struct RegisterView: View {
                                     .h3()
                                     .foregroundColor(Color.darkBlue)
                                     .frame(width: 130, height: 30, alignment: .leading)
-                                    .padding()
+                                    .padding(.leading, 30)
                                 TextField("E-Mail", text: $email)
+                                    .foregroundColor(Color.darkBlue)
                                     .multilineTextAlignment(.center)
                                     .frame(height: 50)
                                     .clipShape(RoundedRectangle(cornerRadius: 20.0))
@@ -77,8 +80,9 @@ struct RegisterView: View {
                                     .h3()
                                     .foregroundColor(Color.darkBlue)
                                     .frame(width: 130, height: 30, alignment: .leading)
-                                    .padding()
+                                    .padding(.leading, 30)
                                 SecureField("Passwort", text: $password)
+                                    .foregroundColor(Color.darkBlue)
                                     .multilineTextAlignment(.center)
                                     .frame(height: 50)
                                     .clipShape(RoundedRectangle(cornerRadius: 20.0))
@@ -91,9 +95,10 @@ struct RegisterView: View {
                                     .h3()
                                     .foregroundColor(Color.darkBlue)
                                     .frame(width: 130, height: 50, alignment: .leading)
-                                    .padding()
+                                    .padding(.leading, 30)
                                 Spacer()
                                 SecureField("Passwort wiederholen", text: $repeatedPassword)
+                                    .foregroundColor(Color.darkBlue)
                                     .multilineTextAlignment(.center)
                                     .frame(height: 50)
                                     .clipShape(RoundedRectangle(cornerRadius: 20.0))
@@ -132,6 +137,7 @@ struct RegisterView: View {
                                     .foregroundColor(Color.backgroundWhite)
                             }
                             .buttonStyle(PrimaryButton(width: 300, height: 50))
+                            .shadow(radius: 10)
                             .padding()
                             .disabled((username == "" && email == "" && password == "" && repeatedPassword == "") || password != repeatedPassword || password.count < 8)
                             .alert(isPresented: $showAlert) {
@@ -153,6 +159,7 @@ struct RegisterView: View {
                                 .frame(width: 200, height: 50, alignment: .center)
                                 .foregroundColor(Color.backgroundWhite)
                         }
+                        .shadow(radius: 10)
                         .buttonStyle(PrimaryButton(width: 200, height: 50))
                         .padding()
                     }

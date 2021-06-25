@@ -142,7 +142,7 @@ struct QuizMainScreen: View {
                     VStack {
                         HStack(alignment: .top) {
                             Spacer()
-                            LogoImageWhite()
+                            LogoImage()
                                 .padding(.leading, 50)
                             Spacer()
                             MenuButton(menuToggled: $menuToggeled)

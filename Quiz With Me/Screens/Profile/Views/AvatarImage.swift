@@ -19,7 +19,7 @@ struct AvatarImage: View {
                 .padding()
                 .background(Color.gameGreen)
                 .clipShape(Circle())
-                .shadow(radius: 20)
+                .shadow(radius: 10)
                 .overlay(Circle().stroke(Color.backgroundWhite, lineWidth: 10))
         }
     }
