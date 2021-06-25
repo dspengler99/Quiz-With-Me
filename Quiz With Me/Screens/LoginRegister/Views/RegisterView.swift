@@ -27,114 +27,136 @@ struct RegisterView: View {
     @Binding var viewState: ViewState
     
     var body: some View {
-        ScrollView {
-            VStack {
-                LogoImage()
-                Spacer()
-                
-                Group {
-                    Text("Erstelle dir ein neues Konto")
-                        .h2()
-                        .foregroundColor(Color.darkBlue)
-                        .padding()
-                    HStack {
-                        Text("Nutzername")
-                            .h2()
-                            .foregroundColor(Color.darkBlue)
-                            .frame(width: 100, alignment: .leading)
-                            .padding()
-                        TextField("Nutzername", text: $username)
-                        .background(Color.backgroundWhite)
-                            .padding(.trailing, 30)
-                    }
-                    .alert(isPresented: $usernameInUse) {
-                        Alert(title: Text("Nutzername bereits vergeben"), message: Text("Der von dir gewählte Nutzername ist bereits vergeben."), dismissButton: .default(Text("Ok")))
-                    }
-                    HStack {
-                        Text("E-Mail")
-                            .h2()
-                            .foregroundColor(Color.darkBlue)
-                            .frame(width: 100, alignment: .leading)
-                            .padding()
-                        TextField("E-Mail", text: $email)
-                        .background(Color.backgroundWhite)
-                            .padding(.trailing, 30)
-                    }
-                    HStack {
-                        Text("Paswort")
-                            .h2()
-                            .foregroundColor(Color.darkBlue)
-                            .frame(width: 100, alignment: .leading)
-                            .padding()
-                        SecureField("Passwort", text: $password)
-                        .background(Color.backgroundWhite)
-                            .padding(.trailing, 30)
-                    }
-                    HStack {
-                        Text("Passwort wiederholen")
-                            .h2()
-                            .foregroundColor(Color.darkBlue)
-                            .frame(width: 100, alignment: .leading)
-                            .padding()
+        ZStack {
+            Color.backgroundWhite
+                .ignoresSafeArea()
+            ScrollView {
+                ZStack {
+                    VStack {
+                        LogoImage()
                         Spacer()
-                        SecureField("Passwort wiederholen", text: $repeatedPassword)
-                        .background(Color.backgroundWhite)
-                        .padding(.trailing, 30)
-                    }
-                    Button(action: {
-                        _ = DataManager.shared.usernameAlreadyExists(username: username).done { response in
-                            guard response == false else {
-                                usernameInUse = true
-                                return
+                        
+                        Group {
+                            Text("Erstelle dir ein neues Konto")
+                                .h2()
+                                .foregroundColor(Color.darkBlue)
+                                .padding()
+                            HStack {
+                                Text("Nutzername")
+                                    .h3()
+                                    .foregroundColor(Color.darkBlue)
+                                    .frame(width: 130, height: 30, alignment: .leading)
+                                    .padding()
+                                TextField("Nutzername", text: $username)
+                                    .multilineTextAlignment(.center)
+                                    .frame(height: 50)
+                                    .clipShape(RoundedRectangle(cornerRadius: 20.0))
+                                    .overlay(RoundedRectangle(cornerRadius: 20.0).stroke(Color.primaryBlue, lineWidth: 2))
+                                    .background(RoundedRectangle(cornerRadius: 20.0).fill(Color.white))
+                                    .padding(.trailing, 30)
                             }
-                            AuthenticationManager.shared.signupWith(username: username, email: email, and: password) { result, error in
-                                if let error = error {
-                                    errorMessage = error.localizedDescription
-                                    showAlert = true
-                                } else {
-                                    if let uid = Auth.auth().currentUser?.uid {
-                                        _ = DataManager.shared.getUser(uid: uid).done { response in
-                                            if response != nil {
-                                                quizUserWrapper.quizUser = response!
-                                                withAnimation {
-                                                    viewState = .HOME
+                            .alert(isPresented: $usernameInUse) {
+                                Alert(title: Text("Nutzername bereits vergeben"), message: Text("Der von dir gewählte Nutzername ist bereits vergeben."), dismissButton: .default(Text("Ok")))
+                            }
+                            HStack {
+                                Text("E-Mail")
+                                    .h3()
+                                    .foregroundColor(Color.darkBlue)
+                                    .frame(width: 130, height: 30, alignment: .leading)
+                                    .padding()
+                                TextField("E-Mail", text: $email)
+                                    .multilineTextAlignment(.center)
+                                    .frame(height: 50)
+                                    .clipShape(RoundedRectangle(cornerRadius: 20.0))
+                                    .overlay(RoundedRectangle(cornerRadius: 20.0).stroke(Color.primaryBlue, lineWidth: 2))
+                                    .background(RoundedRectangle(cornerRadius: 20.0).fill(Color.white))
+                                    .padding(.trailing, 30)
+                            }
+                            HStack {
+                                Text("Paswort")
+                                    .h3()
+                                    .foregroundColor(Color.darkBlue)
+                                    .frame(width: 130, height: 30, alignment: .leading)
+                                    .padding()
+                                SecureField("Passwort", text: $password)
+                                    .multilineTextAlignment(.center)
+                                    .frame(height: 50)
+                                    .clipShape(RoundedRectangle(cornerRadius: 20.0))
+                                    .overlay(RoundedRectangle(cornerRadius: 20.0).stroke(Color.primaryBlue, lineWidth: 2))
+                                    .background(RoundedRectangle(cornerRadius: 20.0).fill(Color.white))
+                                    .padding(.trailing, 30)
+                            }
+                            HStack {
+                                Text("Passwort wiederholen")
+                                    .h3()
+                                    .foregroundColor(Color.darkBlue)
+                                    .frame(width: 130, height: 50, alignment: .leading)
+                                    .padding()
+                                Spacer()
+                                SecureField("Passwort wiederholen", text: $repeatedPassword)
+                                    .multilineTextAlignment(.center)
+                                    .frame(height: 50)
+                                    .clipShape(RoundedRectangle(cornerRadius: 20.0))
+                                    .overlay(RoundedRectangle(cornerRadius: 20.0).stroke(Color.primaryBlue, lineWidth: 2))
+                                    .background(RoundedRectangle(cornerRadius: 20.0).fill(Color.white))
+                                    .padding(.trailing, 30)
+                            }
+                            Button(action: {
+                                _ = DataManager.shared.usernameAlreadyExists(username: username).done { response in
+                                    guard response == false else {
+                                        usernameInUse = true
+                                        return
+                                    }
+                                    AuthenticationManager.shared.signupWith(username: username, email: email, and: password) { result, error in
+                                        if let error = error {
+                                            errorMessage = error.localizedDescription
+                                            showAlert = true
+                                        } else {
+                                            if let uid = Auth.auth().currentUser?.uid {
+                                                _ = DataManager.shared.getUser(uid: uid).done { response in
+                                                    if response != nil {
+                                                        quizUserWrapper.quizUser = response!
+                                                        withAnimation {
+                                                            viewState = .HOME
+                                                        }
+                                                    }
                                                 }
                                             }
                                         }
                                     }
                                 }
+                            }) {
+                                Text("Konto erstellen")
+                                    .h2()
+                                    .frame(width: 300, height: 50, alignment: .center)
+                                    .foregroundColor(Color.backgroundWhite)
+                            }
+                            .buttonStyle(PrimaryButton(width: 300, height: 50))
+                            .padding()
+                            .disabled((username == "" && email == "" && password == "" && repeatedPassword == "") || password != repeatedPassword || password.count < 8)
+                            .alert(isPresented: $showAlert) {
+                                Alert(title: Text("Fehler"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
                             }
                         }
-                    }) {
-                        Text("Konto erstellen")
-                            .h2()
-                            .frame(width: 300, height: 50, alignment: .center)
-                            .foregroundColor(Color.backgroundWhite)
-                    }
-                    .buttonStyle(PrimaryButton(width: 300, height: 50))
-                    .padding()
-                    .disabled((username == "" && email == "" && password == "" && repeatedPassword == "") || password != repeatedPassword || password.count < 8)
-                    .alert(isPresented: $showAlert) {
-                        Alert(title: Text("Fehler"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
+                        Spacer()
+                        Text("Du hast bereits ein Konto?")
+                            .h3()
+                            .foregroundColor(Color.darkBlue)
+                            .padding(.top, 30)
+                        Button(action: {
+                            withAnimation {
+                                viewState = .LOGIN
+                            }
+                        }) {
+                            Text("Jetzt anmelden")
+                                .h2()
+                                .frame(width: 200, height: 50, alignment: .center)
+                                .foregroundColor(Color.backgroundWhite)
+                        }
+                        .buttonStyle(PrimaryButton(width: 200, height: 50))
+                        .padding()
                     }
                 }
-                Spacer()
-                Text("Du hast bereits ein Konto?")
-                    .h3()
-                    .foregroundColor(Color.darkBlue)
-                    .padding(.top, 30)
-                Button(action: {
-                    withAnimation {
-                        viewState = .LOGIN
-                    }
-                }) {
-                    Text("Jetzt anmelden")
-                        .h2()
-                        .frame(width: 200, height: 50, alignment: .center)
-                        .foregroundColor(Color.backgroundWhite)
-                }
-                .buttonStyle(PrimaryButton(width: 200, height: 50))
-                .padding()
             }
         }
     }
