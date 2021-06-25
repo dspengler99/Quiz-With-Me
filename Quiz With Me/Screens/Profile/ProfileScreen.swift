@@ -39,7 +39,7 @@ struct ProfileScreen: View {
                                 .offset(y: 15)
                                 .padding(.top, 15)
                         }
-                        ProfileDetailView(name: quizUser.username, email: email, totalGames: quizUser.totalGames, wonGames: quizUser.wonGames)
+                        ProfileDetailView(name: quizUser.username, email: email, totalGames: quizUser.totalGames, wonGames: quizUser.wonGames, lostGames: quizUser.lostGames)
                     }
                 }
             } else {

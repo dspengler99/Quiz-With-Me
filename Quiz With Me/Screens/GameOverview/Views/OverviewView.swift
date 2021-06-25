@@ -55,21 +55,21 @@ struct OverviewView: View {
                                 .padding(.bottom, 10)
                                 HStack {
                                     Text("Aktueller Fortschritt:")
-                                        .h3()
+                                        .h2()
                                         .foregroundColor(Color.darkBlue)
                                     Spacer()
                                     Text((isPlayer1 ? String(quizGame.progressP1) : String(quizGame.progressP2)) + "/\(quizGame.questionIDs.count)")
-                                        .h3()
+                                        .h2_bold()
                                         .foregroundColor(Color.darkBlue)
                                 }
                                 .padding(.bottom, 5)
                                 HStack {
                                     Text("Richtige Antworten:")
-                                        .h3()
+                                        .h2()
                                         .foregroundColor(Color.darkBlue)
                                     Spacer()
                                     Text((isPlayer1 ? String(quizGame.pointsP1) : String(quizGame.pointsP2)) + "/\(quizGame.questionIDs.count)")
-                                        .h3()
+                                        .h2_bold()
                                         .foregroundColor(Color.darkBlue)
                                 }
                                 .padding(.bottom, 5)
@@ -87,11 +87,11 @@ struct OverviewView: View {
                                 .padding(.bottom, 10)
                                 HStack {
                                     Text("Aktueller Fortschritt:")
-                                        .h3()
+                                        .h2()
                                         .foregroundColor(Color.darkBlue)
                                     Spacer()
                                     Text("\(isPlayer1 ? String(quizGame.progressP2) : String(quizGame.progressP1))/\(quizGame.questionIDs.count)")
-                                        .h3()
+                                        .h2_bold()
                                         .foregroundColor(Color.darkBlue)
                                 }
                             }
@@ -120,7 +120,7 @@ struct OverviewView: View {
                     } else {
                         Text("Du hast alle Fragen beantwortet!")
                             .h3()
-                            .foregroundColor(Color.primaryBlue)
+                            .foregroundColor(Color.darkBlue)
                             .padding(.bottom)
                     }
                 }

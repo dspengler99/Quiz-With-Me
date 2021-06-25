@@ -95,11 +95,10 @@ struct QuestionView: View {
                         .overlay(Text(
                                     gameQuestion.question)
                                     .h3()
-                                    .foregroundColor(.primaryBlue)
-                                    .padding(40)
+                                    .foregroundColor(.darkBlue)
+                                    .padding(20)
                                     .multilineTextAlignment(.center),
                                  alignment: .center)
-                    
                     Text("Frage \(progress + 1)/\(gameQuestionIds!.count)")
                         .h3()
                         .padding(10)
