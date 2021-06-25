@@ -29,7 +29,7 @@ struct OverviewView: View {
                         BackButton(viewState: $viewState, changeView: .HOME, color: .backgroundWhite)
                         Spacer()
                     }
-                    Spacer()
+                    .padding()
                     ZStack {
                         Color.backgroundWhite
                         VStack {
@@ -41,42 +41,50 @@ struct OverviewView: View {
                                 HStack {
                                     Text("Du")
                                         .h2_underline()
-                                        .foregroundColor(Color.darkBlue)
+                                        .foregroundColor(Color.gameGreen)
                                     Spacer()
                                 }
                                 .padding(.bottom, 10)
                                 HStack {
                                     Text("Aktueller Fortschritt:")
                                         .h3()
+                                        .foregroundColor(Color.darkBlue)
                                     Spacer()
                                     Text((isPlayer1 ? String(quizGame.progressP1) : String(quizGame.progressP2)) + "/\(quizGame.questionIDs.count)")
                                         .h3()
+                                        .foregroundColor(Color.darkBlue)
                                 }
                                 .padding(.bottom, 5)
                                 HStack {
                                     Text("Richtige Antworten:")
                                         .h3()
+                                        .foregroundColor(Color.darkBlue)
                                     Spacer()
                                     Text((isPlayer1 ? String(quizGame.pointsP1) : String(quizGame.pointsP2)) + "/\(quizGame.questionIDs.count)")
                                         .h3()
+                                        .foregroundColor(Color.darkBlue)
                                 }
                                 .padding(.bottom, 5)
                             }
                             Divider()
+                                .frame(height: 3)
+                                .foregroundColor(Color.accentYellow)
                             Group {
                                 HStack {
                                     Text(isPlayer1 ? quizGame.nameP2 : quizGame.nameP1)
                                         .h2_underline()
-                                        .foregroundColor(Color.darkBlue)
+                                        .foregroundColor(Color.gameRed)
                                     Spacer()
                                 }
                                 .padding(.bottom, 10)
                                 HStack {
                                     Text("Aktueller Fortschritt:")
                                         .h3()
+                                        .foregroundColor(Color.darkBlue)
                                     Spacer()
                                     Text("\(isPlayer1 ? String(quizGame.progressP2) : String(quizGame.progressP1))/\(quizGame.questionIDs.count)")
                                         .h3()
+                                        .foregroundColor(Color.darkBlue)
                                 }
                             }
                             Spacer()
@@ -95,16 +103,19 @@ struct OverviewView: View {
                         }) {
                             Text("Weiterspielen")
                                 .h3()
+                                .foregroundColor(Color.backgroundWhite)
                                 .frame(width: 300, height: 50, alignment: .center)
                         }
                         .buttonStyle(PrimaryButton(width: 300, height: 50, fontSize: 15))
+                        .padding(.bottom)
                         .shadow(radius: 20)
                     } else {
                         Text("Du hast alle Fragen beantwortet!")
                             .h3()
+                            .foregroundColor(Color.primaryBlue)
+                            .padding(.bottom)
                     }
                 }
-                .padding()
             } else {
                 ProgressView()
             }

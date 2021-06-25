@@ -24,27 +24,39 @@ struct SideMenu: View {
             HStack {
                 Spacer()
                 ZStack {
-                   
                     List {
-                        Text("Mein Profil")
-                            .h3()
-                            .frame(width: 100, height: 30, alignment: .leading)
-                            .foregroundColor(.darkBlue)
-                            .onTapGesture {
-                                viewState = .PROFILE
+                        HStack {
+                            Image(systemName: "person.circle")
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                                .foregroundColor(Color.gameGreen)
+                            Text("Mein Profil")
+                                .h3()
+                                .frame(width: 120, height: 50, alignment: .leading)
+                                .foregroundColor(.darkBlue)
+                                .onTapGesture {
+                                    viewState = .PROFILE
                             }
-                        Text("Abmelden")
-                            .h3()
-                            .frame(width: 100, height: 30, alignment: .leading)
-                            .foregroundColor(.darkBlue)
-                            .onTapGesture {
-                                if(AuthenticationManager.shared.signOut()) {
-                                    viewState = .LOGIN
-                                }
+                        }
+                        HStack {
+                            Image(systemName: "arrow.down.left.circle")
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                                .foregroundColor(Color.gameRed)
+                            Text("Abmelden")
+                                .h3()
+                                .frame(width: 120, height: 50, alignment: .leading)
+                                .foregroundColor(.darkBlue)
+                                .onTapGesture {
+                                    if(AuthenticationManager.shared.signOut()) {
+                                        viewState = .LOGIN
+                                    }
                             }
+                        }
                     }
-                    .frame(width: 150)
-                    .offset(x: menuToggled ? 0 : 150)
+                    .frame(width: 170)
+                    .offset(x: menuToggled ? 0 : 170)
+                    .colorMultiply(Color.accentYellow)
                     .animation(.default)
                 }
             }

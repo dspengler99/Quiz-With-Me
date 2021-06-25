@@ -13,11 +13,11 @@ struct AvatarImage: View {
     var body: some View {
         VStack {
             Text(userShortname)
+                .avatarFont()
                 .frame(width: 200, height: 200, alignment: .center)
-                .font(.system(size: 80))
                 .foregroundColor(.backgroundWhite)
                 .padding()
-                .background(Color.primaryBlue)
+                .background(Color.gameGreen)
                 .clipShape(Circle())
                 .shadow(radius: 20)
                 .overlay(Circle().stroke(Color.backgroundWhite, lineWidth: 10))

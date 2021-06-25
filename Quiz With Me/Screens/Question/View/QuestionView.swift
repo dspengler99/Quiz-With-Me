@@ -66,12 +66,14 @@ struct QuestionView: View {
                         .shadow(radius: 20)
                         .overlay(Text(
                                     gameQuestion.question)
+                                    .h3()
                                     .foregroundColor(.primaryBlue)
                                     .padding(40)
                                     .multilineTextAlignment(.center),
                                  alignment: .center)
                     
                     Text("Frage \(progress + 1)/\(gameQuestionIds!.count)")
+                        .h3()
                         .padding(10)
                         .foregroundColor(Color.darkBlue)
                     
@@ -85,7 +87,9 @@ struct QuestionView: View {
                             nextQuestion(selectedGame: selectedGame, playerProgress: playerProgress, progress: progress, gameQuestionIDs: gameQuestionIds)
                         }) {
                             Text(gameQuestion.answers[0])
+                                .h3()
                                 .frame(width: 150, height: 120)
+                                .padding(5)
                                 .foregroundColor(Color.backgroundWhite)
                         }
                         .background(answerPicked ? (rightAnswer == 0 ? Color.gameGreen : Color.gameRed) : Color.darkBlue)
@@ -103,7 +107,9 @@ struct QuestionView: View {
                             nextQuestion(selectedGame: selectedGame, playerProgress: playerProgress, progress: progress, gameQuestionIDs: gameQuestionIds)
                         }) {
                             Text(gameQuestion.answers[1])
+                                .h3()
                                 .frame(width: 150, height: 120)
+                                .padding(5)
                                 .foregroundColor(Color.backgroundWhite)
                         }
                         .background(answerPicked ? (rightAnswer == 1 ? Color.gameGreen : Color.gameRed) : Color.darkBlue)
@@ -124,7 +130,9 @@ struct QuestionView: View {
                             nextQuestion(selectedGame: selectedGame, playerProgress: playerProgress, progress: progress, gameQuestionIDs: gameQuestionIds)
                         }) {
                             Text(gameQuestion.answers[2])
+                                .h3()
                                 .frame(width: 150, height: 120)
+                                .padding(5)
                                 .foregroundColor(Color.backgroundWhite)
                         }
                         .background(answerPicked ? (rightAnswer == 2 ? Color.gameGreen : Color.gameRed) : Color.darkBlue)
@@ -142,7 +150,9 @@ struct QuestionView: View {
                             nextQuestion(selectedGame: selectedGame, playerProgress: playerProgress, progress: progress, gameQuestionIDs: gameQuestionIds)
                         }) {
                             Text(gameQuestion.answers[3])
+                                .h3()
                                 .frame(width: 150, height: 120)
+                                .padding(5)
                                 .foregroundColor(Color.backgroundWhite)
                         }
                         .background(answerPicked ? (rightAnswer == 3 ? Color.gameGreen : Color.gameRed) : Color.darkBlue)
