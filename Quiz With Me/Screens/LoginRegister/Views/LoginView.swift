@@ -24,70 +24,94 @@ struct LoginView: View {
     @Binding var viewState: ViewState
     
     var body: some View {
-        ScrollView {
-            VStack {
-                LogoImage()
-                Spacer()
-                Group {
-                    Text("Melde dich mit deinem Konto an!")
-                        .font(.title2)
-                        .foregroundColor(.black)
-                        .padding()
-                    HStack {
-                        Text("E-Mail")
-                            .frame(width: 100)
+        ZStack {
+            Color.backgroundWhite
+                .ignoresSafeArea()
+            ScrollView {
+                
+                    VStack {
+                        LogoImage()
                             .padding()
-                        TextField("E-Mail", text: $email)
-                            .background(Color.white)
-                            .padding(.trailing, 30)
-                    }
-                        .padding(.top, 20)
-                    HStack {
-                        Text("Passwort")
-                            .frame(width: 100)
-                            .padding()
-                        SecureField("Passwort", text: $password)
-                            .background(Color.white)
-                            .padding(.trailing, 30)
-                    }
-                    Button("Anmelden") {
-                        AuthenticationManager.shared.loginWith(email: email, and: password) { result, error in
-                            if let error = error {
-                                errorMessage = error.localizedDescription
-                                showAlert = true
-                            } else {
-                                if let uid = Auth.auth().currentUser?.uid {
-                                    _ = DataManager.shared.getUser(uid: uid).done { response in
-                                        if response != nil {
-                                            quizUserWrapper.quizUser = response!
-                                            withAnimation {
-                                                viewState = .HOME
+                        Spacer()
+                        Group {
+                            Text("Melde dich mit deinem Konto an!")
+                                .h2()
+                                .foregroundColor(Color.darkBlue)
+                                .padding()
+                            HStack {
+                                Text("E-Mail")
+                                    .h3()
+                                    .frame(width: 100, alignment: .leading)
+                                    .foregroundColor(Color.darkBlue)
+                                    .padding(.leading, 30)
+                                TextField("E-Mail", text: $email)
+                                    .foregroundColor(Color.darkBlue)
+                                    .multilineTextAlignment(.center)
+                                    .frame(height: 50)
+                                    .clipShape(RoundedRectangle(cornerRadius: 20.0))
+                                    .overlay(RoundedRectangle(cornerRadius: 20.0).stroke(Color.primaryBlue, lineWidth: 2))
+                                    .background(RoundedRectangle(cornerRadius: 20.0).fill(Color.white))
+                                    .padding(.trailing, 30)
+                            }
+                                .padding(.top, 20)
+                            HStack {
+                                Text("Passwort")
+                                    .h3()
+                                    .frame(width: 100, alignment: .leading)
+                                    .foregroundColor(Color.darkBlue)
+                                    .padding(.leading, 30)
+                                SecureField("Passwort", text: $password)
+                                    .foregroundColor(Color.darkBlue)
+                                    .multilineTextAlignment(.center)
+                                    .frame(height: 50)
+                                    .clipShape(RoundedRectangle(cornerRadius: 20.0))
+                                    .overlay(RoundedRectangle(cornerRadius: 20.0).stroke(Color.primaryBlue, lineWidth: 2))
+                                    .background(RoundedRectangle(cornerRadius: 20.0).fill(Color.white))
+                                    .padding(.trailing, 30)
+                            }
+                            Button("Anmelden") {
+                                AuthenticationManager.shared.loginWith(email: email, and: password) { result, error in
+                                    if let error = error {
+                                        errorMessage = error.localizedDescription
+                                        showAlert = true
+                                    } else {
+                                        if let uid = Auth.auth().currentUser?.uid {
+                                            _ = DataManager.shared.getUser(uid: uid).done { response in
+                                                if response != nil {
+                                                    quizUserWrapper.quizUser = response!
+                                                    withAnimation {
+                                                        viewState = .HOME
+                                                    }
+                                                }
                                             }
                                         }
                                     }
                                 }
                             }
+                            .buttonStyle(PrimaryButton(width: 300, height: 50))
+                            .shadow(radius: 10)
+                            .padding(25)
+                            .alert(isPresented: $showAlert) {
+                                Alert(title: Text("Fehler"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
+                            }
                         }
+                        Spacer()
+                        Text("Noch kein Konto?")
+                            .h3()
+                            .foregroundColor(Color.darkBlue)
+                            .padding(.top, 30)
+                        Button("Jetzt Konto erstellen") {
+                            withAnimation {
+                                viewState = .REGISTER
+                            }
+                        }
+                        .buttonStyle(PrimaryButton(width: 200, height: 50))
+                        .shadow(radius: 10)
+                        .padding()
                     }
-                    .buttonStyle(PrimaryButton(width: 300, height: 50, fontSize: 15))
-                    .padding()
-                    .alert(isPresented: $showAlert) {
-                        Alert(title: Text("Fehler"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
-                    }
-                }
-                Spacer()
-                Text("Noch kein Konto?")
-                    .font(.system(size: 15))
-                    .padding(.top, 30)
-                Button("Jetzt Konto erstellen") {
-                    withAnimation {
-                        viewState = .REGISTER
-                    }
-                }
-                .buttonStyle(PrimaryButton(width: 200, height: 50, fontSize: 15))
-                .padding()
             }
         }
+        
     }
 }
 

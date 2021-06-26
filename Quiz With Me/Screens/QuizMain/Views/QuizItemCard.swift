@@ -24,26 +24,37 @@ struct QuizItemCard: View {
     
     var body: some View {
         ZStack {
-            Color.blue
+            Color.primaryBlue
             VStack(alignment: .leading) {
                 Text("Spiel mit \(isPlayer1 ? quizGame.nameP2 : quizGame.nameP1)")
-                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                    .h1_bold()
+                    .foregroundColor(.accentYellow)
+                    .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
                 Text("Beantwortete Fragen: \(isPlayer1 ? quizGame.progressP1 : quizGame.progressP2)/\(quizGame.questionIDs.count)")
-                    .font(.title2)
-                Button("Zur Spielübersicht") {
+                    .h2_bold()
+                    .foregroundColor(.accentYellow)
+                    .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+                Spacer()
+                Button(action: {
                     withAnimation {
                         selectedGame = gameID
                         viewState = .GAMEOVERVIEW
                     }
+                }) {
+                    Text("Zur Spielübersicht")
+                        .h3()
+                        .frame(width: 300, height: 50, alignment: .center)
                 }
-                .buttonStyle(PrimaryButton(width: 300, height: 50, fontSize: 15))
-                .padding()
+                .buttonStyle(PrimaryButton(width: 300, height: 50))
+                .shadow(radius: 10)
+                .padding(EdgeInsets(top: 0, leading: 10, bottom: 10, trailing: 10))
             }
             .padding()
         }
         .frame(width: 350, height: 200)
-        .cornerRadius(20)
-        .shadow(radius: 5)
+        .cornerRadius(25)
+        .shadow(radius: 7)
+        .padding(EdgeInsets(top: 15, leading: 15, bottom: 0, trailing: 15))
     }
 }
 

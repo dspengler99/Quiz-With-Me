@@ -18,10 +18,10 @@ struct MenuButton: View {
         Button(action: {
             toggleMenu()
         }) {
-            Image(systemName: "person.circle")
+            Image(systemName: "house.circle")
                 .resizable()
                 .frame(width: 50, height: 50)
-                .foregroundColor(.blue)
+                .foregroundColor(.accentYellow)
         }
     }
 }

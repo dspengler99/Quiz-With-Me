@@ -27,94 +27,143 @@ struct RegisterView: View {
     @Binding var viewState: ViewState
     
     var body: some View {
-        ScrollView {
-            VStack {
-                LogoImage()
-                Spacer()
-                
-                Group {
-                    Text("Erstelle dir ein neues Konto")
-                        .font(.title2)
-                        .padding()
-                    HStack {
-                        Text("Nutzername")
-                            .frame(width: 100)
-                            .padding()
-                        TextField("Nutzername", text: $username)
-                        .background(Color.white)
-                            .padding(.trailing, 30)
-                    }
-                    .alert(isPresented: $usernameInUse) {
-                        Alert(title: Text("Nutzername bereits vergeben"), message: Text("Der von dir gewählte Nutzername ist bereits vergeben."), dismissButton: .default(Text("Ok")))
-                    }
-                    HStack {
-                        Text("E-Mail")
-                            .frame(width: 100)
-                            .padding()
-                        TextField("E-Mail", text: $email)
-                        .background(Color.white)
-                            .padding(.trailing, 30)
-                    }
-                    HStack {
-                        Text("Paswort")
-                            .frame(width: 100)
-                            .padding()
-                        SecureField("Passwort", text: $password)
-                        .background(Color.white)
-                            .padding(.trailing, 30)
-                    }
-                    HStack {
-                        Text("Passwort wiederholen")
-                            .frame(width: 100)
+        ZStack {
+            Color.backgroundWhite
+                .ignoresSafeArea()
+            ScrollView {
+                ZStack {
+                    VStack {
+                        LogoImage()
                             .padding()
                         Spacer()
-                        SecureField("Passwort wiederholen", text: $repeatedPassword)
-                        .background(Color.white)
-                        .padding(.trailing, 30)
-                    }
-                    Button("Konto erstellen") {
-                        _ = DataManager.shared.usernameAlreadyExists(username: username).done { response in
-                            guard response == false else {
-                                usernameInUse = true
-                                return
+                        
+                        Group {
+                            Text("Erstelle dir ein neues Konto")
+                                .h2()
+                                .foregroundColor(Color.darkBlue)
+                                .padding()
+                            HStack {
+                                Text("Nutzername")
+                                    .h3()
+                                    .foregroundColor(Color.darkBlue)
+                                    .frame(width: 130, height: 30, alignment: .leading)
+                                    .padding(.leading, 30)
+                                TextField("Nutzername", text: $username)
+                                    .foregroundColor(Color.darkBlue)
+                                    .multilineTextAlignment(.center)
+                                    .frame(height: 50)
+                                    .clipShape(RoundedRectangle(cornerRadius: 20.0))
+                                    .overlay(RoundedRectangle(cornerRadius: 20.0).stroke(Color.primaryBlue, lineWidth: 2))
+                                    .background(RoundedRectangle(cornerRadius: 20.0).fill(Color.white))
+                                    .padding(.trailing, 30)
                             }
-                            AuthenticationManager.shared.signupWith(username: username, email: email, and: password) { result, error in
-                                if let error = error {
-                                    errorMessage = error.localizedDescription
-                                    showAlert = true
-                                } else {
-                                    if let uid = Auth.auth().currentUser?.uid {
-                                        _ = DataManager.shared.getUser(uid: uid).done { response in
-                                            if response != nil {
-                                                quizUserWrapper.quizUser = response!
-                                                withAnimation {
-                                                    viewState = .HOME
+                            .alert(isPresented: $usernameInUse) {
+                                Alert(title: Text("Nutzername bereits vergeben"), message: Text("Der von dir gewählte Nutzername ist bereits vergeben."), dismissButton: .default(Text("Ok")))
+                            }
+                            HStack {
+                                Text("E-Mail")
+                                    .h3()
+                                    .foregroundColor(Color.darkBlue)
+                                    .frame(width: 130, height: 30, alignment: .leading)
+                                    .padding(.leading, 30)
+                                TextField("E-Mail", text: $email)
+                                    .foregroundColor(Color.darkBlue)
+                                    .multilineTextAlignment(.center)
+                                    .frame(height: 50)
+                                    .clipShape(RoundedRectangle(cornerRadius: 20.0))
+                                    .overlay(RoundedRectangle(cornerRadius: 20.0).stroke(Color.primaryBlue, lineWidth: 2))
+                                    .background(RoundedRectangle(cornerRadius: 20.0).fill(Color.white))
+                                    .padding(.trailing, 30)
+                            }
+                            HStack {
+                                Text("Paswort")
+                                    .h3()
+                                    .foregroundColor(Color.darkBlue)
+                                    .frame(width: 130, height: 30, alignment: .leading)
+                                    .padding(.leading, 30)
+                                SecureField("Passwort", text: $password)
+                                    .foregroundColor(Color.darkBlue)
+                                    .multilineTextAlignment(.center)
+                                    .frame(height: 50)
+                                    .clipShape(RoundedRectangle(cornerRadius: 20.0))
+                                    .overlay(RoundedRectangle(cornerRadius: 20.0).stroke(Color.primaryBlue, lineWidth: 2))
+                                    .background(RoundedRectangle(cornerRadius: 20.0).fill(Color.white))
+                                    .padding(.trailing, 30)
+                            }
+                            HStack {
+                                Text("Passwort wiederholen")
+                                    .h3()
+                                    .foregroundColor(Color.darkBlue)
+                                    .frame(width: 130, height: 50, alignment: .leading)
+                                    .padding(.leading, 30)
+                                Spacer()
+                                SecureField("Passwort wiederholen", text: $repeatedPassword)
+                                    .foregroundColor(Color.darkBlue)
+                                    .multilineTextAlignment(.center)
+                                    .frame(height: 50)
+                                    .clipShape(RoundedRectangle(cornerRadius: 20.0))
+                                    .overlay(RoundedRectangle(cornerRadius: 20.0).stroke(Color.primaryBlue, lineWidth: 2))
+                                    .background(RoundedRectangle(cornerRadius: 20.0).fill(Color.white))
+                                    .padding(.trailing, 30)
+                            }
+                            Button(action: {
+                                _ = DataManager.shared.usernameAlreadyExists(username: username).done { response in
+                                    guard response == false else {
+                                        usernameInUse = true
+                                        return
+                                    }
+                                    AuthenticationManager.shared.signupWith(username: username, email: email, and: password) { result, error in
+                                        if let error = error {
+                                            errorMessage = error.localizedDescription
+                                            showAlert = true
+                                        } else {
+                                            if let uid = Auth.auth().currentUser?.uid {
+                                                _ = DataManager.shared.getUser(uid: uid).done { response in
+                                                    if response != nil {
+                                                        quizUserWrapper.quizUser = response!
+                                                        withAnimation {
+                                                            viewState = .HOME
+                                                        }
+                                                    }
                                                 }
                                             }
                                         }
                                     }
                                 }
+                            }) {
+                                Text("Konto erstellen")
+                                    .h3()
+                                    .frame(width: 300, height: 50, alignment: .center)
+                                    .foregroundColor(Color.backgroundWhite)
+                            }
+                            .buttonStyle(PrimaryButton(width: 300, height: 50))
+                            .shadow(radius: 10)
+                            .padding()
+                            .disabled((username == "" && email == "" && password == "" && repeatedPassword == "") || password != repeatedPassword || password.count < 8)
+                            .alert(isPresented: $showAlert) {
+                                Alert(title: Text("Fehler"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
                             }
                         }
-                    }
-                    .buttonStyle(PrimaryButton(width: 300, height: 50, fontSize: 20))
-                    .padding()
-                    .disabled((username == "" && email == "" && password == "" && repeatedPassword == "") || password != repeatedPassword || password.count < 8)
-                    .alert(isPresented: $showAlert) {
-                        Alert(title: Text("Fehler"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
+                        Spacer()
+                        Text("Du hast bereits ein Konto?")
+                            .h3()
+                            .foregroundColor(Color.darkBlue)
+                            .padding(.top, 30)
+                        Button(action: {
+                            withAnimation {
+                                viewState = .LOGIN
+                            }
+                        }) {
+                            Text("Jetzt anmelden")
+                                .h3()
+                                .frame(width: 200, height: 50, alignment: .center)
+                                .foregroundColor(Color.backgroundWhite)
+                        }
+                        .shadow(radius: 10)
+                        .buttonStyle(PrimaryButton(width: 200, height: 50))
+                        .padding()
                     }
                 }
-                Spacer()
-                Text("Du hast bereits ein Konto?")
-                    .font(.system(size: 12))
-                    .padding(.top, 30)
-                Button("Jetzt anmelden") {
-                    withAnimation {
-                        viewState = .LOGIN
-                    }
-                }
-                .buttonStyle(PrimaryButton(width: 200, height: 50, fontSize: 20))
-                .padding()
             }
         }
     }

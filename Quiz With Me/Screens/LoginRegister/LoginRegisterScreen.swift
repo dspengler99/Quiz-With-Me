@@ -14,7 +14,7 @@ struct LoginRegisterScreen: View {
     @Binding var viewState: ViewState
     var body: some View {
         ZStack {
-            Color(CGColor(red: 135/255, green: 206/255, blue: 235/255, alpha: 1.0))
+            Color.backgroundWhite
                 .ignoresSafeArea()
                 .zIndex(-1)
             

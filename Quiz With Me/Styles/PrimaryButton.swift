@@ -14,7 +14,6 @@ struct PrimaryButton: ButtonStyle {
     @Environment(\.isEnabled) var isEnabled
     var width: CGFloat
     var height: CGFloat
-    var fontSize: CGFloat
 
     /**
      This method returns the color for the primary button. The color changes when the button is pressed or disabled.
@@ -29,7 +28,7 @@ struct PrimaryButton: ButtonStyle {
         } else if !enabled {
             return Color.primaryButtonDisabledBackground
         } else {
-            return Color.primaryButtonDefaultBackground
+            return Color.darkBlue
         }
     }
     
@@ -42,9 +41,8 @@ struct PrimaryButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .frame(minWidth: width, minHeight: height)
-            .font(.system(size: fontSize))
             .background(getButtonColor(pressed: configuration.isPressed, enabled: isEnabled))
-            .foregroundColor(.white)
-            .cornerRadius(10)
+            .foregroundColor(.backgroundWhite)
+            .cornerRadius(15)
     }
 }

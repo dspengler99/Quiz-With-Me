@@ -21,7 +21,7 @@ struct FriendRow: View {
             Button(action: {}) {
                 Image(systemName: "trash")
             }
-            .buttonStyle(PrimaryButton(width: 25, height: 25, fontSize: 15))
+            .buttonStyle(PrimaryButton(width: 25, height: 25))
             .accessibility(label: Text("Freund entfernen"))
         }
     }

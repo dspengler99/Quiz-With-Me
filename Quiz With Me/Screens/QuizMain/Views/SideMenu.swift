@@ -8,40 +8,68 @@
 import SwiftUI
 
 struct SideMenu: View {
-     @Binding var menuToggled: Bool
-     var body: some View {
-         ZStack {
-             GeometryReader {
-                 _ in EmptyView()
-             }
-             .background(Color.gray.opacity(0.5))
-             .opacity(self.menuToggled ? 1 : 0)
-             .animation(Animation.easeIn.delay(0.2))
-             .onTapGesture {
-                 MenuButton(menuToggled: $menuToggled).toggleMenu()
-             }
-             HStack {
-                 Spacer()
-                 List {
-                     NavigationLink(destination: EmptyView()) {
-                         Text("Mein Profil")
-                     }
-                     NavigationLink(destination: EmptyView()) {
-                         Text("Mein Freunde")
-                     }
-                 }
-                 .frame(width: 250)
-                 .offset(x: menuToggled ? 0 : 250)
-                 .animation(.default)
-             }
-         }
-         .edgesIgnoringSafeArea(.all)
-     }
- }
+    @Binding var menuToggled: Bool
+    @Binding var viewState: ViewState
+    var body: some View {
+        ZStack {
+            GeometryReader {
+                _ in EmptyView()
+            }
+            .background(Color.gray.opacity(0.5))
+            .opacity(self.menuToggled ? 1 : 0)
+            .animation(Animation.easeIn.delay(0.2))
+            .onTapGesture {
+                MenuButton(menuToggled: $menuToggled).toggleMenu()
+            }
+            HStack {
+                Spacer()
+                ZStack {
+                    List {
+                        HStack {
+                            Image(systemName: "person.circle")
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                                .foregroundColor(Color.gameGreen)
+                            Text("Mein Profil")
+                                .h2_bold()
+                                .frame(width: 170, height: 50, alignment: .leading)
+                                .foregroundColor(.darkBlue)
+                                .onTapGesture {
+                                    MenuButton(menuToggled: $menuToggled).toggleMenu()
+                                    viewState = .PROFILE
+                            }
+                        }
+                        HStack {
+                            Image(systemName: "arrow.down.left.circle")
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                                .foregroundColor(Color.gameRed)
+                            Text("Abmelden")
+                                .h2_bold()
+                                .frame(width: 170, height: 50, alignment: .leading)
+                                .foregroundColor(.darkBlue)
+                                .onTapGesture {
+                                    if(AuthenticationManager.shared.signOut()) {
+                                        viewState = .LOGIN
+                                    }
+                            }
+                        }
+                    }
+                    .frame(width: 200)
+                    .offset(x: menuToggled ? 0 : 200)
+                    .listStyle(SidebarListStyle())
+                    .colorMultiply(Color.accentYellow)
+                    .animation(.default)
+                }
+            }
+        }
+        .edgesIgnoringSafeArea(.all)
+    }
+}
 
- struct MenuContentListView_Previews: PreviewProvider {
-     @State static var menuToggled = false
-     static var previews: some View {
-         SideMenu(menuToggled: $menuToggled)
-     }
- }
+struct MenuContentListView_Previews: PreviewProvider {
+    @State static var menuToggled = false
+    static var previews: some View {
+        SideMenu(menuToggled: $menuToggled, viewState: .constant(ViewState.LOGIN))
+    }
+}

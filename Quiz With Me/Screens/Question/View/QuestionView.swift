@@ -83,25 +83,26 @@ struct QuestionView: View {
             if let gameQuestion = question {
                 VStack {
                     HStack {
-                        BackButton(viewState: $viewState, changeView: .HOME)
+                        BackButton(viewState: $viewState, changeView: .HOME, color: Color.accentYellow)
                         Spacer()
                     }
                     .padding()
                     Rectangle()
-                        .fill(Color.white)
-                        .frame(width: 350, height: 200)
+                        .fill(Color.backgroundWhite)
+                        .frame(width: 350, height: 190)
                         .cornerRadius(25)
                         .shadow(radius: 20)
                         .overlay(Text(
                                     gameQuestion.question)
-                                    .foregroundColor(.blue)
-                                    .padding(40)
+                                    .h3()
+                                    .foregroundColor(.darkBlue)
+                                    .padding(20)
                                     .multilineTextAlignment(.center),
                                  alignment: .center)
-                    
                     Text("Frage \(progress + 1)/\(gameQuestionIds!.count)")
+                        .h3()
                         .padding(10)
-                        .foregroundColor(Color.primaryButtonDefaultBackground)
+                        .foregroundColor(Color.darkBlue)
                     
                     HStack {
                         Button(action: {
@@ -113,11 +114,15 @@ struct QuestionView: View {
                             nextQuestion(selectedGame: selectedGame, playerProgress: playerProgress, progress: progress, gameQuestionIDs: gameQuestionIds)
                         }) {
                             Text(gameQuestion.answers[0])
-                                .frame(width: 150, height: 120)
+                                .h3()
+                                .multilineTextAlignment(.center)
+                                .frame(width: 140, height: 110)
+                                .padding(10)
+                                .foregroundColor(Color.backgroundWhite)
                         }
-                        .background(answerPicked ? (rightAnswer == 0 ? Color.green : Color.red) : Color.primaryButtonDefaultBackground)
+                        .background(answerPicked ? (rightAnswer == 0 ? Color.gameGreen : Color.gameRed) : Color.darkBlue)
                         .cornerRadius(25)
-                        .shadow(radius: 20)
+                        .shadow(radius: 10)
                         .padding(10)
                         .disabled(answerPicked)
                         
@@ -130,11 +135,15 @@ struct QuestionView: View {
                             nextQuestion(selectedGame: selectedGame, playerProgress: playerProgress, progress: progress, gameQuestionIDs: gameQuestionIds)
                         }) {
                             Text(gameQuestion.answers[1])
-                                .frame(width: 150, height: 120)
+                                .h3()
+                                .multilineTextAlignment(.center)
+                                .frame(width: 140, height: 110)
+                                .padding(10)
+                                .foregroundColor(Color.backgroundWhite)
                         }
-                        .background(answerPicked ? (rightAnswer == 1 ? Color.green : Color.red) : Color.primaryButtonDefaultBackground)
+                        .background(answerPicked ? (rightAnswer == 1 ? Color.gameGreen : Color.gameRed) : Color.darkBlue)
                         .cornerRadius(25)
-                        .shadow(radius: 20)
+                        .shadow(radius: 10)
                         .padding(10)
                         .disabled(answerPicked)
                     }
@@ -143,18 +152,22 @@ struct QuestionView: View {
                         Button(action: {
                             if(gameQuestion.checkAnswer(answer: gameQuestion.answers[2])) {
                                 DataManager.shared.incrementPoints(gameId: selectedGame, playerPoints: playerPoints)
-
+                                
                             }
                             rightAnswer = getRightAnswerIndex(question: question)
                             answerPicked = true
                             nextQuestion(selectedGame: selectedGame, playerProgress: playerProgress, progress: progress, gameQuestionIDs: gameQuestionIds)
                         }) {
                             Text(gameQuestion.answers[2])
-                                .frame(width: 150, height: 120)
+                                .h3()
+                                .multilineTextAlignment(.center)
+                                .frame(width: 140, height: 110)
+                                .padding(10)
+                                .foregroundColor(Color.backgroundWhite)
                         }
-                        .background(answerPicked ? (rightAnswer == 2 ? Color.green : Color.red) : Color.primaryButtonDefaultBackground)
+                        .background(answerPicked ? (rightAnswer == 2 ? Color.gameGreen : Color.gameRed) : Color.darkBlue)
                         .cornerRadius(25)
-                        .shadow(radius: 20)
+                        .shadow(radius: 10)
                         .padding(10)
                         .disabled(answerPicked)
                         
@@ -167,18 +180,24 @@ struct QuestionView: View {
                             nextQuestion(selectedGame: selectedGame, playerProgress: playerProgress, progress: progress, gameQuestionIDs: gameQuestionIds)
                         }) {
                             Text(gameQuestion.answers[3])
-                                .frame(width: 150, height: 120)
+                                .h3()
+                                .multilineTextAlignment(.center)
+                                .frame(width: 140, height: 110)
+                                .padding(10)
+                                .foregroundColor(Color.backgroundWhite)
                         }
-                        .background(answerPicked ? (rightAnswer == 3 ? Color.green : Color.red) : Color.primaryButtonDefaultBackground)
+                        .background(answerPicked ? (rightAnswer == 3 ? Color.gameGreen : Color.gameRed) : Color.darkBlue)
                         .cornerRadius(25)
-                        .shadow(radius: 20)
+                        .shadow(radius: 10)
                         .padding(10)
                         .disabled(answerPicked)
                     }
                     Spacer()
                 }
             } else {
-                Text("Loading...")
+                LoadingView()
+                    .frame(width: 200, height: 200)
+                    .foregroundColor(Color.darkBlue)
             }
         }
         .onAppear {

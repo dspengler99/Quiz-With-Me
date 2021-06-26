@@ -13,6 +13,7 @@ import SwiftUI
 struct BackButton: View {
     @Binding var viewState: ViewState
     var changeView: ViewState
+    var color: Color
     
     var body: some View {
         Button(action: {
@@ -23,7 +24,7 @@ struct BackButton: View {
             Image(systemName: "arrow.backward.circle")
                 .resizable()
                 .frame(width: 50, height: 50)
-                .foregroundColor(.white)
+                .foregroundColor(color)
         }
     }
 }
