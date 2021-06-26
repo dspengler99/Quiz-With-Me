@@ -43,7 +43,7 @@ struct ProfileDetailView: View {
                 Text("\(totalGames)")
                     .h2_bold()
                     .foregroundColor(Color.darkBlue)
-                Text("Anzahl der erfolgreichen Spiele:")
+                Text("Anzahl der gewonnenen Spiele:")
                     .h2()
                     .foregroundColor(.darkBlue)
                     .padding(.top, 5)
