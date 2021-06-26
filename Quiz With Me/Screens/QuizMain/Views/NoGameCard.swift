@@ -13,13 +13,13 @@ struct NoGameCard: View {
             Color.accentYellow
             VStack(alignment: .center) {
                 Text("Du hast keine aktiven Spiele. Starte jetzt ein Neues.")
-                    .h2()
+                    .h2_bold()
                     .multilineTextAlignment(.center)
                     .foregroundColor(.darkBlue)
                     .padding(.bottom, 15)
-                Image(systemName: "tortoise.fill")
+                Image(systemName: "arrow.down.circle")
                     .resizable()
-                    .frame(width: 70, height: 50, alignment: .center)
+                    .frame(width: 50, height: 50, alignment: .center)
                     .foregroundColor(Color.darkBlue)
             }
             .padding()

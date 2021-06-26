@@ -40,6 +40,8 @@ struct LoadingView: View {
 struct LoadingView_Previews: PreviewProvider {
     static var previews: some View {
         LoadingView()
+            .frame(width: 200, height: 200)
+            .foregroundColor(Color.darkBlue)
     }
 }
 
