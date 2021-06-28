@@ -58,11 +58,13 @@ struct QuizItemCard: View {
     }
 }
 
-/*
- struct QuizItemView_Previews: PreviewProvider {
- static var testGame = QuizGame(nameP1: "Tom", nameP2: "Kevin")
- static var previews: some View {
- QuizItemCard(viewState: .constant(ViewState.HOME), quizGame: testGame, gameID: "1")
- }
- }
- */
+
+struct QuizItemView_Previews: PreviewProvider {
+    static var testGame = QuizGame(nameP1: "Tom", nameP2: "Kevin")
+    static var previews: some View {
+        QuizItemCard(viewState: .constant(ViewState.HOME), selectedGame: .constant("z2tmdhFW2vbRe9Qhxvrd"), quizGame: testGame, gameID: "z2tmdhFW2vbRe9Qhxvrd" )
+            .environmentObject(QuizUserWrapper())
+        
+    }
+}
+

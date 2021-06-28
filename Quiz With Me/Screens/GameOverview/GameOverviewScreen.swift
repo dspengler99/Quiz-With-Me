@@ -25,10 +25,10 @@ struct GameOverviewScreen: View {
     }
 }
 
-/*
- struct GameOverviewScreen_Previews: PreviewProvider {
- static var previews: some View {
- GameOverviewScreen(viewState: .constant(ViewState.HOME))
- }
- }
- */
+
+struct GameOverviewScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        GameOverviewScreen(viewState: .constant(ViewState.HOME), selectedGame: .constant("z2tmdhFW2vbRe9Qhxvrd"))
+    }
+}
+
