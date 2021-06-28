@@ -21,10 +21,10 @@ struct QuestionScreen: View {
     }
 }
 
-/*
+
 struct QuestionScreen_Previews: PreviewProvider {
     static var previews: some View {
-        QuestionScreen(viewState: .constant(ViewState.GAME))
+        QuestionScreen(viewState: .constant(ViewState.GAME), selectedGame: .constant("z2tmdhFW2vbRe9Qhxvrd"))
     }
 }
-*/
+

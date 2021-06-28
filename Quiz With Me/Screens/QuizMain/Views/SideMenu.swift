@@ -32,7 +32,7 @@ struct SideMenu: View {
                                 .foregroundColor(Color.gameGreen)
                             Text("Mein Profil")
                                 .h2_bold()
-                                .frame(width: 170, height: 50, alignment: .leading)
+                                .frame(width: 130, height: 50, alignment: .leading)
                                 .foregroundColor(.darkBlue)
                                 .onTapGesture {
                                     MenuButton(menuToggled: $menuToggled).toggleMenu()
@@ -46,7 +46,7 @@ struct SideMenu: View {
                                 .foregroundColor(Color.gameRed)
                             Text("Abmelden")
                                 .h2_bold()
-                                .frame(width: 170, height: 50, alignment: .leading)
+                                .frame(width: 130, height: 50, alignment: .leading)
                                 .foregroundColor(.darkBlue)
                                 .onTapGesture {
                                     if(AuthenticationManager.shared.signOut()) {
@@ -68,7 +68,7 @@ struct SideMenu: View {
 }
 
 struct MenuContentListView_Previews: PreviewProvider {
-    @State static var menuToggled = false
+    @State static var menuToggled = true
     static var previews: some View {
         SideMenu(menuToggled: $menuToggled, viewState: .constant(ViewState.LOGIN))
     }

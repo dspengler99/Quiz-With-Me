@@ -226,10 +226,10 @@ struct QuestionView: View {
     }
 }
 
-/*
- struct QuestionView_Previews: PreviewProvider {
- static var previews: some View {
- QuestionView(viewState: .constant(ViewState.HOME))
- }
- }
- */
+
+struct QuestionView_Previews: PreviewProvider {
+    static var previews: some View {
+        QuestionView(viewState: .constant(ViewState.HOME), selectedGame: .constant("z2tmdhFW2vbRe9Qhxvrd"))
+    }
+}
+

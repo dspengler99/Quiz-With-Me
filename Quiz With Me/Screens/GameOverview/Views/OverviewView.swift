@@ -141,10 +141,10 @@ struct OverviewView: View {
     }
 }
 
-/*
- struct OverviewView_Previews: PreviewProvider {
- static var previews: some View {
- OverviewView(viewState: .constant(ViewState.HOME))
- }
- }
- */
+
+struct OverviewView_Previews: PreviewProvider {
+    static var previews: some View {
+        OverviewView(viewState: .constant(ViewState.HOME), selectedGame: .constant("z2tmdhFW2vbRe9Qhxvrd"))
+    }
+}
+

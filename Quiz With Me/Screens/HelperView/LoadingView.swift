@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+/**
+ This animated view is used to represent the loading screen in many views.
+ */
 struct LoadingView: View {
     
     @State private var isAnimating: Bool = false

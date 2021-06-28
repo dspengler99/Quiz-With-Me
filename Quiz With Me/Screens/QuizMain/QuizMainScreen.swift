@@ -209,10 +209,10 @@ struct QuizMainScreen: View {
     }
 }
 
-/*
- struct QuizMainScreen_Previews: PreviewProvider {
- static var previews: some View {
- QuizMainScreen(viewState: .constant(ViewState.HOME))
- }
- }
- */
+
+struct QuizMainScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        QuizMainScreen(viewState: .constant(ViewState.HOME), selectedGame: .constant("z2tmdhFW2vbRe9Qhxvrd"))
+    }
+}
+
