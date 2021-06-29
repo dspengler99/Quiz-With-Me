@@ -55,8 +55,6 @@
 		C3D76E9E264AE87B001FCD34 /* Quiz_With_MeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D76E9D264AE87B001FCD34 /* Quiz_With_MeApp.swift */; };
 		C3D76EA2264AE87C001FCD34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3D76EA1264AE87C001FCD34 /* Assets.xcassets */; };
 		C3D76EA5264AE87C001FCD34 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3D76EA4264AE87C001FCD34 /* Preview Assets.xcassets */; };
-		C3D76EA7264AE87C001FCD34 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D76EA6264AE87C001FCD34 /* Persistence.swift */; };
-		C3D76EAA264AE87C001FCD34 /* Quiz_With_Me.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C3D76EA8264AE87C001FCD34 /* Quiz_With_Me.xcdatamodeld */; };
 		C3EF215C2656E79C00384221 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EF215B2656E79C00384221 /* PrimaryButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -107,8 +105,6 @@
 		C3D76E9D264AE87B001FCD34 /* Quiz_With_MeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz_With_MeApp.swift; sourceTree = "<group>"; };
 		C3D76EA1264AE87C001FCD34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C3D76EA4264AE87C001FCD34 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		C3D76EA6264AE87C001FCD34 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		C3D76EA9264AE87C001FCD34 /* Quiz_With_Me.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Quiz_With_Me.xcdatamodel; sourceTree = "<group>"; };
 		C3D76EAB264AE87C001FCD34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3EF215B2656E79C00384221 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -325,9 +321,7 @@
 				351CB6B0266421DA00DA9B55 /* QuizGame.swift */,
 				351CB6D6266972F200DA9B55 /* QuizQuestion.swift */,
 				C3D76EA1264AE87C001FCD34 /* Assets.xcassets */,
-				C3D76EA6264AE87C001FCD34 /* Persistence.swift */,
 				C3D76EAB264AE87C001FCD34 /* Info.plist */,
-				C3D76EA8264AE87C001FCD34 /* Quiz_With_Me.xcdatamodeld */,
 				C3D76EA3264AE87C001FCD34 /* Preview Content */,
 			);
 			path = "Quiz With Me";
@@ -448,9 +442,7 @@
 				351CB6C22664F23F00DA9B55 /* ProfileScreen.swift in Sources */,
 				351CB6C72664F2AA00DA9B55 /* ProfileDetailView.swift in Sources */,
 				35D9BF7A266B938600E5E70E /* BackgroundView.swift in Sources */,
-				C3D76EA7264AE87C001FCD34 /* Persistence.swift in Sources */,
 				C3EF215C2656E79C00384221 /* PrimaryButton.swift in Sources */,
-				C3D76EAA264AE87C001FCD34 /* Quiz_With_Me.xcdatamodeld in Sources */,
 				C307CAC12657DE3000223917 /* ColorExtension.swift in Sources */,
 				C38CF0C3265559D50055A20A /* LogoImage.swift in Sources */,
 				351CB6CD2664F69400DA9B55 /* OverviewView.swift in Sources */,
@@ -709,19 +701,6 @@
 			productName = PromiseKit;
 		};
 /* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		C3D76EA8264AE87C001FCD34 /* Quiz_With_Me.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				C3D76EA9264AE87C001FCD34 /* Quiz_With_Me.xcdatamodel */,
-			);
-			currentVersion = C3D76EA9264AE87C001FCD34 /* Quiz_With_Me.xcdatamodel */;
-			path = Quiz_With_Me.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = C3D76E92264AE87B001FCD34 /* Project object */;
 }
