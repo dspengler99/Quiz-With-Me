@@ -246,6 +246,26 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		C344C422268B84D9004C3CCA /* FirebaseManagement */ = {
+			isa = PBXGroup;
+			children = (
+				C34C5418264D33A000392EFA /* AuthenticationManager.swift */,
+				C3B61D37266A681C00D7A68E /* DataManager.swift */,
+			);
+			path = FirebaseManagement;
+			sourceTree = "<group>";
+		};
+		C344C423268B8534004C3CCA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C34C541A264D43D200392EFA /* QuizUser.swift */,
+				C32808FF2678B67600561469 /* QuizUserWrapper.swift */,
+				351CB6D6266972F200DA9B55 /* QuizQuestion.swift */,
+				351CB6B0266421DA00DA9B55 /* QuizGame.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		C38CF0BD265553860055A20A /* Screens */ = {
 			isa = PBXGroup;
 			children = (
@@ -313,13 +333,9 @@
 				C38CF0C8265567D70055A20A /* Helpers */,
 				C38CF0BD265553860055A20A /* Screens */,
 				C3D76E9D264AE87B001FCD34 /* Quiz_With_MeApp.swift */,
-				C34C5418264D33A000392EFA /* AuthenticationManager.swift */,
-				C3B61D37266A681C00D7A68E /* DataManager.swift */,
+				C344C422268B84D9004C3CCA /* FirebaseManagement */,
 				C3443342264F12A1001FB1B9 /* GoogleService-Info.plist */,
-				C34C541A264D43D200392EFA /* QuizUser.swift */,
-				C32808FF2678B67600561469 /* QuizUserWrapper.swift */,
-				351CB6B0266421DA00DA9B55 /* QuizGame.swift */,
-				351CB6D6266972F200DA9B55 /* QuizQuestion.swift */,
+				C344C423268B8534004C3CCA /* Models */,
 				C3D76EA1264AE87C001FCD34 /* Assets.xcassets */,
 				C3D76EAB264AE87C001FCD34 /* Info.plist */,
 				C3D76EA3264AE87C001FCD34 /* Preview Content */,
