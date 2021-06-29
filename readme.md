@@ -6,6 +6,9 @@ Das Projekt **Quiz With Me** entsteht im Rahmen der Veranstaltung **Swift-Progra
 * Egzon Jusufi
 * Daniel Spengler
 
+## Verwendete Fragen
+Welche Fragen wir in unserer App bisher zur Verfügung gestellt haben, ist unter [material/fragen.md](material/fragen.md) zu sehen.
+
 ## Dokumentation
 Die nachfolgenden Abschnitte umfassen die Anforderungen der Dozenten, welche im zugehörigen Moodle-Kurs angegeben wurden. Außerdem sind unter Umständen weitere Abschnitte enthalten.
 
@@ -136,3 +139,8 @@ Die Arbeit als Team würde ich als sehr harmonisch und zielführend beschreiben.
 Insgesamt hat mir das Projekt größtenteils Spaß bereitet. Es gab aber natürlich auch frustrierende Phasen. So erinnere ich mich an die Spielerstellung, da es viel Recherche benötigt hat, wie man die Verschachtelung von Callbacks verhindern kann. Insgesamt sind hier viele Stunden verwendet worden. Auch war dies frustrierend, da zu Beginn gar nicht klar war, dass Firebase asynchron läuft. Dadurch hat die Problemanalyse ebenfalls länger gedauert. Auch das Einbinden unserer erklärten Navigationsstruktur war nicht einfach. Zumindest nicht, wenn es um die Ideenfindung geht. Sieht man von diesen Schwierigkeiten und frustrierenden Momenten ab, so blicke ich auf eine spannende Zeit zurück, in welcher ich viel gelernt habe und definitiv eine Entwicklung in meinen Fähigkeiten bezüglich Swift erlebt habe.
 
 Die Vorlesungen insgesamt fand ich ebenfalls als Einstieg gut. Hier hätte mir als "Pflichtprogramm" ein Einstieg in die asynchrone Programmierung allerdings auch geholfen, da so dass Projekt schneller voran gegangen wäre und mehr Features hätten implementiert werden können. Gleichzeitig ist dieser Aspekt nicht nur wichtig für unser spezielles Projekt, sondern scheint in Swift und iOS allgemein besonders wichtig zu sein. Neben diesem Aspekt fand ich die Veranstaltung jedoch durchweg positiv und gerade das Projekt hat an vielen Stellen sehr viel spaß gemacht.
+
+
+### Quellen
+* 17.12.2018, „Avoiding Callback Hell in Swift“: [https://swiftrocks.com/avoiding-callback-hell-in-swift](https://swiftrocks.com/avoiding-callback-hell-in-swift)
+* SWTP-SS20-Kammer-2 (Projekt-Repository): https://github.com/SWTP-SS20-Kammer-2/Data-Analytics
