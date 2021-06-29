@@ -7,7 +7,7 @@ Das Projekt **Quiz With Me** entsteht im Rahmen der Veranstaltung **Swift-Progra
 * Daniel Spengler
 
 ## Verwendete Fragen
-Welche Fragen wir in unserer App bisher zur Verfügung gestellt haben, ist unter [material/fragen.md](material/fragen.md) zu sehen.
+Welche Fragen wir in unserer App bisher zur Verfügung gestellt haben, ist unter [Material/fragen.md](Material/fragen.md) zu sehen.
 
 ## Dokumentation
 Die nachfolgenden Abschnitte umfassen die Anforderungen der Dozenten, welche im zugehörigen Moodle-Kurs angegeben wurden. Außerdem sind unter Umständen weitere Abschnitte enthalten.
