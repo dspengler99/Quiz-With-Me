@@ -184,7 +184,7 @@ struct QuizMainScreen: View {
                                     gameCreationFailed = true
                                 }
                             }) {
-                                Text("Neus Spiel")
+                                Text("Neues Spiel")
                                     .h3()
                                     .frame(width: 300, height: 50, alignment: .center)
                             }
