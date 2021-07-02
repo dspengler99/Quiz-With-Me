@@ -199,7 +199,9 @@ struct QuizMainScreen: View {
                     .overlay(SideMenu(menuToggled: $menuToggeled, viewState: $viewState))
                 }
             } else {
-                ProgressView()
+                ProgressView("Lade…")
+                    .progressViewStyle(CircularProgressViewStyle(tint: Color.primaryBlue))
+                    .foregroundColor(Color.darkBlue)
             }
         }.onAppear {
             reloadData()

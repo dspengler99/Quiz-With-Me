@@ -125,7 +125,9 @@ struct OverviewView: View {
                     }
                 }
             } else {
-                ProgressView()
+                ProgressView("Lade…")
+                    .progressViewStyle(CircularProgressViewStyle(tint: Color.primaryBlue))
+                    .foregroundColor(Color.darkBlue)
             }
         }.onAppear {
             print(selectedGame)
