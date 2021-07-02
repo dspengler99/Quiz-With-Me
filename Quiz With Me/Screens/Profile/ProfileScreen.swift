@@ -43,9 +43,7 @@ struct ProfileScreen: View {
                     }
                 }
             } else {
-                LoadingView()
-                    .frame(width: 200, height: 200)
-                    .foregroundColor(Color.darkBlue)
+                ProgressView()
             }
         }
         .onAppear {
