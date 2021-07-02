@@ -144,3 +144,4 @@ Die Vorlesungen insgesamt fand ich ebenfalls als Einstieg gut. Hier hätte mir a
 ### Quellen
 * 17.12.2018, „Avoiding Callback Hell in Swift“: [https://swiftrocks.com/avoiding-callback-hell-in-swift](https://swiftrocks.com/avoiding-callback-hell-in-swift)
 * SWTP-SS20-Kammer-2 (Projekt-Repository): https://github.com/SWTP-SS20-Kammer-2/Data-Analytics
+* Ladeanimation: https://stackoverflow.com/questions/56496638/activity-indicator-in-swiftui
