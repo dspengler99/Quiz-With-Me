@@ -45,6 +45,7 @@ struct LoginView: View {
                                     .foregroundColor(Color.darkBlue)
                                     .padding(.leading, 30)
                                 TextField("E-Mail", text: $email)
+                                    .disableAutocorrection(true)
                                     .foregroundColor(Color.darkBlue)
                                     .multilineTextAlignment(.center)
                                     .frame(height: 50)
