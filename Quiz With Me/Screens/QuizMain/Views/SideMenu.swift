@@ -50,6 +50,7 @@ struct SideMenu: View {
                                 .foregroundColor(.darkBlue)
                                 .onTapGesture {
                                     if(AuthenticationManager.shared.signOut()) {
+                                        MenuButton(menuToggled: $menuToggled).toggleMenu()
                                         viewState = .LOGIN
                                     }
                             }
