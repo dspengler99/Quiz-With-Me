@@ -129,6 +129,13 @@ struct Main: View {
 ### Wozu Promisses?
 Im Grunde wurde diese Frage bei der Aufzählung der verwendeten Frameworks geklärt: Wir vermeiden durch die Verwendung von Promises verschachtelte Callbacks. Dadurch wird unser Code leserlicher und somit auch verständlicher.
 
+### Unverwendeter Code / Einschränkungen
+Im Projekt gibt es einige wenige Teile Code, welche Features bereitstellen sollten, die es nicht mehr in die App selbst geschafft haben. Dabei handelt es sich namentlich um die Freundesliste (Friendslist) und eine Ladeanimation, welche im Ordner **HelperView** zu finden ist.
+
+Außerdem haben wir es zeitlich nicht mehr geschafft, verlorene und oder gewonnene Spiele automatisch neu zu laden. Wenn also auf gewonnene oder verlorene Spiele geprüft werden soll, muss die Startseite einmal verlassen werden und erneut geöffnet werden (beispielsweise durch Wechsel zum Profil oder zur Spielübersicht). Ein anderer Weg ist es, ein neues Spiel zu starten. Dabei wird die Anzeige für beendete Spiele ebenfalls aktualisiert.
+
+Wir bitten bei diesen Einschränkungen darum, darauf zu achten, dass die gesamte App für vier Entwickler ausgelegt war und wir im Verlaufe des Projekts leider nur zwei Entwickler waren, da es Schwierigkeiten im Team gab.
+
 ### Projekt-Fazit: Egzon Jusufi
 Nach anfänglichen Schwierigkeiten innerhalb der Gruppe (zu Beginn eine 4er Gruppe, später als 2er Gruppe) lief die Arbeit als Team sehr strukturiert ab. So fanden wir uns zwei mal die Woche zusammen. Montags schauten wir uns unsere Ergebnisse der vergangenen Woche an, sprachen über Probleme die aufkamen und verteilten neue Aufgaben für die Woche. Freitags fand unser zweites Meeting statt, bei dem wir in Pair-Prgramming-Arbeit komplexere Funktionen entwickelten. 
 Wie es in der Softwareentwicklung so üblich ist, stießen wir auf Probleme welche frustrierend waren und uns länger grübeln ließen. Nichtsdestotrotz fanden wir auch hier gemeinsam immer eine Lösung. Zudem machte es uns die Entwicklungsumgebung XCode auch nicht immer einfach wenn sie sporadisch Errors anzeigte, obwohl am Vortag noch alles in Ordnung war. Ein für uns 'beliebtes' Beispiel war die Rückgabe einer View anhand einer Bedingung (`if(Bedingung) {View} else {View}`) innerhalb einer Group. Hier erkannte XCode nicht immer, dass auf alle Fälle eine View zurückgegeben wird. Das Hinzufügen und wieder wegnehmen einer `EmptyView()` löste dieses Problem.
@@ -139,7 +146,6 @@ Die Arbeit als Team würde ich als sehr harmonisch und zielführend beschreiben.
 Insgesamt hat mir das Projekt größtenteils Spaß bereitet. Es gab aber natürlich auch frustrierende Phasen. So erinnere ich mich an die Spielerstellung, da es viel Recherche benötigt hat, wie man die Verschachtelung von Callbacks verhindern kann. Insgesamt sind hier viele Stunden verwendet worden. Auch war dies frustrierend, da zu Beginn gar nicht klar war, dass Firebase asynchron läuft. Dadurch hat die Problemanalyse ebenfalls länger gedauert. Auch das Einbinden unserer erklärten Navigationsstruktur war nicht einfach. Zumindest nicht, wenn es um die Ideenfindung geht. Sieht man von diesen Schwierigkeiten und frustrierenden Momenten ab, so blicke ich auf eine spannende Zeit zurück, in welcher ich viel gelernt habe und definitiv eine Entwicklung in meinen Fähigkeiten bezüglich Swift erlebt habe.
 
 Die Vorlesungen insgesamt fand ich ebenfalls als Einstieg gut. Hier hätte mir als "Pflichtprogramm" ein Einstieg in die asynchrone Programmierung allerdings auch geholfen, da so dass Projekt schneller voran gegangen wäre und mehr Features hätten implementiert werden können. Gleichzeitig ist dieser Aspekt nicht nur wichtig für unser spezielles Projekt, sondern scheint in Swift und iOS allgemein besonders wichtig zu sein. Neben diesem Aspekt fand ich die Veranstaltung jedoch durchweg positiv und gerade das Projekt hat an vielen Stellen sehr viel spaß gemacht.
-
 
 ### Quellen
 * 17.12.2018, „Avoiding Callback Hell in Swift“: [https://swiftrocks.com/avoiding-callback-hell-in-swift](https://swiftrocks.com/avoiding-callback-hell-in-swift)
