@@ -12,6 +12,9 @@ Welche Fragen wir in unserer App bisher zur Verfügung gestellt haben, ist unter
 ## Dokumentation
 Die nachfolgenden Abschnitte umfassen die Anforderungen der Dozenten, welche im zugehörigen Moodle-Kurs angegeben wurden. Außerdem sind unter Umständen weitere Abschnitte enthalten.
 
+### Verwendung der App
+Um die Anwendung verwenden zu können, muss mittels ![Google Firebase](https://firebase.google.com/) ein Projekt erstellt werden, in welchem die Authentifizierung mittels E-Mail und Passwort aktiviert wird, sowie der Firestore-Speicher. Die für das Projekt zur verfügung gestellte `GoogleService-Info.plist` muss anschließend in das Verzeichnis **Quiz _With Me** im Projektordner eingefügt werden. Die Collections sollten fast alle beim erstmaligen Bedarf selbst angelegt werden. Die Ausnahme bildet hier **general**. Diese Collection muss manuell angelegt werden. Weiterhin muss für diese Collection ein Dokument angelegt werden, welches die beiden Felder **userIDs** und **questionIDs** enthält. Beide Felder müssen dabei ein Array vom Typ String sein. Weiterhin muss die zugehörige ID des Dokuments kopiert werden und in `DataManager.swift` als Wert für die zugehörige Variable eingefügt werden. Hat man das zugehörige Xcode-Projekt geöffnet, so befindet sich diese Datei in der Gruppe `FirebaseManagement`.
+
 ### Projektbeschreibung und Anforderungen
 Ziel des Projekts war es eine Quiz-App zu entwickeln, in welcher zwei menschliche Spiele (also kein Computer-Gegner) gegeneinander spielen können. Dabei umfasst jedes Spiel eine große Runde, welche aus 10 Fragen besteht. Dabei kann sich jeder Spieler aussuchen, wann er die Fragen beantwortet und wie viele am Stück er beantwortet.
 
